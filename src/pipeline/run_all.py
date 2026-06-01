@@ -150,6 +150,10 @@ def main() -> None:
                     "fit_time_s": float("nan"),
                     "predict_time_s": float("nan"),
                     "total_time_s": float("nan"),
+                    "train_auc_ovo": float("nan"),
+                    "train_accuracy": float("nan"),
+                    "train_g_mean": float("nan"),
+                    "train_cross_entropy": float("nan"),
                 })
 
         # Save incrementally after each dataset

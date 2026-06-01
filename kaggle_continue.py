@@ -75,47 +75,58 @@ def g_mean_score(y_true, y_pred):
     recalls = [float((y_pred[y_true == c] == c).mean()) for c in classes if (y_true == c).any()]
     return float(np.exp(np.mean(np.log(np.clip(recalls, 1e-12, 1.0))))) if recalls else 0.0
 
+def _compute_metrics_safe(estimator, X, y, pred_classes):
+    """Computa auc_ovo, accuracy, g_mean, cross_entropy para um conjunto."""
+    y_pred = estimator.predict(X)
+    y_proba = estimator.predict_proba(X) if hasattr(estimator, "predict_proba") else None
+
+    mask = np.isin(y, pred_classes)
+    if not mask.all():
+        y = y[mask]
+        y_pred = y_pred[mask]
+        if y_proba is not None:
+            y_proba = y_proba[mask]
+
+    if len(y) == 0:
+        return float("nan"), float("nan"), float("nan"), float("nan")
+
+    val_classes = np.unique(y)
+    if y_proba is None:
+        auc, ce = float("nan"), float("nan")
+    elif len(val_classes) == 2 and len(pred_classes) == 2:
+        auc = float(roc_auc_score(y, y_proba[:, 1]))
+        ce = float(log_loss(y, y_proba, labels=pred_classes))
+    elif len(val_classes) < 2:
+        auc, ce = float("nan"), float("nan")
+    else:
+        auc = float(roc_auc_score(y, y_proba, multi_class="ovo", labels=pred_classes))
+        ce = float(log_loss(y, y_proba, labels=pred_classes))
+
+    if np.isnan(auc):
+        auc = float(accuracy_score(y, y_pred))
+
+    return auc, float(accuracy_score(y, y_pred)), g_mean_score(y, y_pred), ce
+
+
 def evaluate(estimator, X_train, y_train, X_test, y_test):
     t0 = time.perf_counter()
     estimator.fit(X_train, y_train)
     fit_time = time.perf_counter() - t0
-    t0 = time.perf_counter()
-    y_pred = estimator.predict(X_test)
-    y_proba = estimator.predict_proba(X_test) if hasattr(estimator, "predict_proba") else None
-    predict_time = time.perf_counter() - t0
-    
-    # Prevenir crash em datasets com muitas classes raras
-    pred_classes = estimator.classes_ if hasattr(estimator, "classes_") else np.unique(y_train)
-    mask = np.isin(y_test, pred_classes)
-    if not mask.all():
-        y_test = y_test[mask]
-        y_pred = y_pred[mask]
-        if y_proba is not None:
-            y_proba = y_proba[mask]
-            
-    if len(y_test) == 0:
-        return {"auc_ovo": 0.0, "accuracy": 0.0, "g_mean": 0.0, "cross_entropy": float('nan'), 
-                "fit_time_s": fit_time, "predict_time_s": predict_time, "total_time_s": fit_time + predict_time}
 
-    val_classes = np.unique(y_test)
-    if y_proba is None:
-        auc, ce = float("nan"), float("nan")
-    elif len(val_classes) == 2 and len(pred_classes) == 2:
-        auc = float(roc_auc_score(y_test, y_proba[:, 1]))
-        ce = float(log_loss(y_test, y_proba, labels=pred_classes))
-    elif len(val_classes) < 2:
-        auc = float("nan")
-        ce = float("nan")
-    else:
-        auc = float(roc_auc_score(y_test, y_proba, multi_class="ovo", labels=pred_classes))
-        ce = float(log_loss(y_test, y_proba, labels=pred_classes))
-        
+    pred_classes = estimator.classes_ if hasattr(estimator, "classes_") else np.unique(y_train)
+
+    t0 = time.perf_counter()
+    auc, acc, gm, ce = _compute_metrics_safe(estimator, X_test, y_test, pred_classes)
+    predict_time = time.perf_counter() - t0
+
+    tr_auc, tr_acc, tr_gm, tr_ce = _compute_metrics_safe(estimator, X_train, y_train, pred_classes)
+
     return {
-        "auc_ovo": auc if not np.isnan(auc) else float(accuracy_score(y_test, y_pred)), 
-        "accuracy": float(accuracy_score(y_test, y_pred)),
-        "g_mean": g_mean_score(y_test, y_pred), "cross_entropy": ce,
+        "auc_ovo": auc, "accuracy": acc, "g_mean": gm, "cross_entropy": ce,
         "fit_time_s": fit_time, "predict_time_s": predict_time,
         "total_time_s": fit_time + predict_time,
+        "train_auc_ovo": tr_auc, "train_accuracy": tr_acc,
+        "train_g_mean": tr_gm, "train_cross_entropy": tr_ce,
     }
 
 
@@ -428,7 +439,8 @@ for i, task_id in enumerate(RECOMMENDED_TASK_IDS, 1):
             row = {"task_id": task_id, "dataset": name, "model": model_name}
             row.update(metrics)
             rows.append(row)
-            print(f"    [TEST] AUC={metrics['auc_ovo']:.4f}, ACC={metrics['accuracy']:.4f}, time={metrics['total_time_s']:.1f}s")
+            print(f"    [TRAIN] AUC={metrics['train_auc_ovo']:.4f}, ACC={metrics['train_accuracy']:.4f}")
+            print(f"    [TEST]  AUC={metrics['auc_ovo']:.4f}, ACC={metrics['accuracy']:.4f}, time={metrics['total_time_s']:.1f}s")
 
         except Exception as e:
             print(f"    [ERRO] {model_name} falhou: {e}")
@@ -437,6 +449,8 @@ for i, task_id in enumerate(RECOMMENDED_TASK_IDS, 1):
                 "auc_ovo": float("nan"), "accuracy": float("nan"), "g_mean": float("nan"),
                 "cross_entropy": float("nan"), "fit_time_s": float("nan"),
                 "predict_time_s": float("nan"), "total_time_s": float("nan"),
+                "train_auc_ovo": float("nan"), "train_accuracy": float("nan"),
+                "train_g_mean": float("nan"), "train_cross_entropy": float("nan"),
             })
 
     # Salvar após cada dataset
