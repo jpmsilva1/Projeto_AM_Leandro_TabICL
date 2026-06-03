@@ -10,11 +10,20 @@ com tratamento robusto de GPU Out-Of-Memory para o TabICL.
 
 # ── Tudo que a célula 1 já importou está disponível. ──
 # Se por acaso o kernel reiniciou, reimportamos o essencial:
-import os, time, warnings
+import importlib.util
+import os, subprocess, sys, time, warnings
+
+if importlib.util.find_spec("autogluon") is None or importlib.util.find_spec("autogluon.tabular") is None:
+    print("[SETUP] Instalando AutoGluon Tabular...")
+    subprocess.check_call([
+        sys.executable, "-m", "pip", "install", "-q",
+        "autogluon.tabular[all]>=1.4,<2.0",
+    ])
+
 import numpy as np, pandas as pd, optuna, openml, torch
 from pathlib import Path
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, OrdinalEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score, log_loss, roc_auc_score
 from tabicl import TabICLClassifier
@@ -48,22 +57,32 @@ RECOMMENDED_TASK_IDS = [
 
 
 # ── Funções utilitárias (copiadas da célula 1) ──
-def load_task(task_id):
-    task = openml.tasks.get_task(task_id, download_data=True)
-    dataset = task.get_dataset()
-    X, y, _, _ = dataset.get_data(target=dataset.default_target_attribute)
-    return task_id, dataset.name, X, np.asarray(y)
+def load_task(task_id, max_retries=5, wait=15):
+    """Carrega dataset com retry automático para erros 504/503 do OpenML."""
+    for attempt in range(1, max_retries + 1):
+        try:
+            task = openml.tasks.get_task(task_id, download_data=True)
+            dataset = task.get_dataset()
+            X, y, _, _ = dataset.get_data(target=dataset.default_target_attribute)
+            return task_id, dataset.name, X, np.asarray(y)
+        except Exception as e:
+            msg = str(e)
+            if any(code in msg for code in ["504", "503", "502", "Connection", "Timeout", "timed out"]):
+                if attempt < max_retries:
+                    print(f"    [RETRY {attempt}/{max_retries}] OpenML timeout, aguardando {wait}s...")
+                    time.sleep(wait)
+                else:
+                    raise RuntimeError(f"OpenML não respondeu após {max_retries} tentativas: {e}")
+            else:
+                raise
 
 def preprocess(X_train, X_test):
     cat_cols = X_train.select_dtypes(exclude=[np.number]).columns.tolist()
     X_tr, X_te = X_train.copy(), X_test.copy()
-    for col in cat_cols:
-        from sklearn.preprocessing import LabelEncoder as LE
-        le = LE()
-        combined = pd.concat([X_tr[col], X_te[col]], axis=0).astype(str)
-        le.fit(combined)
-        X_tr[col] = le.transform(X_tr[col].astype(str))
-        X_te[col] = le.transform(X_te[col].astype(str))
+    if cat_cols:
+        enc = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
+        X_tr[cat_cols] = enc.fit_transform(X_tr[cat_cols].astype(str))
+        X_te[cat_cols] = enc.transform(X_te[cat_cols].astype(str))
     if X_tr.isna().any().any() or X_te.isna().any().any():
         imp = SimpleImputer(strategy="median")
         X_tr = pd.DataFrame(imp.fit_transform(X_tr), columns=X_tr.columns, index=X_tr.index)
@@ -131,21 +150,42 @@ def evaluate(estimator, X_train, y_train, X_test, y_test):
 
 
 # =============================================================================
-# TabICL com fallback GPU → CPU → NaN
+# TabICL com fallback GPU → CPU e feature selection automática para datasets
+# de alta dimensionalidade (> MAX_FEATURES). Apenas o TabICL recebe as features
+# reduzidas; todos os outros modelos continuam com o conjunto completo.
 # =============================================================================
 class TabICLSafe:
-    """TabICL que tenta GPU → CPU → desiste com erro claro."""
+    """TabICL com OOM fallback (GPU→CPU) e feature selection automática."""
+
+    MAX_FEATURES = 256  # limiar seguro para GPU T4 do Kaggle
 
     def __init__(self, **kwargs):
         self._kwargs = kwargs
         self._device = kwargs.get("device", "cpu")
         self._model = None
         self.classes_ = None
+        self._feat_idx = None  # índices das features selecionadas (None = sem redução)
 
-    def _make(self, device):
-        kw = {**self._kwargs, "device": device}
-        return TabICLClassifier(**kw)
+    # ── Feature selection ────────────────────────────────────────────────────
+    def _select_fit(self, X):
+        """Se n_features > MAX_FEATURES, seleciona top-k por variância."""
+        n_feat = X.shape[1]
+        if n_feat <= self.MAX_FEATURES:
+            self._feat_idx = None
+            return X
+        variances = np.asarray(X).var(axis=0)
+        self._feat_idx = np.argsort(variances)[-self.MAX_FEATURES:]
+        print(f"      [FEAT] {n_feat} features → selecionadas top-{self.MAX_FEATURES} por variância")
+        return self._apply_selection(X)
 
+    def _apply_selection(self, X):
+        if self._feat_idx is None:
+            return X
+        if hasattr(X, "iloc"):
+            return X.iloc[:, self._feat_idx]
+        return X[:, self._feat_idx]
+
+    # ── OOM detection ────────────────────────────────────────────────────────
     @staticmethod
     def _is_oom(e):
         if "OutOfMemoryError" in type(e).__name__:
@@ -153,18 +193,20 @@ class TabICLSafe:
         msg = str(e).lower()
         return any(k in msg for k in ["out of memory", "cuda error", "memory allocation failed"])
 
-    def fit(self, X, y):
+    def _make(self, device):
+        kw = {**self._kwargs, "device": device}
+        return TabICLClassifier(**kw)
+
+    # ── Fit com fallback GPU → CPU ────────────────────────────────────────────
+    def _fit_with_fallback(self, X, y):
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
-        # Tentativa 1: GPU
         if self._device != "cpu":
             try:
                 self._model = self._make(self._device)
                 self._model.fit(X, y)
-                if hasattr(self._model, "classes_"):
-                    self.classes_ = self._model.classes_
-                return self
+                return
             except Exception as e:
                 if self._is_oom(e):
                     print(f"      [OOM] GPU sem memória. Tentando CPU...")
@@ -172,40 +214,106 @@ class TabICLSafe:
                 else:
                     raise
 
-        # Tentativa 2: CPU
+        self._model = self._make("cpu")
+        self._model.fit(X, y)
+
+    def fit(self, X, y):
+        X_sel = self._select_fit(X)
         try:
-            self._model = self._make("cpu")
-            self._model.fit(X, y)
-            if hasattr(self._model, "classes_"):
-                self.classes_ = self._model.classes_
-            return self
+            self._fit_with_fallback(X_sel, y)
         except Exception as e:
-            if self._is_oom(e):
-                raise RuntimeError(
-                    f"TabICL OOM em GPU e CPU (n={X.shape[0]}, p={X.shape[1]}). Pulando."
-                )
-            raise
+            if self._is_oom(e) and self._feat_idx is None:
+                # OOM mesmo sem feature selection — tenta reduzir features agora
+                print(f"      [OOM] Reduzindo features para {self.MAX_FEATURES} e retentando...")
+                variances = np.asarray(X).var(axis=0)
+                self._feat_idx = np.argsort(variances)[-self.MAX_FEATURES:]
+                X_sel = self._apply_selection(X)
+                self._fit_with_fallback(X_sel, y)
+            else:
+                raise
+        if hasattr(self._model, "classes_"):
+            self.classes_ = self._model.classes_
+        return self
 
     def predict(self, X):
-        return self._model.predict(X)
+        return self._model.predict(self._apply_selection(X))
 
     def predict_proba(self, X):
-        return self._model.predict_proba(X)
+        return self._model.predict_proba(self._apply_selection(X))
 
 
 def build_tabicl_safe(params, seed=SEED):
     import os
     os.makedirs("./cache/tabicl_offload", exist_ok=True)
     return TabICLSafe(
-        random_state=seed, 
-        device=DEVICE, 
-        verbose=False, 
+        random_state=seed,
+        device=DEVICE,
+        verbose=False,
         batch_size=4,
         offload_mode="disk",
         disk_offload_dir="./cache/tabicl_offload",
         kv_cache="repr",
         **params
     )
+
+
+# =============================================================================
+# AutoGluon — wrapper sklearn-compatível
+# AutoGluon faz seu próprio tuning interno; não usa Optuna (skip_tune=True).
+# time_limit por dataset: default=120s, extreme=300s (proxy para 4h do professor).
+# =============================================================================
+class AutoGluonWrapper:
+    def __init__(self, preset: str, time_limit: int, path_prefix: str):
+        self.preset = preset
+        self.time_limit = time_limit
+        self.path_prefix = path_prefix
+        self.predictor_ = None
+        self.classes_ = None
+        self._label = "__ag_target__"
+        self._path = None
+
+    def fit(self, X, y):
+        import shutil
+        from autogluon.tabular import TabularPredictor
+        # Usa id(self) para path único; apaga versão anterior se existir
+        self._path = f"/kaggle/working/{self.path_prefix}_{id(self)}"
+        if os.path.exists(self._path):
+            shutil.rmtree(self._path)
+        df = pd.DataFrame(X).copy()
+        df[self._label] = y
+        self.predictor_ = TabularPredictor(
+            label=self._label,
+            eval_metric="roc_auc_ovo_macro",
+            verbosity=0,
+            path=self._path,
+        ).fit(df, presets=self.preset, time_limit=self.time_limit)
+        self.classes_ = np.array(sorted(np.unique(y)))
+        return self
+
+    def predict(self, X):
+        return self.predictor_.predict(pd.DataFrame(X)).to_numpy()
+
+    def predict_proba(self, X):
+        proba = self.predictor_.predict_proba(pd.DataFrame(X))
+        return proba[sorted(proba.columns)].to_numpy()
+
+    def cleanup(self):
+        """Remove model files do disco para liberar espaço no Kaggle."""
+        import shutil
+        if self._path and os.path.exists(self._path):
+            shutil.rmtree(self._path, ignore_errors=True)
+            self._path = None
+
+
+def ag_search_space(trial):
+    return {}
+
+def build_autogluon_default(params, seed=SEED):
+    return AutoGluonWrapper("best_quality", time_limit=120, path_prefix="ag_default")
+
+def build_autogluon_extreme(params, seed=SEED):
+    # Proxy do preset extreme (4h do professor); limitado a 300s por dataset no Kaggle.
+    return AutoGluonWrapper("extreme_quality", time_limit=300, path_prefix="ag_extreme")
 
 
 # =============================================================================
@@ -277,10 +385,12 @@ def build_catboost(params, seed=SEED):
 
 
 MODEL_REGISTRY = {
-    "lightgbm":    {"search_space": lgbm_search_space,    "builder": build_lgbm,         "n_trials": N_TRIALS_BASELINES},
-    "xgboost":     {"search_space": xgb_search_space,     "builder": build_xgb,          "n_trials": N_TRIALS_BASELINES},
-    "catboost":    {"search_space": catboost_search_space, "builder": build_catboost,     "n_trials": N_TRIALS_BASELINES},
-    "group_model": {"search_space": tabicl_search_space,  "builder": build_tabicl_safe,  "n_trials": N_TRIALS_TABICL},
+    "lightgbm":          {"search_space": lgbm_search_space,    "builder": build_lgbm,              "n_trials": N_TRIALS_BASELINES, "skip_tune": False},
+    "xgboost":           {"search_space": xgb_search_space,     "builder": build_xgb,               "n_trials": N_TRIALS_BASELINES, "skip_tune": False},
+    "catboost":          {"search_space": catboost_search_space, "builder": build_catboost,          "n_trials": N_TRIALS_BASELINES, "skip_tune": False},
+    "group_model":       {"search_space": tabicl_search_space,  "builder": build_tabicl_safe,       "n_trials": N_TRIALS_TABICL,    "skip_tune": False},
+    "autogluon_default": {"search_space": ag_search_space,      "builder": build_autogluon_default, "n_trials": 1,                  "skip_tune": True},
+    "autogluon_extreme": {"search_space": ag_search_space,      "builder": build_autogluon_extreme, "n_trials": 1,                  "skip_tune": True},
 }
 
 
@@ -385,8 +495,9 @@ n_models = len(MODEL_REGISTRY)
 if RAW_CSV.exists():
     existing = pd.read_csv(RAW_CSV)
     rows = existing.to_dict("records")
-    # Só considerar "done" se TODOS os 4 modelos rodaram
-    counts = existing.groupby("task_id")["model"].nunique()
+    # Só considerar "done" se TODOS os modelos produziram AUC válida.
+    valid = existing.dropna(subset=["auc_ovo"])
+    counts = valid.groupby("task_id")["model"].nunique()
     done_task_ids = set(counts[counts >= n_models].index)
     # Limpar resultados parciais
     partial = set(existing["task_id"].unique()) - done_task_ids
@@ -397,6 +508,7 @@ if RAW_CSV.exists():
 
 if BEST_PARAMS_CSV.exists():
     best_params_rows = pd.read_csv(BEST_PARAMS_CSV).to_dict("records")
+    best_params_rows = [r for r in best_params_rows if r["task_id"] in done_task_ids]
 
 n_total = len(RECOMMENDED_TASK_IDS)
 
@@ -406,8 +518,13 @@ for i, task_id in enumerate(RECOMMENDED_TASK_IDS, 1):
 
     try:
         tid, name, X, y = load_task(task_id)
-        n_s, n_f, n_c = X.shape[0], X.shape[1], len(np.unique(y))
-        print(f"\n{'=' * 70}\n  [{i}/{n_total}] {name} (n={n_s}, p={n_f}, classes={n_c})\n{'=' * 70}")
+        n_s  = X.shape[0]
+        n_f  = X.shape[1]
+        n_c  = len(np.unique(y))
+        n_cat = int(X.select_dtypes(exclude=[np.number]).shape[1])
+        has_missing = bool(X.isna().any().any())
+        print(f"\n{'=' * 70}\n  [{i}/{n_total}] {name} (n={n_s}, p={n_f}, classes={n_c}, "
+              f"cat={n_cat}, missing={has_missing})\n{'=' * 70}")
     except Exception as e:
         print(f"\n=== [{i}/{n_total}] ERRO ao carregar task_id={task_id}: {e} ===")
         continue
@@ -421,11 +538,17 @@ for i, task_id in enumerate(RECOMMENDED_TASK_IDS, 1):
 
     for model_name in MODEL_REGISTRY:
         print(f"\n  --- {model_name} ---")
+        est = None
         try:
-            t0 = time.perf_counter()
-            best_params, best_score = tune_model(model_name, X_train_c, y_train)
-            tune_time = time.perf_counter() - t0
-            print(f"    [TUNE] Score: {best_score:.4f} ({tune_time:.1f}s)")
+            # Tuning: AutoGluon faz tuning interno — pula o Optuna
+            if MODEL_REGISTRY[model_name]["skip_tune"]:
+                best_params, best_score, tune_time = {}, float("nan"), 0.0
+                print(f"    [TUNE] Skipped (AutoGluon faz tuning interno)")
+            else:
+                t0 = time.perf_counter()
+                best_params, best_score = tune_model(model_name, X_train_c, y_train)
+                tune_time = time.perf_counter() - t0
+                print(f"    [TUNE] Score: {best_score:.4f} ({tune_time:.1f}s)")
 
             best_params_rows.append({
                 "task_id": task_id, "dataset": name, "model": model_name,
@@ -436,22 +559,38 @@ for i, task_id in enumerate(RECOMMENDED_TASK_IDS, 1):
             clean = MODEL_REGISTRY[model_name]["search_space"](fixed)
             est = MODEL_REGISTRY[model_name]["builder"](clean)
             metrics = evaluate(est, X_train_c, y_train, X_test_c, y_test)
-            row = {"task_id": task_id, "dataset": name, "model": model_name}
+
+            row = {
+                "task_id": task_id, "dataset": name, "model": model_name,
+                "n_samples": n_s, "n_features": n_f, "n_classes": n_c,
+                "n_categorical": n_cat, "has_missing": has_missing,
+            }
             row.update(metrics)
+            row["tune_time_s"] = tune_time
+            row["total_pipeline_time_s"] = tune_time + metrics["total_time_s"]
             rows.append(row)
+
             print(f"    [TRAIN] AUC={metrics['train_auc_ovo']:.4f}, ACC={metrics['train_accuracy']:.4f}")
-            print(f"    [TEST]  AUC={metrics['auc_ovo']:.4f}, ACC={metrics['accuracy']:.4f}, time={metrics['total_time_s']:.1f}s")
+            print(f"    [TEST]  AUC={metrics['auc_ovo']:.4f}, ACC={metrics['accuracy']:.4f}, "
+                  f"time={row['total_pipeline_time_s']:.1f}s (tune+fit+pred)")
 
         except Exception as e:
             print(f"    [ERRO] {model_name} falhou: {e}")
             rows.append({
                 "task_id": task_id, "dataset": name, "model": model_name,
+                "n_samples": n_s, "n_features": n_f, "n_classes": n_c,
+                "n_categorical": n_cat, "has_missing": has_missing,
                 "auc_ovo": float("nan"), "accuracy": float("nan"), "g_mean": float("nan"),
                 "cross_entropy": float("nan"), "fit_time_s": float("nan"),
                 "predict_time_s": float("nan"), "total_time_s": float("nan"),
                 "train_auc_ovo": float("nan"), "train_accuracy": float("nan"),
                 "train_g_mean": float("nan"), "train_cross_entropy": float("nan"),
+                "tune_time_s": float("nan"), "total_pipeline_time_s": float("nan"),
             })
+        finally:
+            # Liberar disco mesmo quando o AutoGluon falhar durante o fit.
+            if est is not None and hasattr(est, "cleanup"):
+                est.cleanup()
 
     # Salvar após cada dataset
     pd.DataFrame(rows).to_csv(RAW_CSV, index=False)

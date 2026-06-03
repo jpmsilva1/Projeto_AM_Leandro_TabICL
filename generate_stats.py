@@ -1,10 +1,16 @@
-import pandas as pd
+import sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
+import pandas as pd
 from src.pipeline.stats import demsar_analysis, bayesian_pairwise
 
 def main():
-    # Load raw results
-    df = pd.read_csv("results/raw.csv")
+    csv_path = Path("results/raw_tuned.csv")
+    if not csv_path.exists():
+        csv_path = Path("results/raw.csv")
+    df = pd.read_csv(csv_path)
+    print(f"[INFO] Carregado: {csv_path} ({len(df)} linhas)")
     
     # Calculate average metrics per model
     print("--- Average Metrics ---")

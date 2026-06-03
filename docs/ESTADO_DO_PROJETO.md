@@ -122,12 +122,14 @@ Isso atende ao **item 4 dos Procedimentos** do professor: *"Apresentar os result
 
 O `kaggle_continue.py` é o script principal atualmente sendo utilizado para execução na GPU do Kaggle. Inclui:
 
-- **Instalação automática** de dependências.
-- **OOM fix** (`TabICLSafe`): tenta GPU → CPU → levanta erro claro.
+- **Instalação automática** do AutoGluon caso a célula de setup não tenha instalado o pacote.
+- **OOM fix** (`TabICLSafe`): tenta GPU → CPU e reduz automaticamente datasets com muitas features para top-256 features por variância.
 - **Resume automático**: lê o CSV existente e pula datasets já completos.
+- **Resume validado**: só considera um dataset completo quando todos os modelos têm `auc_ovo` válido; linhas com `NaN` são refeitas.
 - **Tuning via holdout interno** (80/20 dentro do treino) em vez de CV completo, por limitação de tempo na GPU.
 - **Salvamento incremental** após cada dataset.
 - **Métricas de treino E teste** (alterado recentemente).
+- **AutoGluon default e extreme** via wrapper sklearn-compatível, com limpeza automática dos arquivos temporários para não lotar o disco do Kaggle.
 
 **O que foi alterado recentemente nos dois arquivos Kaggle:**
 - Função `evaluate()` refatorada: agora computa métricas em treino e teste.
@@ -162,29 +164,15 @@ Estrutura criada. Seções 1–4 preenchidas com resultados preliminares. Falta 
 
 ### CRÍTICO (bloqueia a entrega)
 
-#### 3.1 Corrigir erros nos datasets que falham para o TabICL
-O TabICL falha em 4 datasets por OOM: `isolet`, `jm1`, `adult`, `Bioresponse`. As opções são:
-
-**Opção A — Trocar os datasets (mais simples):**
-Substituir os 4 datasets problemáticos por outros do TabArena-v0.1 do mesmo regime. Atualizar `RECOMMENDED_TASK_IDS` em `data/load_tabarena.py` e em `kaggle_continue.py`.
-
-**Opção B — Forçar CPU com sample cap (mais arriscado):**
-No `build_tabicl_safe`, adicionar um limite de amostras para datasets grandes; modelos com n > 10.000 rodam em CPU com um subsample de treino. Isso introduz um viés nos resultados.
-
-**Recomendação:** Opção A, trocar os datasets. É mais limpo e mantém a comparação justa.
-
-#### 3.2 AutoGluon não está integrado nos experimentos
-O professor exige comparação com **AutoGluon 1.4** em dois presets: `default` e `extreme` (4h). O arquivo `src/models/automl.py` existe mas **nunca foi integrado** no `kaggle_pipeline.py` nem no `kaggle_continue.py`. Os resultados atuais têm apenas 4 modelos (TabICL + 3 baselines); o projeto exige 6 (+ AutoGluon default + AutoGluon extreme).
-
-O que fazer:
-1. Adicionar AutoGluon ao `MODEL_REGISTRY` do `kaggle_continue.py`.
-2. O AutoGluon tem API diferente (recebe DataFrame com coluna target, não X/y separados). Será necessário um wrapper simples.
-3. O preset `extreme` (4h) é impraticável no Kaggle (timeout). Avaliar se é possível rodar localmente ou reduzir o time limit para 1h.
-
-#### 3.3 Compilar resultados finais dos 30 datasets
+#### 3.1 Compilar resultados finais dos 30 datasets
 O CSV `raw_tuned.csv` precisa ter resultados para todos os 30 datasets e todos os modelos (sem NaN). Depois disso:
 1. Rodar `generate_stats.py` para gerar o CD diagram final e o CSV bayesiano.
 2. Verificar que `pivot_auc.dropna()` retorna 30 linhas (nenhum dataset com resultado faltando).
+
+#### 3.2 Lidar com instabilidade do OpenML/Kaggle
+O log mais recente mostrou dois eventos externos ao código:
+- OpenML retornou `503/504` para alguns `task_id`. O `load_task` já tem retry automático, mas se o servidor ficar fora por vários minutos, rode a célula novamente depois. O resume refaz automaticamente datasets incompletos.
+- Kaggle exibiu `You've hit your session limit`. Isso significa limite temporário de uso de GPU da conta. Espere o horário indicado pelo Kaggle e rode novamente.
 
 ---
 
@@ -257,7 +245,7 @@ O professor exige ~21 slides em dois blocos de 10 minutos:
 | Critério (peso) | Status | O que falta |
 |---|---|---|
 | **Apresentação teórica do modelo (40%)** | Bom — model card bem preenchido | Montar slides (Bloco 1) |
-| **Qualidade dos experimentos (50%)** | Parcial — faltam AutoGluon + 4 datasets corrigidos + análise por regime | Ver itens 3.1, 3.2, 3.3, 3.4 |
+| **Qualidade dos experimentos (50%)** | Parcial — falta compilar os resultados finais + análise por regime | Ver itens 3.1, 3.2, 3.4 |
 | **Qualidade da apresentação (10%)** | Não iniciado | Montar os slides completos |
 
 ---
