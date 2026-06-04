@@ -224,8 +224,9 @@ for i, ds in enumerate(DATASETS):
                 signal.signal(signal.SIGALRM, timeout_handler)
                 signal.alarm(7200)  # 2 horas em segundos
                 
+                ag_problem_type = "binary" if n_classes == 2 else "multiclass"
                 predictor = TabularPredictor(
-                    label="target", eval_metric=ag_metric, path=ag_path, verbosity=0
+                    label="target", eval_metric=ag_metric, problem_type=ag_problem_type, path=ag_path, verbosity=0
                 )
                 predictor.fit(
                     train_data=train_df,

@@ -172,7 +172,8 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
         signal.alarm(alarm_limit)
         
         ag_metric = "roc_auc" if n_classes == 2 else "roc_auc_ovo_macro"
-        predictor = TabularPredictor(label="target", eval_metric=ag_metric, path=ag_path, verbosity=0)
+        ag_problem_type = "binary" if n_classes == 2 else "multiclass"
+        predictor = TabularPredictor(label="target", eval_metric=ag_metric, problem_type=ag_problem_type, path=ag_path, verbosity=0)
         predictor.fit(
             train_data=train_df, presets=preset, time_limit=time_limit,
             num_gpus=1
@@ -208,9 +209,16 @@ from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
 
 def cross_val_objective(model_class, params, X, y):
-    cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=SEED)
+    try:
+        cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=SEED)
+        splits = list(cv.split(X, y))
+    except ValueError:
+        from sklearn.model_selection import KFold
+        cv = KFold(n_splits=3, shuffle=True, random_state=SEED)
+        splits = list(cv.split(X))
+        
     scores = []
-    for train_idx, val_idx in cv.split(X, y):
+    for train_idx, val_idx in splits:
         X_tr, X_va = X[train_idx], X[val_idx]
         y_tr, y_va = y[train_idx], y[val_idx]
         model = model_class(**params)
