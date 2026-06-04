@@ -145,7 +145,11 @@ for i, ds in enumerate(DATASETS):
         print(f"✅ Loaded: {len(X)} samples, {len(X.columns)} features, {n_classes} classes")
         
         X_clean, y_clean, le = preprocess(X, y, cat_indicator)
-        X_train, X_test, y_train, y_test = train_test_split(X_clean, y_clean, test_size=0.3, random_state=SEED, stratify=y_clean)
+        try:
+            X_train, X_test, y_train, y_test = train_test_split(X_clean, y_clean, test_size=0.3, random_state=SEED, stratify=y_clean)
+        except ValueError:
+            print("  ⚠️ Stratified split failed (rare class), falling back to random split.")
+            X_train, X_test, y_train, y_test = train_test_split(X_clean, y_clean, test_size=0.3, random_state=SEED)
         
         # 1. TabICL
         res_tabicl = safe_run("TabICL", build_tabicl, X_train.values, y_train, X_test.values, y_test, n_classes)
@@ -185,6 +189,7 @@ for i, ds in enumerate(DATASETS):
             
             preds = predictor.predict(test_df)
             probs = predictor.predict_proba(test_df)
+            probs = probs.reindex(sorted(probs.columns), axis=1) # Prevent silent column ordering bug
             if n_classes == 2:
                 auc = roc_auc_score(y_test, probs.iloc[:, 1])
             else:
