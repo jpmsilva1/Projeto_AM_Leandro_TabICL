@@ -1,5 +1,9 @@
 import os
+import sys
 import time
+import signal
+import shutil
+import tempfile
 import warnings
 import numpy as np
 import pandas as pd
@@ -10,20 +14,23 @@ from sklearn.preprocessing import LabelEncoder
 from autogluon.tabular import TabularPredictor
 
 # --- CONFIGURAÇÕES DO CLUSTER ---
-# Usa uma pasta local no cluster para o cache do OpenML, evitando travamentos
 openml.config.cache_directory = os.path.expanduser('./openml_cache')
 warnings.filterwarnings("ignore")
+
+# Limita paralelismo para evitar deadlock no SLURM
+os.environ["OMP_NUM_THREADS"] = "4"
+os.environ["MKL_NUM_THREADS"] = "4"
+os.environ["OPENBLAS_NUM_THREADS"] = "4"
+os.environ["NUMEXPR_NUM_THREADS"] = "4"
 
 RESULTS_FILE = "cluster_results.csv"
 METADATA_FILE = "dataset_metadata.csv"
 
 # --- DATASETS OFICIAIS ---
 DATASETS = [
-    # Small (3)
     {'tid': 1464, 'name': 'blood-transfusion-service-center', 'regime': 'small'},
     {'tid': 37, 'name': 'diabetes', 'regime': 'small'},
     {'tid': 2, 'name': 'anneal', 'regime': 'small'},
-    # Medium (17)
     {'tid': 168757, 'name': 'credit-g', 'regime': 'medium'},
     {'tid': 359956, 'name': 'qsar-biodeg', 'regime': 'medium'},
     {'tid': 2077, 'name': 'baseball', 'regime': 'medium'},
@@ -41,7 +48,6 @@ DATASETS = [
     {'tid': 3481, 'name': 'isolet', 'regime': 'medium'},
     {'tid': 24, 'name': 'mushroom', 'regime': 'medium'},
     {'tid': 3510, 'name': 'JapaneseVowels', 'regime': 'medium'},
-    # Large (10)
     {'tid': 32, 'name': 'pendigits', 'regime': 'large'},
     {'tid': 26, 'name': 'nursery', 'regime': 'large'},
     {'tid': 6, 'name': 'letter', 'regime': 'large'},
@@ -56,6 +62,13 @@ DATASETS = [
 
 SEED = 42
 DEVICE = "cuda"
+
+# --- TIMEOUT DE SEGURANÇA ---
+class TimeoutError(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutError("Tempo limite de segurança atingido!")
 
 # --- FUNÇÕES DE PRE-PROCESSAMENTO ---
 def preprocess(X, y, categorical_indicator):
@@ -90,7 +103,6 @@ def safe_run(model_name, build_fn, X_train, y_train, X_test, y_test, n_classes, 
         fit_predict_time = time.perf_counter() - t0
         
         acc = accuracy_score(y_test, preds)
-        # ROC AUC
         if n_classes == 2:
             auc = roc_auc_score(y_test, probs[:, 1])
         else:
@@ -119,35 +131,49 @@ def build_catboost():
     from catboost import CatBoostClassifier
     return CatBoostClassifier(random_state=SEED, verbose=0)
 
+# --- RETOMADA INTELIGENTE ---
+def load_done_pairs():
+    if os.path.exists(RESULTS_FILE):
+        df = pd.read_csv(RESULTS_FILE)
+        return set(zip(df['dataset'], df['model'])), df.to_dict('records')
+    return set(), []
+
 # --- PIPELINE PRINCIPAL ---
 print("=================================================================")
-print("🚀 INICIANDO PIPELINE NO CLUSTER APUANA")
+print("🚀 INICIANDO PIPELINE NO CLUSTER APUANA (COM RETOMADA INTELIGENTE)")
 print("=================================================================")
+sys.stdout.flush()
 
-all_results = []
+done_pairs, all_results = load_done_pairs()
 dataset_meta = []
 
 for i, ds in enumerate(DATASETS):
     print(f"\n=================================================================")
     print(f"📁 [{i+1}/{len(DATASETS)}] {ds['name']} (tid={ds['tid']}, regime={ds['regime']})")
     print(f"=================================================================")
+    sys.stdout.flush()
+    
+    # Verifica quais modelos já foram feitos para este dataset
+    models_needed = ["TabICL v2", "LightGBM_TD", "XGBoost_TD", "CatBoost_TD", "AutoGluon"]
+    if all((ds['name'], m) in done_pairs for m in models_needed):
+        print("  ✅ Todos os modelos já completos, pulando...")
+        sys.stdout.flush()
+        continue
     
     try:
         try:
-            # Tenta baixar pelo Dataset ID diretamente
             dataset = openml.datasets.get_dataset(ds["tid"], download_data=True, download_qualities=False, download_features_meta_data=True)
         except Exception:
-            # Se falhar (ex: Unknown dataset), significa que era um Task ID. Buscamos a Task e extraímos o Dataset ID real!
             task = openml.tasks.get_task(ds["tid"])
             dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
         X, y, cat_indicator, _ = dataset.get_data(target=dataset.default_target_attribute)
         n_classes = len(np.unique(y.dropna()))
         
-        # Meta log
         dataset_meta.append({"dataset": ds["name"], "regime": ds["regime"], "n_samples": len(X), "n_features": len(X.columns), "n_classes": n_classes})
         pd.DataFrame(dataset_meta).to_csv(METADATA_FILE, index=False)
         
         print(f"✅ Loaded: {len(X)} samples, {len(X.columns)} features, {n_classes} classes")
+        sys.stdout.flush()
         
         X_clean, y_clean, le = preprocess(X, y, cat_indicator)
         try:
@@ -156,61 +182,85 @@ for i, ds in enumerate(DATASETS):
             print("  ⚠️ Stratified split failed (rare class), falling back to random split.")
             X_train, X_test, y_train, y_test = train_test_split(X_clean, y_clean, test_size=0.3, random_state=SEED)
         
+        def save_result(model_name, result):
+            all_results.append({"dataset": ds["name"], "model": model_name, **result})
+            pd.DataFrame(all_results).to_csv(RESULTS_FILE, index=False)
+            sys.stdout.flush()
+        
         # 1. TabICL
-        res_tabicl = safe_run("TabICL", build_tabicl, X_train.values, y_train, X_test.values, y_test, n_classes)
-        all_results.append({"dataset": ds["name"], "model": "TabICL v2", **res_tabicl})
+        if (ds['name'], "TabICL v2") not in done_pairs:
+            res = safe_run("TabICL", build_tabicl, X_train.values, y_train, X_test.values, y_test, n_classes)
+            save_result("TabICL v2", res)
         
         # 2. LightGBM
-        res_lgbm = safe_run("LightGBM_TD", build_lightgbm, X_train.values, y_train, X_test.values, y_test, n_classes)
-        all_results.append({"dataset": ds["name"], "model": "LightGBM_TD", **res_lgbm})
+        if (ds['name'], "LightGBM_TD") not in done_pairs:
+            res = safe_run("LightGBM_TD", build_lightgbm, X_train.values, y_train, X_test.values, y_test, n_classes)
+            save_result("LightGBM_TD", res)
         
         # 3. XGBoost
-        res_xgb = safe_run("XGBoost_TD", build_xgboost, X_train.values, y_train, X_test.values, y_test, n_classes)
-        all_results.append({"dataset": ds["name"], "model": "XGBoost_TD", **res_xgb})
+        if (ds['name'], "XGBoost_TD") not in done_pairs:
+            res = safe_run("XGBoost_TD", build_xgboost, X_train.values, y_train, X_test.values, y_test, n_classes)
+            save_result("XGBoost_TD", res)
         
         # 4. CatBoost
-        res_cb = safe_run("CatBoost_TD", build_catboost, X_train.values, y_train, X_test.values, y_test, n_classes)
-        all_results.append({"dataset": ds["name"], "model": "CatBoost_TD", **res_cb})
+        if (ds['name'], "CatBoost_TD") not in done_pairs:
+            res = safe_run("CatBoost_TD", build_catboost, X_train.values, y_train, X_test.values, y_test, n_classes)
+            save_result("CatBoost_TD", res)
         
-        # 5. AutoGluon (BEST QUALITY)
-        print(f"    🔧 AutoGluon (Best)...", end="", flush=True)
-        t0 = time.perf_counter()
-        
-        ag_metric = "roc_auc" if n_classes == 2 else "roc_auc_ovo_macro"
-        predictor = TabularPredictor(label="target", eval_metric=ag_metric, path=f"./ag_models/{ds['name']}", verbosity=0)
-        
-        train_df = X_train.copy()
-        train_df["target"] = y_train
-        test_df = X_test.copy()
-        test_df["target"] = y_test
-        
-        try:
-            predictor.fit(
-                train_data=train_df,
-                presets="best_quality",
-                time_limit=14400,  # 4 horas de limite por dataset no modo best_quality
-            )
-            fit_time = time.perf_counter() - t0
+        # 5. AutoGluon (BEST QUALITY) — com proteção anti-deadlock
+        if (ds['name'], "AutoGluon") not in done_pairs:
+            print(f"    🔧 AutoGluon (Best)...", end="", flush=True)
+            t0 = time.perf_counter()
             
-            preds = predictor.predict(test_df)
-            probs = predictor.predict_proba(test_df)
-            probs = probs.reindex(sorted(probs.columns), axis=1) # Prevent silent column ordering bug
-            if n_classes == 2:
-                auc = roc_auc_score(y_test, probs.iloc[:, 1])
-            else:
-                auc = roc_auc_score(y_test, probs, multi_class="ovo", average="macro")
-            acc = accuracy_score(y_test, preds)
+            ag_path = tempfile.mkdtemp()
+            ag_metric = "roc_auc" if n_classes == 2 else "roc_auc_ovo_macro"
             
-            print(f" ACC={acc:.4f} | AUC={auc:.4f} | Time={fit_time:.1f}s")
-            all_results.append({"dataset": ds["name"], "model": "AutoGluon", "ACC": acc, "AUC_OVO": auc, "total_time_s": fit_time})
-        except Exception as e:
-            print(f" ❌ AutoGluon FAILED: {str(e)[:150]}")
-            all_results.append({"dataset": ds["name"], "model": "AutoGluon", "ACC": "FAILED", "AUC_OVO": str(e)[:100], "total_time_s": 0})
+            train_df = X_train.copy()
+            train_df["target"] = y_train
+            test_df = X_test.copy()
             
-        pd.DataFrame(all_results).to_csv(RESULTS_FILE, index=False)
-        
+            try:
+                # Timeout de segurança de 2 horas via signal (funciona no Linux/SLURM)
+                signal.signal(signal.SIGALRM, timeout_handler)
+                signal.alarm(7200)  # 2 horas em segundos
+                
+                predictor = TabularPredictor(
+                    label="target", eval_metric=ag_metric, path=ag_path, verbosity=0
+                )
+                predictor.fit(
+                    train_data=train_df,
+                    presets="best_quality",
+                    time_limit=3600,  # 1 hora de limite interno do AutoGluon
+                    num_cpus=4,       # Limita CPUs para evitar deadlock no SLURM
+                    ag_args_fit={"num_cpus": 4},  # Limita CPUs nos modelos internos
+                )
+                
+                signal.alarm(0)  # Desliga o alarme se tudo correu bem
+                
+                fit_time = time.perf_counter() - t0
+                
+                preds = predictor.predict(test_df)
+                probs = predictor.predict_proba(test_df)
+                probs = probs.reindex(sorted(probs.columns), axis=1)
+                if n_classes == 2:
+                    auc = roc_auc_score(y_test, probs.iloc[:, 1])
+                else:
+                    auc = roc_auc_score(y_test, probs, multi_class="ovo", average="macro")
+                acc = accuracy_score(y_test, preds)
+                
+                print(f" ACC={acc:.4f} | AUC={auc:.4f} | Tempo Total={fit_time:.1f}s")
+                save_result("AutoGluon", {"ACC": acc, "AUC_OVO": auc, "total_time_s": fit_time})
+            except (TimeoutError, Exception) as e:
+                signal.alarm(0)
+                print(f" ❌ AutoGluon FAILED: {str(e)[:150]}")
+                save_result("AutoGluon", {"ACC": "FAILED", "AUC_OVO": str(e)[:100], "total_time_s": 0})
+            finally:
+                shutil.rmtree(ag_path, ignore_errors=True)
+            
     except Exception as e:
         print(f" ❌ DATASET FAILED: {e}")
+    
+    sys.stdout.flush()
 
 print("=================================================================")
 print("🎉 TODOS OS EXPERIMENTOS FORAM CONCLUÍDOS!")
