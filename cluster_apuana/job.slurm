@@ -2,6 +2,7 @@
 #SBATCH --job-name=TabICL_Eval         # Nome do job no cluster
 #SBATCH --output=resultado_tabarena.txt  # Onde o print() do Python vai ser salvo
 #SBATCH --error=erros_tabarena.txt       # Onde os erros graves (tracebacks) vão ser salvos
+#SBATCH --partition=long-simple        # Fila principal (permite até 7 dias)
 #SBATCH --time=48:00:00                # Limite máximo de tempo (48 horas)
 #SBATCH --gpus=1                       # Pedimos 1 Placa de Vídeo (Essencial para TabICL e AutoGluon)
 #SBATCH --cpus-per-task=8              # Pedimos 8 processadores (Essencial para pré-processamento rápido)
