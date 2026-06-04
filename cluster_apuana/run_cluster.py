@@ -20,25 +20,39 @@ METADATA_FILE = "dataset_metadata.csv"
 
 # --- DATASETS OFICIAIS ---
 DATASETS = [
-    # Small
-    {"tid": 359955, "name": "blood-transfusion", "regime": "small"},
-    {"tid": 37, "name": "diabetes", "regime": "small"},
-    {"tid": 2, "name": "anneal", "regime": "small"},
-    {"tid": 168757, "name": "credit-g", "regime": "medium"},
-    # Medium
-    {"tid": 359956, "name": "qsar-biodeg", "regime": "medium"},
-    {"tid": 45, "name": "splice", "regime": "medium"},
-    {"tid": 359967, "name": "Bioresponse", "regime": "medium"},
-    {"tid": 3892, "name": "hiva_agnostic", "regime": "medium"},
-    {"tid": 359968, "name": "churn", "regime": "medium"},
-    # Large
-    {"tid": 3688, "name": "houses", "regime": "large"},
-    {"tid": 359979, "name": "Amazon_employee_access", "regime": "large"},
-    {"tid": 3945, "name": "KDDCup09_appetency", "regime": "large"},
-    {"tid": 168868, "name": "APSFailure", "regime": "large"},
-    {"tid": 361329, "name": "KDD98", "regime": "large"},
-    {"tid": 211986, "name": "Diabetes130US", "regime": "large"},
-    {"tid": 360113, "name": "porto-seguro", "regime": "large"},
+    # Small (3)
+    {'tid': 359955, 'name': 'blood-transfusion-service-center', 'regime': 'small'},
+    {'tid': 37, 'name': 'diabetes', 'regime': 'small'},
+    {'tid': 2, 'name': 'anneal', 'regime': 'small'},
+    # Medium (17)
+    {'tid': 168757, 'name': 'credit-g', 'regime': 'medium'},
+    {'tid': 359956, 'name': 'qsar-biodeg', 'regime': 'medium'},
+    {'tid': 2077, 'name': 'baseball', 'regime': 'medium'},
+    {'tid': 2073, 'name': 'yeast', 'regime': 'medium'},
+    {'tid': 45, 'name': 'splice', 'regime': 'medium'},
+    {'tid': 359967, 'name': 'Bioresponse', 'regime': 'medium'},
+    {'tid': 3011, 'name': 'hypothyroid', 'regime': 'medium'},
+    {'tid': 3892, 'name': 'hiva_agnostic', 'regime': 'medium'},
+    {'tid': 43, 'name': 'spambase', 'regime': 'medium'},
+    {'tid': 58, 'name': 'waveform-5000', 'regime': 'medium'},
+    {'tid': 359968, 'name': 'churn', 'regime': 'medium'},
+    {'tid': 30, 'name': 'page-blocks', 'regime': 'medium'},
+    {'tid': 28, 'name': 'optdigits', 'regime': 'medium'},
+    {'tid': 2074, 'name': 'satimage', 'regime': 'medium'},
+    {'tid': 3481, 'name': 'isolet', 'regime': 'medium'},
+    {'tid': 24, 'name': 'mushroom', 'regime': 'medium'},
+    {'tid': 3510, 'name': 'JapaneseVowels', 'regime': 'medium'},
+    # Large (10)
+    {'tid': 32, 'name': 'pendigits', 'regime': 'large'},
+    {'tid': 26, 'name': 'nursery', 'regime': 'large'},
+    {'tid': 6, 'name': 'letter', 'regime': 'large'},
+    {'tid': 3688, 'name': 'houses', 'regime': 'large'},
+    {'tid': 359979, 'name': 'Amazon_employee_access', 'regime': 'large'},
+    {'tid': 3945, 'name': 'KDDCup09_appetency', 'regime': 'large'},
+    {'tid': 168868, 'name': 'APSFailure', 'regime': 'large'},
+    {'tid': 361329, 'name': 'KDD98', 'regime': 'large'},
+    {'tid': 211986, 'name': 'Diabetes130US', 'regime': 'large'},
+    {'tid': 360113, 'name': 'porto-seguro', 'regime': 'large'},
 ]
 
 SEED = 42
