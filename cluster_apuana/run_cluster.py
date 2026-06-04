@@ -20,7 +20,7 @@ METADATA_FILE = "dataset_metadata.csv"
 # --- DATASETS OFICIAIS ---
 DATASETS = [
     # Small (3)
-    {'tid': 359955, 'name': 'blood-transfusion-service-center', 'regime': 'small'},
+    {'tid': 1464, 'name': 'blood-transfusion-service-center', 'regime': 'small'},
     {'tid': 37, 'name': 'diabetes', 'regime': 'small'},
     {'tid': 2, 'name': 'anneal', 'regime': 'small'},
     # Medium (17)
@@ -107,17 +107,17 @@ def build_tabicl():
     from tabicl import TabICLClassifier
     return TabICLClassifier(device=DEVICE)
 
-def build_lightgbm_td():
-    from pytabkit.models.sklearn.interface import LGBM_TD_Classifier
-    return LGBM_TD_Classifier(random_state=SEED)
+def build_lightgbm():
+    from lightgbm import LGBMClassifier
+    return LGBMClassifier(random_state=SEED, verbose=-1)
 
-def build_xgboost_td():
-    from pytabkit.models.sklearn.interface import XGBoost_TD_Classifier
-    return XGBoost_TD_Classifier(random_state=SEED)
+def build_xgboost():
+    from xgboost import XGBClassifier
+    return XGBClassifier(random_state=SEED, use_label_encoder=False, eval_metric='logloss', verbosity=0)
 
-def build_catboost_td():
-    from pytabkit.models.sklearn.interface import CatBoost_TD_Classifier
-    return CatBoost_TD_Classifier(random_state=SEED)
+def build_catboost():
+    from catboost import CatBoostClassifier
+    return CatBoostClassifier(random_state=SEED, verbose=0)
 
 # --- PIPELINE PRINCIPAL ---
 print("=================================================================")
@@ -155,15 +155,15 @@ for i, ds in enumerate(DATASETS):
         all_results.append({"dataset": ds["name"], "model": "TabICL v2", **res_tabicl})
         
         # 2. LightGBM
-        res_lgbm = safe_run("LightGBM_TD", build_lightgbm_td, X_train.values, y_train, X_test.values, y_test, n_classes)
+        res_lgbm = safe_run("LightGBM_TD", build_lightgbm, X_train.values, y_train, X_test.values, y_test, n_classes)
         all_results.append({"dataset": ds["name"], "model": "LightGBM_TD", **res_lgbm})
         
         # 3. XGBoost
-        res_xgb = safe_run("XGBoost_TD", build_xgboost_td, X_train.values, y_train, X_test.values, y_test, n_classes)
+        res_xgb = safe_run("XGBoost_TD", build_xgboost, X_train.values, y_train, X_test.values, y_test, n_classes)
         all_results.append({"dataset": ds["name"], "model": "XGBoost_TD", **res_xgb})
         
         # 4. CatBoost
-        res_cb = safe_run("CatBoost_TD", build_catboost_td, X_train.values, y_train, X_test.values, y_test, n_classes)
+        res_cb = safe_run("CatBoost_TD", build_catboost, X_train.values, y_train, X_test.values, y_test, n_classes)
         all_results.append({"dataset": ds["name"], "model": "CatBoost_TD", **res_cb})
         
         # 5. AutoGluon (BEST QUALITY)
