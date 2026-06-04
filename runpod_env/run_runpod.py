@@ -1,5 +1,7 @@
 import os
+import sys
 import time
+import signal
 import warnings
 import numpy as np
 import pandas as pd
@@ -14,6 +16,18 @@ import torch
 
 warnings.filterwarnings("ignore")
 optuna.logging.set_verbosity(optuna.logging.WARNING)
+
+# Limita paralelismo para evitar deadlock
+os.environ["OMP_NUM_THREADS"] = "4"
+os.environ["MKL_NUM_THREADS"] = "4"
+os.environ["OPENBLAS_NUM_THREADS"] = "4"
+
+# Timeout de segurança
+class TimeoutError(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutError("Tempo limite de segurança atingido!")
 
 RESULTS_FILE = "runpod_results.csv"
 
@@ -142,8 +156,10 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
     import tempfile, shutil
     
     name = "AutoGluon_Extreme" if preset == "best_quality" else "AutoGluon_Default"
-    time_limit = 14400 if preset == "best_quality" else 1800
-    print(f"    ⚙️ {name}...", end="", flush=True)
+    time_limit = 3600 if preset == "best_quality" else 900  # 1h Extreme, 15min Default
+    alarm_limit = 5400 if preset == "best_quality" else 1800  # Alarme de segurança
+    print(f"    ⚙️ {name} (limite={time_limit//60}min)...", end="", flush=True)
+    sys.stdout.flush()
     
     ag_path = tempfile.mkdtemp()
     train_df = pd.DataFrame(X_train)
@@ -151,27 +167,40 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
     test_df = pd.DataFrame(X_test)
     
     t0 = time.perf_counter()
-    ag_metric = "roc_auc" if n_classes == 2 else "roc_auc_ovo_macro"
-    predictor = TabularPredictor(label="target", eval_metric=ag_metric, path=ag_path, verbosity=0)
-    predictor.fit(train_data=train_df, presets=preset, time_limit=time_limit)
-    
-    y_pred = predictor.predict(test_df).values
-    y_proba = predictor.predict_proba(test_df).values
-    
-    total_time = time.perf_counter() - t0
-    acc = accuracy_score(y_test, y_pred)
-    gmean = g_mean_score(y_test, y_pred)
-    auc = compute_auc(y_test, y_proba, n_classes)
-    ce = compute_cross_entropy(y_test, y_proba, np.arange(n_classes))
-    
-    print(f" ACC={acc:.4f} | AUC={auc:.4f} | Tempo={total_time:.1f}s")
-    shutil.rmtree(ag_path, ignore_errors=True)
-    
-    return {
-        "model": name, "ACC": round(acc, 6), "AUC_OVO": round(auc, 6), 
-        "G_Mean": round(gmean, 6), "CE": round(ce, 6),
-        "total_time_s": round(total_time, 2)
-    }
+    try:
+        signal.signal(signal.SIGALRM, timeout_handler)
+        signal.alarm(alarm_limit)
+        
+        ag_metric = "roc_auc" if n_classes == 2 else "roc_auc_ovo_macro"
+        predictor = TabularPredictor(label="target", eval_metric=ag_metric, path=ag_path, verbosity=0)
+        predictor.fit(
+            train_data=train_df, presets=preset, time_limit=time_limit,
+            num_cpus=4, ag_args_fit={"num_cpus": 4}
+        )
+        
+        signal.alarm(0)
+        
+        y_pred = predictor.predict(test_df).values
+        y_proba = predictor.predict_proba(test_df).values
+        
+        total_time = time.perf_counter() - t0
+        acc = accuracy_score(y_test, y_pred)
+        gmean = g_mean_score(y_test, y_pred)
+        auc = compute_auc(y_test, y_proba, n_classes)
+        ce = compute_cross_entropy(y_test, y_proba, np.arange(n_classes))
+        
+        print(f" ACC={acc:.4f} | AUC={auc:.4f} | Tempo={total_time:.1f}s")
+        shutil.rmtree(ag_path, ignore_errors=True)
+        
+        return {
+            "model": name, "ACC": round(acc, 6), "AUC_OVO": round(auc, 6), 
+            "G_Mean": round(gmean, 6), "CE": round(ce, 6),
+            "total_time_s": round(total_time, 2)
+        }
+    except (TimeoutError, Exception) as e:
+        signal.alarm(0)
+        shutil.rmtree(ag_path, ignore_errors=True)
+        raise e
 
 # --- OPTUNA TUNING ---
 from lightgbm import LGBMClassifier
