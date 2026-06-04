@@ -4,7 +4,7 @@
 echo "Preparando o terreno na RTX 4090..."
 
 # Instala todas as dependências exigidas
-pip install numpy pandas scikit-learn optuna openml lightgbm xgboost catboost "autogluon.tabular[all]" tabicl
+pip install numpy pandas scikit-learn optuna openml lightgbm xgboost catboost "autogluon.tabular[all]" tabicl "pytabkit[models]"
 
 # Inicia o pipeline em segundo plano com nohup
 # (Isso garante que se o terminal SSH fechar, o processo continua rodando)
