@@ -62,26 +62,19 @@ def preprocess(X, y, categorical_indicator):
     y_clean = y.dropna()
     X = X.loc[y_clean.index]
     
-    numeric_transformer = SimpleImputer(strategy='mean')
-    categorical_transformer = Pipeline(steps=[
-        ('imputer', SimpleImputer(strategy='most_frequent')),
-        ('encoder', OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=-1))
-    ])
+    # Codifica colunas categóricas
+    for i, col in enumerate(X.columns):
+        if categorical_indicator[i] or X[col].dtype == "object" or str(X[col].dtype) == "category":
+            X[col] = X[col].astype("category").cat.codes.replace(-1, np.nan)
     
-    numeric_cols = [i for i, is_cat in enumerate(categorical_indicator) if not is_cat]
-    categorical_cols = [i for i, is_cat in enumerate(categorical_indicator) if is_cat]
-    
-    X_proc = pd.DataFrame(index=X.index, columns=X.columns)
-    if numeric_cols:
-        X_proc.iloc[:, numeric_cols] = numeric_transformer.fit_transform(X.iloc[:, numeric_cols])
-    if categorical_cols:
-        X_proc.iloc[:, categorical_cols] = categorical_transformer.fit_transform(X.iloc[:, categorical_cols])
-        
-    X_proc = X_proc.fillna(0)
+    X = X.astype(float)
+    X = X.dropna(axis=1, how='all')
+    X = X.fillna(X.median()).fillna(0)
+    X = X.loc[:, (X != X.iloc[0]).any()]
     
     le = LabelEncoder()
     y_encoded = le.fit_transform(y_clean)
-    return X_proc, y_encoded, le
+    return X, y_encoded, le
 
 def g_mean_score(y_true, y_pred):
     classes = np.unique(y_true)
