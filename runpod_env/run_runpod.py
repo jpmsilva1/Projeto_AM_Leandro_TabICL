@@ -133,7 +133,7 @@ def build_catboost():
     return CatBoostClassifier(random_state=SEED, verbose=0, task_type='GPU')
 
 def build_tabicl():
-    from pytabkit.models.sklearn.default_models import TabICLClassifier
+    from tabicl import TabICLClassifier
     return TabICLClassifier(device="cuda" if torch.cuda.is_available() else "cpu", random_state=SEED)
 
 # --- AUTOGLUON ---
