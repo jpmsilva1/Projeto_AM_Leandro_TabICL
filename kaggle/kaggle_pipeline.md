@@ -349,7 +349,9 @@ def evaluate_autogluon(X_train, X_test, y_train, y_test, n_classes, dataset_name
     total_time = fit_time + predict_time
     
     # Convert AutoGluon's DataFrame output to numpy array
-    # AutoGluon returns a DataFrame with class labels as columns
+    # AutoGluon returns a DataFrame with class labels as columns.
+    # Sort columns numerically to guarantee correct class ordering for AUC/CE.
+    y_proba_df = y_proba_df.reindex(sorted(y_proba_df.columns), axis=1)
     y_proba = y_proba_df.values
     
     # --- METRICS ---
@@ -430,8 +432,7 @@ def main():
     for idx, ds_info in enumerate(datasets_to_run):
         tid = ds_info["tid"]
         print(f"\n{'='*70}")
-        print(f"📁 [{idx+1}/{n_datasets}] {ds_info['name']} (tid={tid}, n={ds_info['n']}, "
-              f"c={ds_info['classes']}, regime={ds_info['regime']})")
+        print(f"📁 [{idx+1}/{n_datasets}] {ds_info['name']} (tid={tid}, regime={ds_info['regime']})")
         print(f"{'='*70}")
         
         try:
@@ -443,9 +444,15 @@ def main():
             print(f"  ✅ Loaded: {X.shape[0]} samples, {X.shape[1]} features, {n_classes} classes")
             
             # --- 70/30 stratified split ---
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=0.30, random_state=SEED, stratify=y
-            )
+            try:
+                X_train, X_test, y_train, y_test = train_test_split(
+                    X, y, test_size=0.30, random_state=SEED, stratify=y
+                )
+            except ValueError:
+                print("  ⚠️ Stratified split failed (rare class), falling back to random split.")
+                X_train, X_test, y_train, y_test = train_test_split(
+                    X, y, test_size=0.30, random_state=SEED
+                )
             print(f"  📐 Split: train={len(y_train)}, test={len(y_test)}")
             
             # --- Evaluate each model ---
@@ -475,9 +482,9 @@ def main():
                     row = {
                         "task_id":       tid,
                         "dataset":       ds_info["name"],
-                        "n_samples":     ds_info["n"],
-                        "n_features":    ds_info["features"],
-                        "n_classes":     ds_info["classes"],
+                        "n_samples":     X.shape[0],
+                        "n_features":    X.shape[1],
+                        "n_classes":     n_classes,
                         "regime":        ds_info["regime"],
                         "model":         model_name,
                         "ACC":           round(metrics["ACC"], 6),
