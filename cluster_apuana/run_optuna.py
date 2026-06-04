@@ -174,7 +174,9 @@ def run_tuning(model_name, objective_func, model_class, params_key, X_train, y_t
         best_params['use_label_encoder'] = False
         best_params['eval_metric'] = 'logloss'
         best_params['verbosity'] = 0
-    elif model_name == "CatBoost_Tuned": best_params['verbose'] = 0
+    elif model_name == "CatBoost_Tuned": 
+        best_params['verbose'] = 0
+        best_params['bootstrap_type'] = 'Bernoulli'
     
     best_model = model_class(**best_params)
     
