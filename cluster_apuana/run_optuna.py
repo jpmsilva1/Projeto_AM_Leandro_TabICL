@@ -7,8 +7,8 @@ import openml
 import optuna
 from optuna.samplers import TPESampler
 
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, roc_auc_score
+from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.metrics import accuracy_score, roc_auc_score, log_loss
 from sklearn.preprocessing import LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
@@ -83,21 +83,44 @@ def preprocess(X, y, categorical_indicator):
     y_encoded = le.fit_transform(y_clean)
     return X_proc, y_encoded, le
 
+def g_mean_score(y_true, y_pred):
+    classes = np.unique(y_true)
+    recalls = []
+    for c in classes:
+        mask = y_true == c
+        if not mask.any(): continue
+        recalls.append(float((y_pred[mask] == c).mean()))
+    if not recalls: return 0.0
+    return float(np.exp(np.mean(np.log(np.clip(recalls, 1e-12, 1.0)))))
+
 def compute_auc(y_true, y_proba, n_classes):
     try:
-        if n_classes == 2:
-            return float(roc_auc_score(y_true, y_proba[:, 1]))
-        else:
-            return float(roc_auc_score(y_true, y_proba, multi_class="ovo"))
-    except:
-        return np.nan
+        if n_classes == 2: return float(roc_auc_score(y_true, y_proba[:, 1]))
+        else: return float(roc_auc_score(y_true, y_proba, multi_class="ovo"))
+    except: return np.nan
 
-# --- OPTUNA OBJECTIVES ---
+def compute_cross_entropy(y_true, y_proba, classes):
+    try: return float(log_loss(y_true, y_proba, labels=classes))
+    except: return np.nan
+
+# --- OPTUNA OBJECTIVES COM CROSS-VALIDATION ---
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
 
-def objective_lgb(trial, X_train, y_train, X_val, y_val):
+def cross_val_objective(model_class, params, X, y):
+    cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=SEED)
+    scores = []
+    for train_idx, val_idx in cv.split(X, y):
+        X_tr, X_va = X[train_idx], X[val_idx]
+        y_tr, y_va = y[train_idx], y[val_idx]
+        model = model_class(**params)
+        model.fit(X_tr, y_tr)
+        y_pred = model.predict(X_va)
+        scores.append(accuracy_score(y_va, y_pred))
+    return np.mean(scores)
+
+def objective_lgb(trial, X, y):
     params = {
         'n_estimators': trial.suggest_int('n_estimators', 50, 500),
         'learning_rate': trial.suggest_float('learning_rate', 1e-3, 0.3, log=True),
@@ -108,12 +131,9 @@ def objective_lgb(trial, X_train, y_train, X_val, y_val):
         'random_state': SEED,
         'verbose': -1
     }
-    model = LGBMClassifier(**params)
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_val)
-    return accuracy_score(y_val, y_pred)
+    return cross_val_objective(LGBMClassifier, params, X, y)
 
-def objective_xgb(trial, X_train, y_train, X_val, y_val):
+def objective_xgb(trial, X, y):
     params = {
         'n_estimators': trial.suggest_int('n_estimators', 50, 500),
         'learning_rate': trial.suggest_float('learning_rate', 1e-3, 0.3, log=True),
@@ -125,12 +145,9 @@ def objective_xgb(trial, X_train, y_train, X_val, y_val):
         'eval_metric': 'logloss',
         'verbosity': 0
     }
-    model = XGBClassifier(**params)
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_val)
-    return accuracy_score(y_val, y_pred)
+    return cross_val_objective(XGBClassifier, params, X, y)
 
-def objective_cat(trial, X_train, y_train, X_val, y_val):
+def objective_cat(trial, X, y):
     params = {
         'iterations': trial.suggest_int('iterations', 50, 500),
         'learning_rate': trial.suggest_float('learning_rate', 1e-3, 0.3, log=True),
@@ -139,26 +156,16 @@ def objective_cat(trial, X_train, y_train, X_val, y_val):
         'random_state': SEED,
         'verbose': 0
     }
-    model = CatBoostClassifier(**params)
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_val)
-    return accuracy_score(y_val, y_pred)
+    return cross_val_objective(CatBoostClassifier, params, X, y)
 
 # --- RUNNER ---
 def run_tuning(model_name, objective_func, model_class, params_key, X_train, y_train, X_test, y_test, n_classes):
     print(f"    ⚙️ Tuning {model_name} ({N_TRIALS} trials)...", end="", flush=True)
     t0 = time.perf_counter()
-    
-    # Split train further into train/val for Optuna
-    try:
-        X_t, X_v, y_t, y_v = train_test_split(X_train, y_train, test_size=0.2, random_state=SEED, stratify=y_train)
-    except:
-        X_t, X_v, y_t, y_v = train_test_split(X_train, y_train, test_size=0.2, random_state=SEED)
         
     study = optuna.create_study(direction="maximize", sampler=TPESampler(seed=SEED))
-    study.optimize(lambda trial: objective_func(trial, X_t, y_t, X_v, y_v), n_trials=N_TRIALS)
+    study.optimize(lambda trial: objective_func(trial, X_train, y_train), n_trials=N_TRIALS)
     
-    # Treina modelo final com melhores params
     best_params = study.best_params
     best_params['random_state'] = SEED
     if model_name == "LightGBM_Tuned": best_params['verbose'] = -1
@@ -182,19 +189,57 @@ def run_tuning(model_name, objective_func, model_class, params_key, X_train, y_t
     total_time = time.perf_counter() - t0
     
     acc = accuracy_score(y_test, y_pred)
+    gmean = g_mean_score(y_test, y_pred)
     auc = compute_auc(y_test, y_proba, n_classes) if y_proba is not None else np.nan
+    ce = compute_cross_entropy(y_test, y_proba, np.arange(n_classes)) if y_proba is not None else np.nan
     
     print(f" ACC={acc:.4f} | AUC={auc:.4f} | Tempo Total={total_time:.1f}s")
     
     return {
-        "model": model_name, "ACC": acc, "AUC_OVO": auc,
-        "fit_time_s": fit_time, "predict_time_s": pred_time, "total_time_s": total_time
+        "model": model_name, "ACC": round(acc, 6), "AUC_OVO": round(auc, 6), 
+        "G_Mean": round(gmean, 6), "CE": round(ce, 6),
+        "fit_time_s": round(fit_time, 2), "predict_time_s": round(pred_time, 2), "total_time_s": round(total_time, 2)
     }
+
+def run_autogluon_default(X_train, y_train, X_test, y_test, n_classes):
+    from autogluon.tabular import TabularPredictor
+    import tempfile, shutil
+    print(f"    ⚙️ AutoGluon (Default)...", end="", flush=True)
+    ag_path = tempfile.mkdtemp()
+    train_df = pd.DataFrame(X_train)
+    train_df["target"] = y_train
+    test_df = pd.DataFrame(X_test)
+    
+    t0 = time.perf_counter()
+    ag_metric = "roc_auc" if n_classes == 2 else "roc_auc_ovo_macro"
+    predictor = TabularPredictor(label="target", eval_metric=ag_metric, path=ag_path, verbosity=0)
+    # Default preset (medium_quality) and fast training
+    predictor.fit(train_data=train_df, time_limit=1800)
+    fit_time = time.perf_counter() - t0
+    
+    t0 = time.perf_counter()
+    y_pred = predictor.predict(test_df).values
+    y_proba = predictor.predict_proba(test_df).values
+    pred_time = time.perf_counter() - t0
+    
+    total_time = fit_time + pred_time
+    acc = accuracy_score(y_test, y_pred)
+    gmean = g_mean_score(y_test, y_pred)
+    auc = compute_auc(y_test, y_proba, n_classes)
+    ce = compute_cross_entropy(y_test, y_proba, np.arange(n_classes))
+    
+    print(f" ACC={acc:.4f} | AUC={auc:.4f} | Tempo Total={total_time:.1f}s")
+    shutil.rmtree(ag_path, ignore_errors=True)
+    
+    return {
+        "model": "AutoGluon_Default", "ACC": round(acc, 6), "AUC_OVO": round(auc, 6), 
+        "G_Mean": round(gmean, 6), "CE": round(ce, 6),
+        "fit_time_s": round(fit_time, 2), "predict_time_s": round(pred_time, 2), "total_time_s": round(total_time, 2)
+    }
+
 
 def main():
     all_results = []
-    
-    # Load past results to support resume
     if os.path.exists(RESULTS_FILE):
         all_results = pd.read_csv(RESULTS_FILE).to_dict('records')
         done_pairs = set((r['dataset'], r['model']) for r in all_results)
@@ -202,14 +247,13 @@ def main():
         done_pairs = set()
 
     for ds in DATASETS:
-        print(f"\n=================================================================")
+        print(f"\n{'='*65}")
         print(f"📁 {ds['name']} (tid={ds['tid']}, regime={ds['regime']})")
-        print(f"=================================================================")
+        print(f"{'='*65}")
         
-        # Check if all models are done for this dataset
-        models_to_run = ["LightGBM_Tuned", "XGBoost_Tuned", "CatBoost_Tuned"]
+        models_to_run = ["LightGBM_Tuned", "XGBoost_Tuned", "CatBoost_Tuned", "AutoGluon_Default"]
         if all((ds['name'], m) in done_pairs for m in models_to_run):
-            print("  ✅ All models tuned, skipping...")
+            print("  ✅ All models complete, skipping...")
             continue
             
         try:
@@ -221,32 +265,37 @@ def main():
                 
             X, y, cat_indicator, _ = dataset.get_data(target=dataset.default_target_attribute)
             n_classes = len(np.unique(y.dropna()))
-            
             X_clean, y_clean, le = preprocess(X, y, cat_indicator)
-            try:
-                X_train, X_test, y_train, y_test = train_test_split(X_clean, y_clean, test_size=0.3, random_state=SEED, stratify=y_clean)
-            except ValueError:
-                X_train, X_test, y_train, y_test = train_test_split(X_clean, y_clean, test_size=0.3, random_state=SEED)
             
+            try: X_train, X_test, y_train, y_test = train_test_split(X_clean.values, y_clean, test_size=0.3, random_state=SEED, stratify=y_clean)
+            except ValueError: X_train, X_test, y_train, y_test = train_test_split(X_clean.values, y_clean, test_size=0.3, random_state=SEED)
+            
+            # AutoGluon Default
+            if (ds['name'], "AutoGluon_Default") not in done_pairs:
+                try:
+                    res = run_autogluon_default(X_train, y_train, X_test, y_test, n_classes)
+                    res['dataset'] = ds['name']
+                    res['regime'] = ds['regime']
+                    all_results.append(res)
+                    pd.DataFrame(all_results).to_csv(RESULTS_FILE, index=False)
+                except Exception as e: print(f"    ❌ AutoGluon_Default FAILED: {e}")
+            
+            # Optuna Models
             for m_name, obj_func, m_class in [
                 ("LightGBM_Tuned", objective_lgb, LGBMClassifier),
                 ("XGBoost_Tuned", objective_xgb, XGBClassifier),
                 ("CatBoost_Tuned", objective_cat, CatBoostClassifier)
             ]:
-                if (ds['name'], m_name) in done_pairs:
-                    continue
+                if (ds['name'], m_name) in done_pairs: continue
                 try:
-                    res = run_tuning(m_name, obj_func, m_class, None, X_train.values, y_train, X_test.values, y_test, n_classes)
+                    res = run_tuning(m_name, obj_func, m_class, None, X_train, y_train, X_test, y_test, n_classes)
                     res['dataset'] = ds['name']
                     res['regime'] = ds['regime']
-                    res['n_samples'] = len(X)
                     all_results.append(res)
                     pd.DataFrame(all_results).to_csv(RESULTS_FILE, index=False)
-                except Exception as e:
-                    print(f"    ❌ {m_name} FAILED: {e}")
+                except Exception as e: print(f"    ❌ {m_name} FAILED: {e}")
                     
-        except Exception as e:
-            print(f"  ❌ DATASET FAILED: {e}")
+        except Exception as e: print(f"  ❌ DATASET FAILED: {e}")
 
 if __name__ == "__main__":
     main()
