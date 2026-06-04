@@ -1,6 +1,5 @@
 import os
 import time
-import json
 import warnings
 import numpy as np
 import pandas as pd
@@ -109,16 +108,16 @@ def build_tabicl():
     return TabICLClassifier(device=DEVICE)
 
 def build_lightgbm_td():
-    from pytabkit.models import sklearn.interface as ptk_sk
-    return ptk_sk.LGBM_TD_Classifier(random_state=SEED)
+    from pytabkit.models.sklearn.interface import LGBM_TD_Classifier
+    return LGBM_TD_Classifier(random_state=SEED)
 
 def build_xgboost_td():
-    from pytabkit.models import sklearn.interface as ptk_sk
-    return ptk_sk.XGBoost_TD_Classifier(random_state=SEED)
+    from pytabkit.models.sklearn.interface import XGBoost_TD_Classifier
+    return XGBoost_TD_Classifier(random_state=SEED)
 
 def build_catboost_td():
-    from pytabkit.models import sklearn.interface as ptk_sk
-    return ptk_sk.CatBoost_TD_Classifier(random_state=SEED)
+    from pytabkit.models.sklearn.interface import CatBoost_TD_Classifier
+    return CatBoost_TD_Classifier(random_state=SEED)
 
 # --- PIPELINE PRINCIPAL ---
 print("=================================================================")
@@ -167,8 +166,8 @@ for i, ds in enumerate(DATASETS):
         res_cb = safe_run("CatBoost_TD", build_catboost_td, X_train.values, y_train, X_test.values, y_test, n_classes)
         all_results.append({"dataset": ds["name"], "model": "CatBoost_TD", **res_cb})
         
-        # 5. AutoGluon (EXTREME QUALITY)
-        print(f"    🔧 AutoGluon (Extreme)...", end="", flush=True)
+        # 5. AutoGluon (BEST QUALITY)
+        print(f"    🔧 AutoGluon (Best)...", end="", flush=True)
         t0 = time.perf_counter()
         
         ag_metric = "roc_auc" if n_classes == 2 else "roc_auc_ovo_macro"
@@ -182,8 +181,8 @@ for i, ds in enumerate(DATASETS):
         try:
             predictor.fit(
                 train_data=train_df,
-                presets="extreme_quality",
-                time_limit=14400,  # 4 horas de limite por dataset no modo extreme
+                presets="best_quality",
+                time_limit=14400,  # 4 horas de limite por dataset no modo best_quality
             )
             fit_time = time.perf_counter() - t0
             
