@@ -133,7 +133,13 @@ for i, ds in enumerate(DATASETS):
     print(f"=================================================================")
     
     try:
-        dataset = openml.datasets.get_dataset(ds["tid"], download_data=True, download_qualities=False, download_features_meta_data=True)
+        try:
+            # Tenta baixar pelo Dataset ID diretamente
+            dataset = openml.datasets.get_dataset(ds["tid"], download_data=True, download_qualities=False, download_features_meta_data=True)
+        except Exception:
+            # Se falhar (ex: Unknown dataset), significa que era um Task ID. Buscamos a Task e extraímos o Dataset ID real!
+            task = openml.tasks.get_task(ds["tid"])
+            dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
         X, y, cat_indicator, _ = dataset.get_data(target=dataset.default_target_attribute)
         n_classes = len(np.unique(y.dropna()))
         
