@@ -14,10 +14,10 @@
 
 # Python 3.10.12 já está instalado no sistema, não precisa de 'module load'
 
-# Ativa o seu ambiente virtual
+# Ativa o seu ambiente virtual (redundância)
 source $HOME/tabarena_env/bin/activate
 
-# Inicia a execução do script
+# Inicia a execução usando o Python diretamente de dentro do ambiente virtual!
 echo "Iniciando a bateria de testes no Cluster Apuana..."
-python3 run_cluster.py
+$HOME/tabarena_env/bin/python run_cluster.py
 echo "Finalizado!"
