@@ -146,6 +146,7 @@ def objective_cat(trial, X, y):
         'learning_rate': trial.suggest_float('learning_rate', 1e-3, 0.3, log=True),
         'depth': trial.suggest_int('depth', 3, 10),
         'subsample': trial.suggest_float('subsample', 0.5, 1.0),
+        'bootstrap_type': 'Bernoulli',
         'random_state': SEED,
         'verbose': 0
     }
