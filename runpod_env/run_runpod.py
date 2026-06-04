@@ -175,7 +175,7 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
         predictor = TabularPredictor(label="target", eval_metric=ag_metric, path=ag_path, verbosity=0)
         predictor.fit(
             train_data=train_df, presets=preset, time_limit=time_limit,
-            num_cpus=4, ag_args_fit={"num_cpus": 4}
+            num_gpus=1
         )
         
         signal.alarm(0)
