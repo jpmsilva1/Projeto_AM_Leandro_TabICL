@@ -74,7 +74,20 @@ def preprocess(X, y, categorical_indicator):
     
     le = LabelEncoder()
     y_encoded = le.fit_transform(y_clean)
-    return X, y_encoded, le
+    
+    # Remove classes with < 3 samples to avoid CV crashes
+    counts = pd.Series(y_encoded).value_counts()
+    valid_classes = counts[counts >= 3].index
+    
+    mask = pd.Series(y_encoded).isin(valid_classes)
+    X = X[mask.values]
+    y_encoded = y_encoded[mask.values]
+    
+    # Re-encode to ensure contiguous labels
+    le2 = LabelEncoder()
+    y_encoded = le2.fit_transform(y_encoded)
+    
+    return X, y_encoded, le2
 
 def g_mean_score(y_true, y_pred):
     classes = np.unique(y_true)

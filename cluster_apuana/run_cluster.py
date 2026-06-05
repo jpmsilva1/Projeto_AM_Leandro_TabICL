@@ -86,7 +86,20 @@ def preprocess(X, y, categorical_indicator):
     
     le = LabelEncoder()
     y_encoded = le.fit_transform(np.asarray(y).ravel())
-    return X, y_encoded, le
+    
+    # Remove classes with < 3 samples to avoid CV crashes
+    counts = pd.Series(y_encoded).value_counts()
+    valid_classes = counts[counts >= 3].index
+    
+    mask = pd.Series(y_encoded).isin(valid_classes)
+    X = X[mask.values]
+    y_encoded = y_encoded[mask.values]
+    
+    # Re-encode to ensure contiguous labels
+    le2 = LabelEncoder()
+    y_encoded = le2.fit_transform(y_encoded)
+    
+    return X, y_encoded, le2
 
 def safe_run(model_name, build_fn, X_train, y_train, X_test, y_test, n_classes, **kwargs):
     print(f"    🔧 {model_name}...", end="", flush=True)
