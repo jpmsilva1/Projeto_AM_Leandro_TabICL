@@ -88,8 +88,18 @@ def g_mean_score(y_true, y_pred):
 
 def compute_auc(y_true, y_proba, n_classes):
     try:
-        if n_classes == 2: return float(roc_auc_score(y_true, y_proba[:, 1]))
-        else: return float(roc_auc_score(y_true, y_proba, multi_class="ovo"))
+        present_classes = np.unique(y_true)
+        if len(present_classes) < 2:
+            return np.nan
+            
+        if n_classes == 2:
+            return float(roc_auc_score(y_true, y_proba[:, 1]))
+        else:
+            filtered_probs = y_proba[:, present_classes]
+            row_sums = filtered_probs.sum(axis=1, keepdims=True)
+            row_sums[row_sums == 0] = 1.0
+            filtered_probs = filtered_probs / row_sums
+            return float(roc_auc_score(y_true, filtered_probs, multi_class="ovo", labels=present_classes))
     except: return np.nan
 
 def compute_cross_entropy(y_true, y_proba, classes):

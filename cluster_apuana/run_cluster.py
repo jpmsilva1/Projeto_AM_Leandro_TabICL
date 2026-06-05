@@ -112,16 +112,29 @@ def safe_run(model_name, build_fn, X_train, y_train, X_test, y_test, n_classes, 
         fit_predict_time = time.perf_counter() - t0
         
         acc = accuracy_score(y_test, preds)
-        if n_classes == 2:
-            auc = roc_auc_score(y_test, probs[:, 1])
-        else:
-            auc = roc_auc_score(y_test, probs, multi_class="ovo", average="macro")
+        
+        # --- CÁLCULO SEGURO DO AUC ---
+        auc = np.nan
+        if probs is not None:
+            try:
+                present_classes = np.unique(y_test)
+                if len(present_classes) >= 2:
+                    if n_classes == 2:
+                        auc = float(roc_auc_score(y_test, probs[:, 1]))
+                    else:
+                        filtered_probs = probs[:, present_classes]
+                        row_sums = filtered_probs.sum(axis=1, keepdims=True)
+                        row_sums[row_sums == 0] = 1.0
+                        filtered_probs = filtered_probs / row_sums
+                        auc = float(roc_auc_score(y_test, filtered_probs, multi_class="ovo", average="macro", labels=present_classes))
+            except Exception:
+                pass
             
         print(f" ACC={acc:.4f} | AUC={auc:.4f} | Time={fit_predict_time:.1f}s")
         return {"ACC": acc, "AUC_OVO": auc, "total_time_s": fit_predict_time}
     except Exception as e:
         print(f" ❌ {model_name} FAILED: {str(e)[:150]}")
-        return {"ACC": "FAILED", "AUC_OVO": str(e)[:100], "total_time_s": 0}
+        return {"ACC": np.nan, "AUC_OVO": np.nan, "total_time_s": 0}
 
 # --- MODELOS ---
 def build_tabicl():
