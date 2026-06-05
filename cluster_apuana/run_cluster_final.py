@@ -368,12 +368,15 @@ def main():
             print("  ✅ All models complete, skipping...")
             continue
             
+        # Correção Crítica: O ID fornecido no dicionário é o Task ID (tid). 
+        # Não podemos usar get_dataset(tid) diretamente pois pode haver colisão de IDs no OpenML 
+        # (ex: carregar um dataset de imagens que acidentalmente tem o mesmo ID da nossa task).
+        # Devemos SEMPRE pegar a task primeiro para descobrir o Dataset ID correto.
         try:
-            try:
-                dataset = openml.datasets.get_dataset(ds["tid"], download_data=True, download_qualities=False, download_features_meta_data=True)
-            except Exception:
-                task = openml.tasks.get_task(ds["tid"])
-                dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
+            task = openml.tasks.get_task(ds["tid"])
+            dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
+        except Exception as e:
+            raise ValueError(f"Falha ao carregar Task ou Dataset do OpenML: {e}")
                 
             X, y, cat_indicator, _ = dataset.get_data(target=dataset.default_target_attribute)
             n_classes = len(np.unique(y.dropna()))

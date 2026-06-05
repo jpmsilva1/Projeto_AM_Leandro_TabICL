@@ -20,7 +20,12 @@ Com o código validado, o workload primário foi redirecionado gratuitamente par
 ## 4. Análise e Tratamento de Anomalias Matemáticas (Scikit-Learn)
 Durante o teste de estresse contínuo, mapeamos comportamentos atípicos gerados por datasets extremamente esparsos ("sujos") do repositório OpenML:
 
-### A. O Paradoxo de Amostras vs. Classes (Ex: `houses` - id=3688)
+### A. O Bug Oculto do OpenML: Colisão de Task ID vs Dataset ID
+- **Problema Descoberto no Estresse:** Durante a execução de datasets pesados (como `houses` e `KDDCup09_appetency`), notamos um comportamento bizarro na tela. O dataset `KDDCup09_appetency`, que deveria ser uma classificação binária com 50.000 amostras, estava sendo carregado com **1829 amostras, 1024 features e 657 classes**.
+- **A Causa Raiz:** Descobrimos que o dicionário de datasets do projeto usava o **Task ID (tid)**. Nosso código tentava fazer `openml.datasets.get_dataset(tid)`. Se, por pura coincidência, um dataset de imagens genérico tivesse o mesmo ID numérico da nossa Task, o OpenML baixava o dataset errado (explicando as 1024 features de embeddings e 657 classes).
+- **A Solução Definitiva:** Corrigimos o código da Rodada Final para **sempre** buscar a Task primeiro (`task = openml.tasks.get_task(tid)`) e somente depois baixar o dataset referenciado por ela (`openml.datasets.get_dataset(task.dataset_id)`). Isso eliminou completamente os "falsos datasets" que corrompiam a execução.
+
+### B. O Paradoxo de Amostras vs. Classes (Datasets Esparsos Reais)
 - **Problema:** Um dataset foi carregado com 50 classes para apenas 66 amostras no total. Ao aplicar o `test_size=0.3`, o subconjunto de Teste reteve amostras de apenas uma fração das 50 classes originais. 
 - **O Colapso:** A biblioteca *Scikit-Learn* explodiu no cálculo do AUC (`roc_auc_score(..., multi_class='ovo')`) com o erro: *"Number of classes in y_true not equal to the number of columns in y_score"*. A matemática da Curva ROC (que avalia pares de classes) quebra quando tenta calcular a taxa de Falsos Positivos para uma classe com 0 amostras reais presentes.
 - **A Solução Científica (Filtragem Dinâmica):** Implementamos uma função `compute_auc_safe` que intercepta esse colapso. Ela detecta automaticamente o subconjunto de classes que "sobreviveram" no Test Set, recorta a matriz de probabilidades apenas para essas colunas, re-normaliza para que a soma seja 1.0, e injeta o parâmetro explicíto `labels=classes_presentes`. Isso blindou o código contra qualquer erro dimensional futuro.
