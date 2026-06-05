@@ -85,20 +85,7 @@ def preprocess(X, y, categorical_indicator):
     
     le = LabelEncoder()
     y_encoded = le.fit_transform(y_clean)
-    
-    # Remove classes with < 3 samples to avoid CV crashes
-    counts = pd.Series(y_encoded).value_counts()
-    valid_classes = counts[counts >= 3].index
-    
-    mask = pd.Series(y_encoded).isin(valid_classes)
-    X = X[mask.values]
-    y_encoded = y_encoded[mask.values]
-    
-    # Re-encode to ensure contiguous labels
-    le2 = LabelEncoder()
-    y_encoded = le2.fit_transform(y_encoded)
-    
-    return X, y_encoded, le2
+    return X, y_encoded, le
 
 def g_mean_score(y_true, y_pred):
     classes = np.unique(y_true)
@@ -234,9 +221,15 @@ def cross_val_objective(model_class, params, X, y):
     for train_idx, val_idx in splits:
         X_tr, X_va = X[train_idx], X[val_idx]
         y_tr, y_va = y[train_idx], y[val_idx]
+        
+        le_fold = LabelEncoder()
+        y_tr_enc = le_fold.fit_transform(y_tr)
+        
         model = model_class(**params)
-        model.fit(X_tr, y_tr)
-        y_pred = model.predict(X_va)
+        model.fit(X_tr, y_tr_enc)
+        
+        y_pred_enc = model.predict(X_va)
+        y_pred = le_fold.inverse_transform(y_pred_enc)
         scores.append(accuracy_score(y_va, y_pred))
     return np.mean(scores)
 
@@ -304,17 +297,31 @@ def run_tuning(model_name, objective_func, model_class, X_train, y_train, X_test
         best_params['bootstrap_type'] = 'Bernoulli'
     
     best_model = model_class(**best_params)
-    best_model.fit(X_train, y_train)
     
-    y_pred = best_model.predict(X_test)
-    y_proba = best_model.predict_proba(X_test) if hasattr(best_model, "predict_proba") else None
+    fit_start = time.perf_counter()
+    le_final = LabelEncoder()
+    y_train_enc = le_final.fit_transform(y_train)
+    best_model.fit(X_train, y_train_enc)
+    fit_time = time.perf_counter() - fit_start
     
-    total_time = time.perf_counter() - t0
+    pred_start = time.perf_counter()
+    y_pred_enc = best_model.predict(X_test)
+    y_pred = le_final.inverse_transform(y_pred_enc)
+    
+    y_proba_enc = best_model.predict_proba(X_test) if hasattr(best_model, "predict_proba") else None
+    y_proba = None
+    if y_proba_enc is not None:
+        y_proba = np.zeros((len(X_test), n_classes))
+        for i, cls in enumerate(le_final.classes_):
+            if cls < n_classes:
+                y_proba[:, cls] = y_proba_enc[:, i]
+    pred_time = time.perf_counter() - pred_start
     acc = accuracy_score(y_test, y_pred)
     gmean = g_mean_score(y_test, y_pred)
     auc = compute_auc(y_test, y_proba, n_classes) if y_proba is not None else np.nan
     ce = compute_cross_entropy(y_test, y_proba, np.arange(n_classes)) if y_proba is not None else np.nan
     
+    total_time = time.perf_counter() - t0
     print(f" ACC={acc:.4f} | AUC={auc:.4f} | Tempo={total_time:.1f}s")
     return {
         "model": model_name, "ACC": round(acc, 6), "AUC_OVO": round(auc, 6), 

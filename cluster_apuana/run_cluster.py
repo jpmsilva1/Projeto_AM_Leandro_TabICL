@@ -86,32 +86,28 @@ def preprocess(X, y, categorical_indicator):
     
     le = LabelEncoder()
     y_encoded = le.fit_transform(np.asarray(y).ravel())
-    
-    # Remove classes with < 3 samples to avoid CV crashes
-    counts = pd.Series(y_encoded).value_counts()
-    valid_classes = counts[counts >= 3].index
-    
-    mask = pd.Series(y_encoded).isin(valid_classes)
-    X = X[mask.values]
-    y_encoded = y_encoded[mask.values]
-    
-    # Re-encode to ensure contiguous labels
-    le2 = LabelEncoder()
-    y_encoded = le2.fit_transform(y_encoded)
-    
-    return X, y_encoded, le2
+    return X, y_encoded, le
 
 def safe_run(model_name, build_fn, X_train, y_train, X_test, y_test, n_classes, **kwargs):
     print(f"    🔧 {model_name}...", end="", flush=True)
     t0 = time.perf_counter()
     try:
+        le_final = LabelEncoder()
+        y_train_enc = le_final.fit_transform(y_train)
+        
         model = build_fn(**kwargs)
-        if hasattr(model, 'fit'):
-            model.fit(X_train, y_train)
-            preds = model.predict(X_test)
-            probs = model.predict_proba(X_test)
-        else:
-            preds, probs = model(X_train, y_train, X_test)
+        model.fit(X_train, y_train_enc)
+        
+        y_pred_enc = model.predict(X_test)
+        preds = le_final.inverse_transform(y_pred_enc)
+        
+        y_proba_enc = model.predict_proba(X_test) if hasattr(model, "predict_proba") else None
+        probs = None
+        if y_proba_enc is not None:
+            probs = np.zeros((len(X_test), n_classes))
+            for i, cls in enumerate(le_final.classes_):
+                if cls < n_classes:
+                    probs[:, cls] = y_proba_enc[:, i]
             
         fit_predict_time = time.perf_counter() - t0
         
