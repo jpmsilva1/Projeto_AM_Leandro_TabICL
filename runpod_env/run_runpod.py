@@ -156,8 +156,8 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
     import tempfile, shutil
     
     name = "AutoGluon_Extreme" if preset == "best_quality" else "AutoGluon_Default"
-    time_limit = 7200 if preset == "best_quality" else 1800  # 2h Extreme, 30min Default
-    alarm_limit = 9000 if preset == "best_quality" else 2700  # Alarme de segurança
+    time_limit = 3600 if preset == "best_quality" else 1800  # 1h Extreme, 30min Default
+    alarm_limit = 5400 if preset == "best_quality" else 2700  # Alarme de segurança
     print(f"    ⚙️ {name} (limite={time_limit//60}min)...", end="", flush=True)
     sys.stdout.flush()
     
