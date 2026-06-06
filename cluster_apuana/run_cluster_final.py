@@ -18,10 +18,14 @@ warnings.filterwarnings("ignore")
 optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 # Limita paralelismo para evitar deadlock
-os.environ["OMP_NUM_THREADS"] = "64"
-os.environ["MKL_NUM_THREADS"] = "64"
-os.environ["OPENBLAS_NUM_THREADS"] = "64"
-os.environ["NUMEXPR_NUM_THREADS"] = "64"
+num_cpus_env = os.environ.get("SLURM_CPUS_PER_TASK")
+NUM_CPUS = int(num_cpus_env) if num_cpus_env else multiprocessing.cpu_count()
+print(f"Detectado limite de CPUs: {NUM_CPUS}")
+
+os.environ["OMP_NUM_THREADS"] = str(NUM_CPUS)
+os.environ["MKL_NUM_THREADS"] = str(NUM_CPUS)
+os.environ["OPENBLAS_NUM_THREADS"] = str(NUM_CPUS)
+os.environ["NUMEXPR_NUM_THREADS"] = str(NUM_CPUS)
 
 RESULTS_FILE = "final_run_results.csv"
 METADATA_FILE = "final_run_metadata.csv"
@@ -190,7 +194,7 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
         predictor = TabularPredictor(label="target", eval_metric=ag_metric, problem_type=ag_problem_type, path=ag_path, verbosity=0)
         predictor.fit(
             train_data=train_df, presets=preset, time_limit=time_limit,
-            num_gpus=1, num_cpus=64, ag_args_fit={"num_cpus": 64}
+            num_gpus=1, num_cpus=NUM_CPUS, ag_args_fit={"num_cpus": NUM_CPUS}
         )
         
         signal.alarm(0)

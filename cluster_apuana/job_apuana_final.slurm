@@ -5,8 +5,8 @@
 #SBATCH --partition=long-simple            # Fila principal (permite até 7 dias)
 #SBATCH --time=72:00:00                    # Limite máximo de tempo (72 horas)
 #SBATCH --gpus=1                           # Pedimos 1 Placa de Vídeo 
-#SBATCH --cpus-per-task=64                 # SETUP MONSTRO: 64 processadores
-#SBATCH --mem=64G                          # SETUP MONSTRO: 64GB de RAM garantidos
+#SBATCH --cpus-per-task=16                 # SETUP SEGURO: 16 processadores
+#SBATCH --mem=32G                          # SETUP SEGURO: 32GB de RAM garantidos
 
 # === INSTRUÇÕES PARA A RODADA FINAL ===
 # 1. Apague os arquivos .csv antigos (se quiser recomeçar do zero).
