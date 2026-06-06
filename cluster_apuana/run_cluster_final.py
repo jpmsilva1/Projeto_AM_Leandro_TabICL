@@ -377,8 +377,15 @@ def main():
         # (ex: carregar um dataset de imagens que acidentalmente tem o mesmo ID da nossa task).
         # Devemos SEMPRE pegar a task primeiro para descobrir o Dataset ID correto.
         try:
-            task = openml.tasks.get_task(ds["tid"])
-            dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
+            try:
+                task = openml.tasks.get_task(ds["tid"])
+                dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
+            except openml.exceptions.OpenMLServerException as e:
+                if "Unknown task" in str(e):
+                    print(f"    ⚠️ Task {ds['tid']} inexistente. Tentando como Dataset ID direto...")
+                    dataset = openml.datasets.get_dataset(ds["tid"], download_data=True, download_qualities=False, download_features_meta_data=True)
+                else:
+                    raise e
 
             X, y, cat_indicator, _ = dataset.get_data(target=dataset.default_target_attribute)
             n_classes = len(np.unique(y.dropna()))
