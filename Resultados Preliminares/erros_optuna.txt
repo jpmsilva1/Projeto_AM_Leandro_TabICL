@@ -1,0 +1,23 @@
+	Warning: Exception caused NeuralNetTorch to fail during training... Skipping this model.
+		NaNs encountered in TabularNeuralNetTorchModel training. Features/labels may be improperly formatted, or NN weights may have diverged.
+[W 2026-06-04 22:33:08,932] Trial 0 failed with parameters: {'iterations': 218, 'learning_rate': 0.22648248189516848, 'depth': 8, 'subsample': 0.7993292420985183} because of the following error: CatBoostError('catboost/private/libs/algo/tensor_search_helpers.cpp:565: Too few sampling units (subsample=0.799329, bootstrap_type=Bernoulli): please increase sampling rate or disable sampling').
+Traceback (most recent call last):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+  File "/home/CIN/jpms5/Projeto_AM_Leandro_TabICL/cluster_apuana/run_optuna.py", line 174, in <lambda>
+    study.optimize(lambda trial: objective_func(trial, X_train, y_train), n_trials=N_TRIALS)
+  File "/home/CIN/jpms5/Projeto_AM_Leandro_TabICL/cluster_apuana/run_optuna.py", line 166, in objective_cat
+    return cross_val_objective(CatBoostClassifier, params, X, y)
+  File "/home/CIN/jpms5/Projeto_AM_Leandro_TabICL/cluster_apuana/run_optuna.py", line 122, in cross_val_objective
+    model.fit(X_tr, y_tr_enc)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/catboost/core.py", line 5547, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/catboost/core.py", line 2716, in _fit
+    self._train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/catboost/core.py", line 1824, in _train
+    self._object._train(train_pool, test_pool, params, allow_clear_pool, init_model._object if init_model else None)
+  File "_catboost.pyx", line 5430, in _catboost._CatBoost._train
+  File "_catboost.pyx", line 5479, in _catboost._CatBoost._train
+_catboost.CatBoostError: catboost/private/libs/algo/tensor_search_helpers.cpp:565: Too few sampling units (subsample=0.799329, bootstrap_type=Bernoulli): please increase sampling rate or disable sampling
+[W 2026-06-04 22:33:08,938] Trial 0 failed with value None.
+slurmstepd: error: *** JOB 2233 ON cluster-node1 CANCELLED AT 2026-06-05T20:38:13 ***

@@ -375,9 +375,7 @@ def main():
         try:
             task = openml.tasks.get_task(ds["tid"])
             dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
-        except Exception as e:
-            raise ValueError(f"Falha ao carregar Task ou Dataset do OpenML: {e}")
-                
+
             X, y, cat_indicator, _ = dataset.get_data(target=dataset.default_target_attribute)
             n_classes = len(np.unique(y.dropna()))
             X_clean, y_clean, le = preprocess(X, y, cat_indicator)

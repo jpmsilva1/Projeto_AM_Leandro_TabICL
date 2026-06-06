@@ -1,0 +1,529 @@
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1378562, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [23:13:47] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7dd994cbe09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x7dd9954f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7dd994da2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7dd994da3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x7de34f499ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7dd994da2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x7dd9954fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x7dd9954f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7dd9958e89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1390058, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [23:30:57] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x772343cbe09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x7723444f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x772343da2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x772343da3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x772cfe499ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x772343da2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x7723444fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x7723444f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7723448e89a6]
+	Warning: Exception caused XGBoost_r33_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1399505, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [23:51:05] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x73a0440be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x73a0448f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x73a0441a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x73a0441a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x73a9fe899ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x73a0441a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x73a0448fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x73a0448f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x73a044ce89a6]
+	Warning: Exception caused XGBoost_r89_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1405283, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [00:02:20] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7ec972ebe09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x7ec9736f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7ec972fa2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7ec972fa3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x7ed32d899ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7ec972fa2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x7ec9736fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x7ec9736f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7ec973ae89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1419448, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [00:43:21] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7809228be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x7809230f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7809229a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7809229a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x7812dd299ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7809229a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x7809230fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x7809230f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7809234e89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1431211, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [01:19:07] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x71a0030be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x71a0038f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x71a0031a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x71a0031a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x71aa05a99ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x71a0031a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x71a0038fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x71a0038f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x71a003ce89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1440021, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [01:36:22] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x71eaa54be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x71eaa5cf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x71eaa55a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x71eaa55a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x71f4ae099ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x71eaa55a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x71eaa5cfa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x71eaa5cf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x71eaa60e89a6]
+	Warning: Exception caused XGBoost_BAG_L2 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1452282, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [02:05:53] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x73b1270be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x73b1278f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x73b1271a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x73b1271a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x73bae1899ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x73b1271a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x73b1278fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x73b1278f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x73b127ce89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1478483, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [03:26:25] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x70d5494be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x70d549cf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x70d5495a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x70d5495a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x70df4f099ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x70d5495a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x70d549cfa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x70d549cf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x70d54a0e89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1486111, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [03:47:17] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7339a5ebe09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x7339a66f90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7339a5fa2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7339a5fa3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x734360899ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7339a5fa2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x7339a66fa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x7339a66f99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7339a6ae89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1506057, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [04:52:35] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7393954be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x739395cf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7393955a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7393955a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x739d98a99ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7393955a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x739395cfa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x739395cf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7393960e89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1648062, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [08:51:42] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x79a45d2be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x79a45daf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x79a45d3a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x79a45d3a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x79ae5fc99ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x79a45d3a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x79a45dafa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x79a45daf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x79a45dee89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1681835, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [10:25:42] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7629854be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x762985cf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7629855a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7629855a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x76334e099ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7629855a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x762985cfa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x762985cf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7629860e89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1762127, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [14:51:46] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7d0bf54be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x7d0bf5cf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7d0bf55a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7d0bf55a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x7d1604099ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7d0bf55a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x7d0bf5cfa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x7d0bf5cf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7d0bf60e89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1773746, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [15:50:15] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x7ac0bd4be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x7ac0bdcf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x7ac0bd5a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x7ac0bd5a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x7aca87099ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x7ac0bd5a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x7ac0bdcfa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x7ac0bdcf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x7ac0be0e89a6]
+	Warning: Exception caused XGBoost_BAG_L1 to fail during training... Skipping this model.
+		[36mray::_ray_fit()[39m (pid=1793941, ip=172.21.18.101)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/ensemble/fold_fitting_strategy.py", line 473, in _ray_fit
+    fold_model.fit(X=X_fold, y=y_fold, X_val=X_val_fold, y_val=y_val_fold, time_limit=time_limit_fold, **resources, **kwargs_fold)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/core/models/abstract/abstract_model.py", line 1125, in fit
+    out = self._fit(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/autogluon/tabular/models/xgboost/xgboost_model.py", line 200, in _fit
+    self.model.fit(X=X, y=y, eval_set=eval_set, verbose=False, sample_weight=sample_weight)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/sklearn.py", line 1808, in fit
+    self._Booster = train(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 774, in inner_f
+    return func(**kwargs)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/training.py", line 200, in train
+    if cb_container.after_iteration(bst, i, dtrain, evals):
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/callback.py", line 266, in after_iteration
+    score: str = model.eval_set(evals, epoch, self.metric, self._output_margin)
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 2539, in eval_set
+    _check_call(
+  File "/home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/core.py", line 323, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [17:54:24] /workspace/src/common/common.cu:16: /workspace/src/common/cuda_dr_utils.cc: 31: cudaErrorNoDevice: no CUDA-capable device is detected
+Stack trace:
+  [bt] (0) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2be09c) [0x75ba2d4be09c]
+  [bt] (1) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf90ce) [0x75ba2dcf90ce]
+  [bt] (2) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2d5d) [0x75ba2d5a2d5d]
+  [bt] (3) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a3fd3) [0x75ba2d5a3fd3]
+  [bt] (4) /lib/x86_64-linux-gnu/libc.so.6(+0x99ee8) [0x75c43be99ee8]
+  [bt] (5) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x3a2b35) [0x75ba2d5a2b35]
+  [bt] (6) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xafa9f5) [0x75ba2dcfa9f5]
+  [bt] (7) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xaf99dc) [0x75ba2dcf99dc]
+  [bt] (8) /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xee89a6) [0x75ba2e0e89a6]
+slurmstepd: error: *** JOB 2232 ON cluster-node1 CANCELLED AT 2026-06-05T20:38:13 ***

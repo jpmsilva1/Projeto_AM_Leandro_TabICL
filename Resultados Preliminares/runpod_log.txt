@@ -1,0 +1,284 @@
+🔥 INICIANDO PIPELINE MONOLITICO OTIMIZADO PARA RUNPOD (GPU ACCELERATION) 🔥
+
+=================================================================
+📁 blood-transfusion-service-center (tid=1464, regime=small)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 diabetes (tid=37, regime=small)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 anneal (tid=2, regime=small)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 credit-g (tid=168757, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 qsar-biodeg (tid=359956, regime=medium)
+=================================================================
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.8927 | AUC=0.9330 | Tempo=2321.1s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.8738 | AUC=0.9305 | Tempo=11.0s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.8770 | AUC=0.9324 | Tempo=28.8s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.8644 | AUC=0.9176 | Tempo=155.7s
+
+=================================================================
+📁 baseball (tid=2077, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9478 | AUC=0.9275 | Tempo=1.2s
+    🔧 LightGBM_TD... ACC=0.9453 | AUC=0.9088 | Tempo=0.1s
+    🔧 XGBoost_TD... ACC=0.9502 | AUC=0.9188 | Tempo=0.1s
+    🔧 CatBoost_TD... ACC=0.9428 | AUC=0.9059 | Tempo=1.8s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9552 | AUC=0.9091 | Tempo=9.2s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9453 | AUC=0.9315 | Tempo=3591.3s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9478 | AUC=0.9100 | Tempo=37.2s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9478 | AUC=0.9051 | Tempo=44.0s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9428 | AUC=0.8934 | Tempo=139.0s
+
+=================================================================
+📁 yeast (tid=2073, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.6211 | AUC=0.8950 | Tempo=0.9s
+    🔧 LightGBM_TD... ACC=0.5830 | AUC=0.8306 | Tempo=0.3s
+    🔧 XGBoost_TD... ACC=0.6166 | AUC=0.8577 | Tempo=0.4s
+    🔧 CatBoost_TD... ACC=0.5964 | AUC=0.8440 | Tempo=2.7s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.5919 | AUC=0.8631 | Tempo=33.5s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.5942 | AUC=0.8927 | Tempo=3609.6s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.5807 | AUC=0.8518 | Tempo=72.1s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.5987 | AUC=0.8531 | Tempo=180.8s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.6031 | AUC=0.8608 | Tempo=171.1s
+
+=================================================================
+📁 splice (tid=45, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9655 | AUC=0.9971 | Tempo=1.5s
+    🔧 LightGBM_TD... ACC=0.9530 | AUC=0.9956 | Tempo=0.2s
+    🔧 XGBoost_TD... ACC=0.9582 | AUC=0.9960 | Tempo=0.2s
+    🔧 CatBoost_TD... ACC=0.9509 | AUC=0.9954 | Tempo=1.9s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9540 | AUC=0.9945 | Tempo=15.1s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9613 | AUC=0.9960 | Tempo=3594.0s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9572 | AUC=0.9959 | Tempo=49.6s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9634 | AUC=0.9961 | Tempo=57.0s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9540 | AUC=0.9945 | Tempo=146.8s
+
+=================================================================
+📁 Bioresponse (tid=359967, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.7789 | AUC=0.8531 | Tempo=49.8s
+    🔧 LightGBM_TD... ACC=0.7833 | AUC=0.8614 | Tempo=0.5s
+    🔧 XGBoost_TD... ACC=0.7886 | AUC=0.8572 | Tempo=0.3s
+    🔧 CatBoost_TD... ACC=0.7647 | AUC=0.8586 | Tempo=15.3s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.7842 | AUC=0.8647 | Tempo=31.7s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.7869 | AUC=0.8659 | Tempo=3613.7s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.7753 | AUC=0.8603 | Tempo=102.6s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.7824 | AUC=0.8676 | Tempo=208.0s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.7913 | AUC=0.8632 | Tempo=514.7s
+
+=================================================================
+📁 hypothyroid (tid=3011, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9947 | AUC=0.9626 | Tempo=1.0s
+    🔧 LightGBM_TD... ACC=0.9965 | AUC=0.9596 | Tempo=0.2s
+    🔧 XGBoost_TD... ACC=0.9956 | AUC=0.7883 | Tempo=0.2s
+    🔧 CatBoost_TD... ACC=0.9965 | AUC=0.9617 | Tempo=2.0s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9965 | AUC=0.8295 | Tempo=12.6s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9973 | AUC=0.9521 | Tempo=3597.3s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9956 | AUC=0.7676 | Tempo=36.2s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9956 | AUC=0.8295 | Tempo=70.0s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9947 | AUC=0.9393 | Tempo=172.9s
+
+=================================================================
+📁 hiva_agnostic (tid=3892, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.0000 | AUC=nan | Tempo=1.5s
+    🔧 LightGBM_TD... ACC=0.0000 | AUC=nan | Tempo=0.0s
+    🔧 XGBoost_TD...    ❌ XGBoost_TD FAILED: Invalid classes inferred from unique values of `y`.  Expected: [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21], got [ 0  1  2  3  4  5  6  7  8 12 13 14 15 16 17 21 23 25 26 27 28 29]
+    🔧 CatBoost_TD... ACC=0.0000 | AUC=nan | Tempo=3.4s
+    ⚙️ AutoGluon_Default (limite=30min)...	Warning: Exception caused NeuralNetTorch to fail during training... Skipping this model.
+		NaNs encountered in TabularNeuralNetTorchModel training. Features/labels may be improperly formatted, or NN weights may have diverged.
+    ❌ AutoGluon_Default FAILED: Model does not exist: (model=CatBoost)
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.0000 | AUC=nan | Tempo=3612.9s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.0000 | AUC=nan | Tempo=1.0s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.0000 | AUC=nan | Tempo=85.8s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.0000 | AUC=nan | Tempo=224.0s
+
+=================================================================
+📁 spambase (tid=43, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.6957 | AUC=0.6100 | Tempo=0.8s
+    🔧 LightGBM_TD... ACC=0.6630 | AUC=0.6419 | Tempo=0.0s
+    🔧 XGBoost_TD... ACC=0.6304 | AUC=0.6216 | Tempo=0.0s
+    🔧 CatBoost_TD... ACC=0.6630 | AUC=0.6069 | Tempo=13.6s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.6848 | AUC=0.6152 | Tempo=4.3s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.6848 | AUC=0.6320 | Tempo=2012.4s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.6848 | AUC=0.5953 | Tempo=2.2s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.6630 | AUC=0.5968 | Tempo=14.9s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.6848 | AUC=0.6158 | Tempo=110.8s
+
+=================================================================
+📁 waveform-5000 (tid=58, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9933 | AUC=1.0000 | Tempo=1.0s
+    🔧 LightGBM_TD... ACC=0.9091 | AUC=0.9938 | Tempo=0.4s
+    🔧 XGBoost_TD... ACC=0.8687 | AUC=0.9902 | Tempo=0.4s
+    🔧 CatBoost_TD... ACC=0.9428 | AUC=0.9982 | Tempo=2.8s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9495 | AUC=0.9973 | Tempo=101.7s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9731 | AUC=0.9993 | Tempo=3616.8s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9125 | AUC=0.9944 | Tempo=63.1s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.8822 | AUC=0.9929 | Tempo=232.5s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9495 | AUC=0.9983 | Tempo=374.2s
+
+=================================================================
+📁 churn (tid=359968, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9673 | AUC=0.9446 | Tempo=1.4s
+    🔧 LightGBM_TD... ACC=0.9633 | AUC=0.9346 | Tempo=0.1s
+    🔧 XGBoost_TD... ACC=0.9580 | AUC=0.9366 | Tempo=0.1s
+    🔧 CatBoost_TD... ACC=0.9613 | AUC=0.9415 | Tempo=12.9s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9600 | AUC=0.9407 | Tempo=12.3s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9693 | AUC=0.9403 | Tempo=3600.1s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9580 | AUC=0.9270 | Tempo=44.7s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9633 | AUC=0.9377 | Tempo=45.2s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9627 | AUC=0.9348 | Tempo=165.4s
+
+=================================================================
+📁 page-blocks (tid=30, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9781 | AUC=0.9853 | Tempo=1.0s
+    🔧 LightGBM_TD... ACC=0.9744 | AUC=0.9796 | Tempo=0.2s
+    🔧 XGBoost_TD... ACC=0.9744 | AUC=0.9815 | Tempo=0.3s
+    🔧 CatBoost_TD... ACC=0.9750 | AUC=0.9789 | Tempo=2.1s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9738 | AUC=0.9828 | Tempo=22.4s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9769 | AUC=0.9846 | Tempo=3606.7s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9775 | AUC=0.9804 | Tempo=44.9s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9793 | AUC=0.9797 | Tempo=95.6s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9756 | AUC=0.9808 | Tempo=176.2s
+
+=================================================================
+📁 optdigits (tid=28, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9970 | AUC=1.0000 | Tempo=1.9s
+    🔧 LightGBM_TD... ACC=0.9840 | AUC=0.9998 | Tempo=0.6s
+    🔧 XGBoost_TD... ACC=0.9763 | AUC=0.9996 | Tempo=0.4s
+    🔧 CatBoost_TD... ACC=0.9828 | AUC=0.9998 | Tempo=2.8s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9887 | AUC=0.9999 | Tempo=104.5s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9911 | AUC=0.9999 | Tempo=3611.0s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9870 | AUC=0.9999 | Tempo=269.9s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9822 | AUC=0.9998 | Tempo=207.1s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9816 | AUC=0.9997 | Tempo=410.3s
+
+=================================================================
+📁 satimage (tid=2074, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.9419 | AUC=0.9962 | Tempo=1.4s
+    🔧 LightGBM_TD... ACC=0.9228 | AUC=0.9922 | Tempo=0.4s
+    🔧 XGBoost_TD... ACC=0.9238 | AUC=0.9921 | Tempo=0.4s
+    🔧 CatBoost_TD... ACC=0.9217 | AUC=0.9931 | Tempo=2.3s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9191 | AUC=0.9933 | Tempo=53.2s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9295 | AUC=0.9947 | Tempo=3597.2s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9191 | AUC=0.9929 | Tempo=140.4s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9228 | AUC=0.9928 | Tempo=149.5s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9186 | AUC=0.9922 | Tempo=277.1s
+
+=================================================================
+📁 isolet (tid=3481, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.0000 | AUC=nan | Tempo=0.7s
+    🔧 LightGBM_TD... ACC=0.0000 | AUC=nan | Tempo=0.0s
+    🔧 XGBoost_TD...    ❌ XGBoost_TD FAILED: Invalid classes inferred from unique values of `y`.  Expected: [0 1 2 3 4 5 6], got [0 1 2 3 6 7 8]
+    🔧 CatBoost_TD... ACC=0.0000 | AUC=nan | Tempo=1.8s
+    ⚙️ AutoGluon_Default (limite=30min)...    ❌ AutoGluon_Default FAILED: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+    ⚙️ AutoGluon_Extreme (limite=60min)...    ❌ AutoGluon_Extreme FAILED: With n_samples=0, test_size=0.1111111111111111 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.0000 | AUC=nan | Tempo=0.7s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.0000 | AUC=nan | Tempo=25.7s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.0000 | AUC=nan | Tempo=141.1s
+
+=================================================================
+📁 mushroom (tid=24, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=1.0000 | AUC=1.0000 | Tempo=1.7s
+    🔧 LightGBM_TD... ACC=1.0000 | AUC=1.0000 | Tempo=0.1s
+    🔧 XGBoost_TD... ACC=1.0000 | AUC=1.0000 | Tempo=0.0s
+    🔧 CatBoost_TD... ACC=1.0000 | AUC=1.0000 | Tempo=11.0s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=1.0000 | AUC=1.0000 | Tempo=98.2s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=1.0000 | AUC=1.0000 | Tempo=3593.8s
+    ⚙️ Tuning LightGBM_Tuned... ACC=1.0000 | AUC=1.0000 | Tempo=15.5s
+    ⚙️ Tuning XGBoost_Tuned... ACC=1.0000 | AUC=1.0000 | Tempo=18.0s
+    ⚙️ Tuning CatBoost_Tuned... ACC=1.0000 | AUC=1.0000 | Tempo=180.1s
+
+=================================================================
+📁 JapaneseVowels (tid=3510, regime=medium)
+=================================================================
+    🔧 TabICL... ACC=0.0102 | AUC=nan | Tempo=6.3s
+    🔧 LightGBM_TD... ACC=0.0000 | AUC=nan | Tempo=1.6s
+    🔧 XGBoost_TD...    ❌ XGBoost_TD FAILED: Invalid classes inferred from unique values of `y`.  Expected: [  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53
+  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89
+  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107
+ 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125
+ 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143
+ 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161
+ 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179
+ 180 181 182], got [  0   2   3   5   6   7  10  11  12  13  14  16  18  19  21  23  25  26
+  27  28  29  30  31  32  33  35  37  39  40  41  42  43  44  46  47  48
+  49  51  52  53  54  55  57  58  60  63  64  66  67  68  69  70  73  74
+  75  76  77  78  79  81  82  84  85  87  88  90  91  97  98  99 100 101
+ 102 103 104 105 106 107 109 110 111 113 114 115 116 117 118 119 120 122
+ 123 125 126 129 130 131 132 133 134 135 136 138 139 140 143 144 145 146
+ 147 148 149 150 152 155 156 157 158 159 160 161 162 163 166 168 169 170
+ 171 172 174 177 178 179 181 183 184 186 188 189 192 193 194 195 196 197
+ 200 202 203 204 206 207 208 209 210 212 213 214 215 216 217 218 219 220
+ 221 223 224 227 228 229 230 231 232 233 234 236 238 239 240 243 244 245
+ 247 248 249]
+    🔧 CatBoost_TD... ACC=0.0204 | AUC=nan | Tempo=34.8s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.0000 | AUC=nan | Tempo=98.6s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.0204 | AUC=nan | Tempo=3973.5s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.0306 | AUC=nan | Tempo=324.6s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.0306 | AUC=nan | Tempo=1108.1s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.0306 | AUC=nan | Tempo=1291.7s
+
+=================================================================
+📁 pendigits (tid=32, regime=large)
+=================================================================
+    🔧 TabICL... ACC=0.9976 | AUC=0.9996 | Tempo=1.8s
+    🔧 LightGBM_TD... ACC=0.9915 | AUC=0.9993 | Tempo=0.5s
+    🔧 XGBoost_TD... ACC=0.9885 | AUC=0.9995 | Tempo=0.4s
+    🔧 CatBoost_TD... ACC=0.9912 | AUC=0.9995 | Tempo=2.9s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9951 | AUC=0.9996 | Tempo=84.5s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9948 | AUC=0.9996 | Tempo=3627.6s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9903 | AUC=0.9996 | Tempo=216.7s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9906 | AUC=0.9996 | Tempo=241.6s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9915 | AUC=0.9995 | Tempo=430.8s
+
+=================================================================
+📁 nursery (tid=26, regime=large)
+=================================================================
+    🔧 TabICL... ACC=0.9995 | AUC=1.0000 | Tempo=1.7s
+    🔧 LightGBM_TD... ACC=0.9411 | AUC=0.8298 | Tempo=0.2s
+    🔧 XGBoost_TD... ACC=0.9997 | AUC=0.9832 | Tempo=0.2s
+    🔧 CatBoost_TD... ACC=1.0000 | AUC=1.0000 | Tempo=1.9s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9995 | AUC=0.9979 | Tempo=45.0s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=1.0000 | AUC=1.0000 | Tempo=3598.2s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9985 | AUC=1.0000 | Tempo=104.0s
+    ⚙️ Tuning XGBoost_Tuned... ACC=0.9997 | AUC=0.9684 | Tempo=131.3s
+    ⚙️ Tuning CatBoost_Tuned... ACC=0.9997 | AUC=0.9566 | Tempo=182.9s
+
+=================================================================
+📁 letter (tid=6, regime=large)
+=================================================================
+    🔧 TabICL... ACC=0.9900 | AUC=1.0000 | Tempo=5.4s
+    🔧 LightGBM_TD... ACC=0.9645 | AUC=0.9996 | Tempo=1.9s
+    🔧 XGBoost_TD... ACC=0.9592 | AUC=0.9996 | Tempo=1.4s
+    🔧 CatBoost_TD... ACC=0.9652 | AUC=0.9997 | Tempo=5.2s
+    ⚙️ AutoGluon_Default (limite=30min)... ACC=0.9803 | AUC=0.9999 | Tempo=1656.7s
+    ⚙️ AutoGluon_Extreme (limite=60min)... ACC=0.9827 | AUC=0.9999 | Tempo=3745.3s
+    ⚙️ Tuning LightGBM_Tuned... ACC=0.9700 | AUC=0.9997 | Tempo=734.2s
+    ⚙️ Tuning XGBoost_Tuned...

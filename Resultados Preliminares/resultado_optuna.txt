@@ -1,0 +1,169 @@
+Iniciando a bateria de Optuna Hyperparameter Tuning!
+Node alocado: cluster-node1
+Requirement already satisfied: optuna in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (4.9.0)
+Requirement already satisfied: numpy in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from optuna) (2.2.6)
+Requirement already satisfied: colorlog in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from optuna) (6.10.1)
+Requirement already satisfied: sqlalchemy>=1.4.2 in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from optuna) (2.0.50)
+Requirement already satisfied: alembic>=1.5.0 in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from optuna) (1.18.4)
+Requirement already satisfied: PyYAML in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from optuna) (6.0.3)
+Requirement already satisfied: packaging>=20.0 in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from optuna) (26.2)
+Requirement already satisfied: tqdm in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from optuna) (4.67.3)
+Requirement already satisfied: Mako in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from alembic>=1.5.0->optuna) (1.3.12)
+Requirement already satisfied: tomli in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from alembic>=1.5.0->optuna) (2.4.1)
+Requirement already satisfied: typing-extensions>=4.12 in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from alembic>=1.5.0->optuna) (4.15.0)
+Requirement already satisfied: greenlet>=1 in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from sqlalchemy>=1.4.2->optuna) (3.5.1)
+Requirement already satisfied: MarkupSafe>=0.9.2 in /home/CIN/jpms5/tabarena_env/lib/python3.10/site-packages (from Mako->alembic>=1.5.0->optuna) (3.0.3)
+
+=================================================================
+📁 blood-transfusion-service-center (tid=1464, regime=small)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 diabetes (tid=37, regime=small)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 anneal (tid=2, regime=small)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 credit-g (tid=168757, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 qsar-biodeg (tid=359956, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 baseball (tid=2077, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 yeast (tid=2073, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 splice (tid=45, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 Bioresponse (tid=359967, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 hypothyroid (tid=3011, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 hiva_agnostic (tid=3892, regime=medium)
+=================================================================
+    ⚙️ AutoGluon (Default)...    ❌ AutoGluon_Default FAILED: Model does not exist: (model=XGBoost)
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.0000 | AUC=nan | Tempo Total=82.6s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.0000 | AUC=nan | Tempo Total=793.2s
+
+=================================================================
+📁 spambase (tid=43, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 waveform-5000 (tid=58, regime=medium)
+=================================================================
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9495 | AUC=0.9975 | Tempo Total=1351.1s
+
+=================================================================
+📁 churn (tid=359968, regime=medium)
+=================================================================
+  ✅ All models complete, skipping...
+
+=================================================================
+📁 page-blocks (tid=30, regime=medium)
+=================================================================
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9756 | AUC=0.9795 | Tempo Total=502.0s
+
+=================================================================
+📁 optdigits (tid=28, regime=medium)
+=================================================================
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9816 | AUC=0.9998 | Tempo Total=802.5s
+
+=================================================================
+📁 satimage (tid=2074, regime=medium)
+=================================================================
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9186 | AUC=0.9926 | Tempo Total=1596.9s
+
+=================================================================
+📁 isolet (tid=3481, regime=medium)
+=================================================================
+    ⚙️ AutoGluon (Default)...    ❌ AutoGluon_Default FAILED: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+    ⚙️ Tuning LightGBM_Tuned (50 trials)... ACC=0.0000 | AUC=nan | Tempo Total=4.4s
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.0000 | AUC=nan | Tempo Total=30.7s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)...    ❌ CatBoost_Tuned FAILED: catboost/private/libs/algo/tensor_search_helpers.cpp:565: Too few sampling units (subsample=0.799329, bootstrap_type=Bernoulli): please increase sampling rate or disable sampling
+
+=================================================================
+📁 mushroom (tid=24, regime=medium)
+=================================================================
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=1.0000 | AUC=1.0000 | Tempo Total=168.7s
+
+=================================================================
+📁 JapaneseVowels (tid=3510, regime=medium)
+=================================================================
+    ⚙️ AutoGluon (Default)... ACC=0.0000 | AUC=nan | Tempo Total=1280.2s
+    ⚙️ Tuning LightGBM_Tuned (50 trials)... ACC=0.0306 | AUC=nan | Tempo Total=1097.3s
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.0306 | AUC=nan | Tempo Total=3479.2s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.0408 | AUC=nan | Tempo Total=19606.2s
+
+=================================================================
+📁 pendigits (tid=32, regime=large)
+=================================================================
+    ⚙️ AutoGluon (Default)... ACC=0.9951 | AUC=0.9996 | Tempo Total=765.9s
+    ⚙️ Tuning LightGBM_Tuned (50 trials)... ACC=0.9903 | AUC=0.9996 | Tempo Total=854.6s
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.9906 | AUC=0.9995 | Tempo Total=648.4s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9909 | AUC=0.9995 | Tempo Total=1074.8s
+
+=================================================================
+📁 nursery (tid=26, regime=large)
+=================================================================
+    ⚙️ AutoGluon (Default)... ACC=0.9954 | AUC=0.9959 | Tempo Total=382.0s
+    ⚙️ Tuning LightGBM_Tuned (50 trials)... ACC=0.9985 | AUC=1.0000 | Tempo Total=388.3s
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.9997 | AUC=0.9883 | Tempo Total=260.9s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9997 | AUC=1.0000 | Tempo Total=284.9s
+
+=================================================================
+📁 letter (tid=6, regime=large)
+=================================================================
+    ⚙️ AutoGluon (Default)... ACC=0.9733 | AUC=0.9998 | Tempo Total=1846.6s
+    ⚙️ Tuning LightGBM_Tuned (50 trials)... ACC=0.9700 | AUC=0.9997 | Tempo Total=2938.7s
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.9640 | AUC=0.9996 | Tempo Total=1846.2s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9675 | AUC=0.9998 | Tempo Total=2069.9s
+
+=================================================================
+📁 houses (tid=3688, regime=large)
+=================================================================
+    ⚙️ AutoGluon (Default)... ACC=0.1000 | AUC=nan | Tempo Total=132.3s
+    ⚙️ Tuning LightGBM_Tuned (50 trials)... ACC=0.1000 | AUC=nan | Tempo Total=11.3s
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.1000 | AUC=nan | Tempo Total=259.9s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.1500 | AUC=nan | Tempo Total=15087.4s
+
+=================================================================
+📁 Amazon_employee_access (tid=359979, regime=large)
+=================================================================
+    ⚙️ AutoGluon (Default)... ACC=0.9503 | AUC=0.8407 | Tempo Total=532.2s
+    ⚙️ Tuning LightGBM_Tuned (50 trials)... ACC=0.9505 | AUC=0.8375 | Tempo Total=176.3s
+    ⚙️ Tuning XGBoost_Tuned (50 trials)... ACC=0.9521 | AUC=0.8517 | Tempo Total=149.0s
+    ⚙️ Tuning CatBoost_Tuned (50 trials)... ACC=0.9484 | AUC=0.8177 | Tempo Total=798.4s
+
+=================================================================
+📁 KDDCup09_appetency (tid=3945, regime=large)
+=================================================================
+    ⚙️ AutoGluon (Default)... ACC=0.1184 | AUC=nan | Tempo Total=2242.0s
+    ⚙️ Tuning LightGBM_Tuned (50 trials)...
