@@ -61,23 +61,24 @@ Nós transformaremos as "Células" do arquivo `kaggle_pipeline.md` em um único 
 - Removeremos a trava de `BATCH_START` e `BATCH_END`, para que ele processe todos os 16 datasets de uma só vez.
 
 ### Etapa 4: Submissão via SLURM (sbatch)
-Em vez de rodar o código de forma interativa, criaremos um arquivo chamado `job.slurm`. Este arquivo avisa ao cluster que precisamos de uma GPU e memória RAM alocadas:
+Para a execução final e consolidada, usaremos o arquivo `job_apuana_final.slurm` criado com alocação dinâmica.
 
+Antes de submeter, sempre garanta que o código está atualizado com as últimas correções (como a do OpenML):
 ```bash
-#!/bin/bash
-#SBATCH --job-name=TabICL_Eval
-#SBATCH --output=resultado_tabarena.txt
-#SBATCH --error=erros_tabarena.txt
-#SBATCH --time=48:00:00        # Pede até 48 horas de tempo
-#SBATCH --gpus=1               # Pede 1 placa de vídeo
-#SBATCH --cpus-per-task=8      # Pede 8 processadores 
-
-module load Python3.10
-source $HOME/tabarena_env/bin/activate
-python run_cluster.py
+git pull
 ```
 
-Você fará a submissão rodando apenas `sbatch job.slurm`. A partir desse momento, você pode desligar o seu computador e ir dormir. O servidor da UFPE fará o trabalho e salvará os CSVs.
+Faça a submissão sobrescrevendo o pedido de CPUs na linha de comando (ex: 32 CPUs) para evitar a barreira `QOSMaxCpuPerUserLimit`:
+
+```bash
+sbatch --cpus-per-task=32 job_apuana_final.slurm
+```
+
+A partir desse momento, o servidor alocará as CPUs (ex: cluster-node4) e iniciará o download dos 30 datasets para rodar o AutoGluon, TabICL e baselines.
+Você pode acompanhar em tempo real com:
+```bash
+tail -f resultado_final_run.txt
+```
 
 ### Etapa 5: Resgate dos Resultados
 No dia seguinte, usaremos o comando `scp` (Secure Copy) ou o VSCode para baixar o arquivo `kaggle_results.csv` e `dataset_metadata.csv` do cluster diretamente para o seu Mac, e finalizamos as análises estatísticas!
