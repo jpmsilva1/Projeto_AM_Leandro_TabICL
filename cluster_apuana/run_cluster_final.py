@@ -37,7 +37,7 @@ class TimeoutError(Exception):
 def timeout_handler(signum, frame):
     raise TimeoutError("Tempo limite de segurança atingido!")
 
-RESULTS_FILE = "runpod_results.csv"
+RESULTS_FILE = "final_run_results.csv"
 
 # --- DATASETS OFICIAIS ---
 DATASETS = [

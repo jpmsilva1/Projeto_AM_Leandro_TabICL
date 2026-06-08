@@ -1,84 +1,48 @@
-# Estudo de Viabilidade e Plano de Implementação: Migração para o Cluster Apuana (UFPE)
+# 🚀 Guia de Sobrevivência: Comandos Apuana
 
-O objetivo deste documento é analisar a viabilidade de rodar o pipeline de avaliação do TabArena (TabICL v2 vs Baselines) no cluster computacional Apuana do Centro de Informática (CIn) da UFPE, além de fornecer um roteiro técnico detalhado para a execução.
-
-## 1. Análise de Viabilidade
-
-**Veredito: Altamente Viável e Recomendado.**
-
-Rodar o projeto no cluster Apuana resolve os dois maiores gargalos que estamos enfrentando atualmente no Kaggle:
-
-1. **Gargalo de VRAM (Erro OOM do TabICL):** No Kaggle, vimos que o TabICL exigiu ~25.6 GB de VRAM para rodar o dataset `APSFailure`, o que causou um erro na GPU Tesla T4 (que só tem 15.6 GB). Clusters institucionais como o Apuana geralmente são equipados com GPUs de alta capacidade (como NVIDIA A100 de 40GB/80GB ou RTX 3090/4090 de 24GB). Isso permitirá rodar o TabICL nos datasets grandes (Large Regime) sem estourar a memória.
-2. **Gargalo de Tempo Limite (Sessão de 12 horas):** O Kaggle encerra execuções interativas após 12 horas. Com o SLURM (gerenciador do cluster Apuana), você pode submeter o seu script como um "job" em background. O código pode ficar rodando por 24, 48 ou 72 horas ininterruptas. Isso permite habilitar com segurança a opção **"extreme" do AutoGluon** para o projeto inteiro, sem perder noites de sono cuidando do terminal.
-
-> [!WARNING]
-> Restrições do Cluster: A documentação informa que o uso de Docker/Máquinas Virtuais é proibido por motivos de segurança. Portanto, teremos que configurar as dependências "na mão" através de módulos e ambientes virtuais Python, o que é um processo muito tranquilo.
+Este documento centraliza todos os comandos que você precisa para controlar a rodada final do seu projeto.
 
 ---
 
-## 2. Open Questions (Para o Usuário)
+## 💻 Cluster Apuana (CIn-UFPE)
+O Apuana utiliza o sistema de filas **SLURM**. O seu projeto está dentro da pasta `cluster_apuana`.
 
-> [!IMPORTANT]
-> - Você já possui conta/login no domínio `@cin.ufpe.br`?
-> - Você já preencheu o formulário de acesso ao cluster e tem a VPN do CIn instalada na sua máquina?
-> - O seu colega de grupo também usou esse cluster ou apenas o Kaggle? (Saber disso nos ajuda a entender se as bibliotecas como o `tabicl` já estão cacheadas nos nós do servidor).
-
----
-
-## 3. Plano de Implementação Passo a Passo
-
-O processo será dividido nas seguintes etapas que nós executaremos juntos assim que você tiver acesso:
-
-### Etapa 1: Acesso e Configuração Inicial
-1. Conectar na VPN do CIn.
-2. Acessar o "Login Node" do cluster via SSH:
-   ```bash
-   ssh seu_login@slurm-client1.cin.ufpe.br
-   ```
-3. Fazer o clone do seu repositório Git com os scripts que nós já atualizamos:
-   ```bash
-   git clone https://github.com/jpmsilva1/Projeto_AM_Leandro_TabICL.git
-   cd Projeto_AM_Leandro_TabICL
-   ```
-
-### Etapa 2: Criação do Ambiente Virtual
-Segundo a documentação do Apuana, ativaremos os módulos Python do sistema e isolaremos as bibliotecas:
+### 🟢 Iniciar os Trabalhos
+Sempre que quiser rodar a versão mais nova do código ou reiniciar, faça este combo:
 ```bash
-# Carrega a versão mais moderna de Python do servidor
-module load Python3.10
+# 1. Entrar na pasta do projeto
+cd ~/Projeto_AM_Leandro_TabICL/cluster_apuana
 
-# Cria um ambiente isolado na sua pasta Home
-python -m venv $HOME/tabarena_env
-source $HOME/tabarena_env/bin/activate
-
-# Instala as dependências (semelhante à Célula 1 do Kaggle)
-pip install tabicl "pytabkit[models]" openml optuna scikit-learn lightgbm xgboost catboost "autogluon.tabular[all]"
-```
-
-### Etapa 3: Adaptação do Código (Transformar o Notebook em Script)
-Nós transformaremos as "Células" do arquivo `kaggle_pipeline.md` em um único script Python limpo (ex: `run_cluster.py`). 
-- Iremos reativar a configuração `presets="extreme_quality"` do AutoGluon.
-- Removeremos a trava de `BATCH_START` e `BATCH_END`, para que ele processe todos os 16 datasets de uma só vez.
-
-### Etapa 4: Submissão via SLURM (sbatch)
-Para a execução final e consolidada, usaremos o arquivo `job_apuana_final.slurm` criado com alocação dinâmica.
-
-Antes de submeter, sempre garanta que o código está atualizado com as últimas correções (como a do OpenML):
-```bash
+# 2. Puxar as atualizações do código (Correções de bugs)
 git pull
-```
 
-Faça a submissão sobrescrevendo o pedido de CPUs na linha de comando (ex: 32 CPUs) para evitar a barreira `QOSMaxCpuPerUserLimit`:
-
-```bash
+# 3. Colocar o Job Final na fila do supercomputador (Forçando 32 CPUs)
 sbatch --cpus-per-task=32 job_apuana_final.slurm
 ```
 
-A partir desse momento, o servidor alocará as CPUs (ex: cluster-node4) e iniciará o download dos 30 datasets para rodar o AutoGluon, TabICL e baselines.
-Você pode acompanhar em tempo real com:
+### 🔎 Monitorar o Progresso (O Famoso "Espiar")
+Se você acabou de abrir o terminal SSH do CIn e quer ver como estão as coisas:
 ```bash
+# 1. Entrar na pasta (sempre necessário em um novo terminal)
+cd ~/Projeto_AM_Leandro_TabICL/cluster_apuana
+
+# 2. Assistir ao log do Job Principal ao vivo
 tail -f resultado_final_run.txt
 ```
+*(Para sair da tela do `tail`, aperte `Ctrl + C`)*
 
-### Etapa 5: Resgate dos Resultados
-No dia seguinte, usaremos o comando `scp` (Secure Copy) ou o VSCode para baixar o arquivo `kaggle_results.csv` e `dataset_metadata.csv` do cluster diretamente para o seu Mac, e finalizamos as análises estatísticas!
+### 🛑 Gerenciamento e Cancelamento
+```bash
+# Ver a lista dos seus Jobs rodando ou na fila (para descobrir o ID deles)
+squeue -u jpms5
+
+# Cancelar um Job específico (troque 1234 pelo ID que aparece no squeue)
+scancel 1234
+```
+
+### 📥 Resgate dos Resultados
+Quando o job finalizar amanhã, baixe o CSV com os resultados consolidados para o seu Mac:
+```bash
+# Rode isso em uma nova aba do terminal do seu Mac (NÃO DENTRO do Apuana):
+scp jpms5@slurm-client1.cin.ufpe.br:~/Projeto_AM_Leandro_TabICL/cluster_apuana/final_run_results.csv ~/Downloads/
+```

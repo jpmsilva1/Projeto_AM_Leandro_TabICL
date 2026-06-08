@@ -42,3 +42,19 @@ Para gerar a Tabela Final dos Resultados (e compensar o peso computacional extre
 - **Justificativa Computacional:** Ao injetar 64 CPUs e conceder 1 hora de teto de processamento, estamos despejando **64 horas-CPU** no ensemble. Estamos cortando o tempo de relógio global pela metade, enquanto injetamos **4 vezes mais força computacional real** na construção de modelos (Random Forests treinam árvores simutaneamente por thread).
 
 O resultado esperado desta última arquitetura é a execução impecável de toda a fila de dados, finalizando o experimento em prazo acelerado e gerando métricas de ensemble com precisão superior.
+
+## 6. Análise da Execução Final (Soft Limits vs Extensões C++)
+Durante a madrugada de execução dos datasets pesados (como `waveform-5000`), um fenômeno fascinante de "timeout" foi mapeado, oferecendo um forte insight metodológico para a defesa do TCC:
+
+### A. O Comportamento Contraintuitivo dos Limites de Tempo
+Observamos que o **AutoGluon Default**, configurado com um limite de 30 minutos (`time_limit=1800`), demorou **1 hora e 12 minutos** para concluir a predição, ultrapassando não apenas o seu próprio limite, mas também o tempo gasto pelo **AutoGluon Extreme** (cravado em 60 minutos exatos).
+
+* **Por que isso aconteceu?** O limite nativo do AutoGluon é um *Soft Limit*. O framework avalia o cronômetro apenas no intervalo *entre* o treinamento de dois sub-modelos. Como o perfil *Default* obrigatoriamente engloba a tentativa de treino de Redes Neurais pesadas (FastAI/Torch), quando o algoritmo entra nessas redes no "minuto 29", ele fica travado processando as *epochs* e só vai verificar o relógio 40 minutos depois, estourando a barreira teórica de tempo.
+* **O Python não aborta Extensões em C/C++:** Para forçar o cumprimento do tempo, implementamos em código um "Alarme de Segurança" usando a biblioteca `signal` do Python (com limite rígido de 45 min para o Default). No entanto, como o processamento de Redes Neurais e Árvores é delegado para o nível do Kernel através de C++ (por baixo dos panos), o sinal do Python é solenemente ignorado pelo Sistema Operacional até que a extensão em C++ libere o processo de volta para o Python.
+
+### B. A Inteligência do Perfil Extreme
+Ironicamente, o modo *Extreme* (`best_quality`), com limite de 60 minutos, encerrou cravado no tempo correto (61 minutos). Isso ocorre porque, ao ativar o modo *best_quality*, o AutoGluon altera sua heurística interna: sabendo que tem pouco tempo para fazer dezenas de validações cruzadas (bagging e stacking), ele ativa uma auto-preservação e frequentemente decide **pular completamente as Redes Neurais lentas**, focando o tempo nas Árvores de Decisão rápidas para entregar um ensemble robusto dentro da regra do relógio.
+
+### C. A Vantagem Competitiva do TabICL
+O maior achado acadêmico extraído deste episódio ocorreu no dataset `waveform-5000`. Enquanto os algoritmos de estado-da-arte do AutoGluon lutavam contra gargalos de C++ e levavam mais de 1 hora para entregar um `AUC=0.9757` (Default) e `0.9744` (Extreme, que ironicamente sofreu *overfitting* de ensemble), o **TabICL** demonstrou a eficiência brutal do "In-Context Learning". 
+O modelo precisou de absurdos **5.6 SEGUNDOS** para engolir o dataset inteiro e devolver o melhor AUC absoluto de todos os testes: **AUC=0.9785**. Isso configura um triunfo não apenas de precisão, mas de eficiência computacional esmagadora.

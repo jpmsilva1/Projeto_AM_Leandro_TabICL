@@ -6,7 +6,7 @@
 #SBATCH --time=72:00:00                    # Limite máximo de tempo (72 horas)
 #SBATCH --gpus=1                           # Pedimos 1 Placa de Vídeo 
 #SBATCH --cpus-per-task=16                 # SETUP SEGURO: 16 processadores
-#SBATCH --mem=32G                          # SETUP SEGURO: 32GB de RAM garantidos
+#SBATCH --mem=128G                         # SETUP SEGURO: 128GB de RAM para evitar SegFault no XGBoost
 
 # === INSTRUÇÕES PARA A RODADA FINAL ===
 # 1. Apague os arquivos .csv antigos (se quiser recomeçar do zero).
