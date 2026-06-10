@@ -58,3 +58,20 @@ Ironicamente, o modo *Extreme* (`best_quality`), com limite de 60 minutos, encer
 ### C. A Vantagem Competitiva do TabICL
 O maior achado acadêmico extraído deste episódio ocorreu no dataset `waveform-5000`. Enquanto os algoritmos de estado-da-arte do AutoGluon lutavam contra gargalos de C++ e levavam mais de 1 hora para entregar um `AUC=0.9757` (Default) e `0.9744` (Extreme, que ironicamente sofreu *overfitting* de ensemble), o **TabICL** demonstrou a eficiência brutal do "In-Context Learning". 
 O modelo precisou de absurdos **5.6 SEGUNDOS** para engolir o dataset inteiro e devolver o melhor AUC absoluto de todos os testes: **AUC=0.9785**. Isso configura um triunfo não apenas de precisão, mas de eficiência computacional esmagadora.
+
+## 7. Curadoria de Datasets e o Paradoxo do Benchmark 10/10/10
+Durante a fase final de consolidação dos 30 datasets exigidos pelo edital da disciplina, deparamo-nos com um impasse arquitetural significativo envolvendo as métricas do benchmark TabArena-v0.1 e as exigências do projeto.
+
+### A. A Exigência Matemática do Edital
+O edital determinava duas regras primárias: a utilização de **exatamente 30 datasets** da base TabArena e uma estratificação perfeita de **10 pequenos (<1000 amostras), 10 médios (1k-10k) e 10 grandes (>10k)**.
+
+### B. A Realidade Curada (O Paradoxo da Classificação)
+Ao auditar a planilha oficial de curadoria dos autores originais do TabArena (`TabArena_Dataset_Curation`), mapeamos uma limitação intrínseca da base que impossibilitava o cumprimento estrito das duas regras simultaneamente:
+1. **Falta de Bases Pequenas:** Dos 50 datasets plenamente aprovados com o selo "Yes" de qualidade pelos curadores (Andrej e Lennart), **apenas 4 datasets se enquadravam como pequenos** (ex: `diabetes`, `ilpd`).
+2. **Escassez de Bases Puras:** Quando aplicamos o filtro de restrições do nosso pipeline (exigir que a tarefa fosse estritamente de *Classificação* e que não sofresse de Data Leakage temporal ou de grupo), o universo de datasets perfeitos e aprovados caiu para **aproximadamente 18 datasets** no total.
+
+### C. A Solução (Compromisso Metodológico)
+Para bater a cota obrigatória de 30 datasets sem incorrer em falhas metodológicas graves (como usar Regressão ou Datasets com vazamento temporal), o nosso grupo e o template base do projeto adotaram a única saída técnica possível:
+- Preenchemos as vagas restantes com datasets "clássicos" e estruturalmente sólidos do OpenML (como `mushroom` e `spambase`), mesmo sabendo que estes possuíam um *flag* de rejeição ou "condicional" pela curadoria moderna do TabArena por serem considerados fáceis ou obsoletos.
+- **A Estratificação Final (3/17/10):** A escolha de usar 3 Pequenos, 17 Médios e 10 Grandes reflete esse funil de qualidade. Nós priorizamos a integridade do modelo (evitar regressão e leakage) em detrimento da simetria arbitrária de tamanhos.
+- **Validação Docente:** Este paradoxo da base original foi documentado e validado em reunião com o professor, autorizando o uso da distribuição 3/17/10 como uma demonstração de rigor acadêmico frente às limitações do paper.
