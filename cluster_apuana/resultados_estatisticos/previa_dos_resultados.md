@@ -116,7 +116,7 @@ Este documento compila as tabelas de desempenho global, as estratificações cru
 ---
 
 ## 3. Análise Bayesiana Par a Par (ROPE)
-> **Como interpretar:** As tabelas abaixo mostram a probabilidade Bayesiana.  é a chance de o Modelo A ser pior que o B.  é a chance de serem estatisticamente idênticos (dentro da margem de empate ROPE). E  é a chance de o Modelo A ser superior. Valores de  acima de 0.95 (95%) indicam superioridade probabilística quase certa.
+> **Como interpretar:** As tabelas abaixo mostram a probabilidade Bayesiana. `p_a_worse` é a chance de o Modelo A ser pior que o B. `p_equivalent` é a chance de serem estatisticamente idênticos (dentro da margem de empate ROPE). E `p_a_better` é a chance de o Modelo A ser superior. Valores de `p_a_better` acima de 0.95 (95%) indicam superioridade probabilística quase certa.
 
 ### Bayesiana: AUC_OVO
 
