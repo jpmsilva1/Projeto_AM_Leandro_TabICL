@@ -67,6 +67,18 @@ def main():
     }
     
     avg_df = df.groupby('model')[list(metrics.keys())].mean().round(4)
+    
+    # Formata tempo para HH:MM:SS
+    def format_time(seconds):
+        s = int(seconds)
+        h = s // 3600
+        m = (s % 3600) // 60
+        sec = s % 60
+        return f"{h:02d}:{m:02d}:{sec:02d}"
+        
+    avg_df['Total_Time (HH:MM:SS)'] = avg_df['total_time_s'].apply(format_time)
+    avg_df = avg_df.drop(columns=['total_time_s'])
+    
     avg_df.to_markdown(out_dir / "01_Desempenho_Medio_Global.md")
     avg_df.to_csv(out_dir / "01_Desempenho_Medio_Global.csv")
     print(" -> Tabela de Desempenho salva.")
