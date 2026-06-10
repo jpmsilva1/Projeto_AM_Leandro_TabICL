@@ -88,19 +88,19 @@ Este documento compila as tabelas de desempenho global, as estratificações cru
 *O teste de Friedman avalia a significância global. Se houver diferença, o post-hoc de Nemenyi calcula a Distância Crítica (CD). Modelos conectados por uma barra espessa não possuem diferença estatisticamente significante entre si.*
 
 ### CD Diagram: AUC_OVO
-![CD Diagram AUC_OVO](/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/resultados_estatisticos/cd_diagram_AUC_OVO.png)
+![CD Diagram AUC_OVO](./cd_diagram_AUC_OVO.png)
 
 ### CD Diagram: ACC
-![CD Diagram ACC](/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/resultados_estatisticos/cd_diagram_ACC.png)
+![CD Diagram ACC](./cd_diagram_ACC.png)
 
 ### CD Diagram: G_Mean
-![CD Diagram G_Mean](/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/resultados_estatisticos/cd_diagram_G_Mean.png)
+![CD Diagram G_Mean](./cd_diagram_G_Mean.png)
 
 ### CD Diagram: CE
-![CD Diagram CE](/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/resultados_estatisticos/cd_diagram_CE.png)
+![CD Diagram CE](./cd_diagram_CE.png)
 
 ### CD Diagram: total_time_s
-![CD Diagram total_time_s](/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/resultados_estatisticos/cd_diagram_total_time_s.png)
+![CD Diagram total_time_s](./cd_diagram_total_time_s.png)
 
 
 ---
