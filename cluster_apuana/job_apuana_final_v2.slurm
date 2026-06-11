@@ -2,17 +2,16 @@
 #SBATCH --job-name=tabicl_v2
 #SBATCH --output=logs/run_v2_%j.out
 #SBATCH --error=logs/run_v2_%j.err
-#SBATCH --partition=gpu
+#SBATCH --partition=long-simple
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
-#SBATCH --gres=gpu:1
-#SBATCH --mem=64G
+#SBATCH --gpus=1
+#SBATCH --mem=128G
 #SBATCH --time=40:00:00
 
 # Inicializa o ambiente
-source /home/seu_usuario/miniconda3/etc/profile.d/conda.sh
-conda activate tabicl_env
+source $HOME/tabarena_env/bin/activate
 
 echo "=========================================="
 echo "Iniciando Job v2 (Correção de Leakage)"
