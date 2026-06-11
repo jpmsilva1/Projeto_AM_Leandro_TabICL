@@ -10,7 +10,7 @@ A arquitetura inicial do projeto foi desenhada para executar em instâncias mode
 ## 2. Validação em Nuvem (GPU Dedicada via Runpod)
 Para validar a corretude dos pipelines de código (processamento de features categóricas, splits estratificados, extração de embeddings no TabICL), subimos temporariamente uma instância paga na plataforma Runpod equipada com uma RTX 4090 e processadores robustos.
 - **Resultados:** O código provou-se funcional e as predições do TabICL se beneficiaram drasticamente dos 24GB de VRAM da placa.
-- **Ajuste de Custo:** Devido ao custo por hora (~\$0.69/h) e o orçamento limitado, reduzimos estrategicamente o `time_limit` do *AutoGluon Extreme* de 2 horas (7200s) para 1 hora (3600s). Isso permitiu maximizar o número de datasets processados dentro do orçamento disponível ($15), provando que o modelo conseguia manter alta performance com metade do tempo teto.
+- **Orçamento e Ajuste de Custo:** Inserimos $20 dólares de crédito na plataforma com a meta de otimizar a execução para custar apenas $15. Para isso, reduzimos estrategicamente o `time_limit` do *AutoGluon Extreme* de 2 horas (7200s) para 1 hora (3600s). Contudo, devido à altíssima exigência computacional de certos datasets, todo o crédito de $20 foi consumido e, mesmo assim, a execução foi interrompida antes de processar todos os datasets da fila.
 
 ## 3. Migração para o Cluster Universitário (Apuana - 8 CPUs)
 Com o código validado, o workload primário foi redirecionado gratuitamente para o cluster Apuana (CIn-UFPE).
@@ -34,12 +34,12 @@ Durante o teste de estresse contínuo, mapeamos comportamentos atípicos gerados
 - **Problema:** Datasets como o `JapaneseVowels` demonstraram comportamento anômalo interno nos modelos base do AutoGluon devido ao formato intrínseco dos dados (timeseries multivariável forçada para tabular). Isso resultou em `AUC=nan`.
 - **A Solução:** Adotamos o retorno explícito e gracioso de `np.nan` nestes casos matematicamente insolúveis, para preservar a integridade da extração de outros indicadores como Acurácia e Tempo de Treinamento, impedindo que o script encerrasse de forma prematura.
 
-## 5. Arquitetura da Rodada Definitiva (Escalonamento Vertical para 64 CPUs)
+## 5. Arquitetura da Rodada Definitiva (Escalonamento e Limite de 32 CPUs no Apuana)
 Para gerar a Tabela Final dos Resultados (e compensar o peso computacional extremo dos 10 maiores datasets da benchmark), projetamos uma abordagem de força-bruta matemática.
 
 - **A Constatação:** O gargalo no tempo total não é linear. O maior tempo de espera vem do *AutoGluon Extreme*, que obedece a um teto fixo de horas. Se deixarmos o limite em 2h usando 8 CPUs, entregamos **16 horas-CPU** de poder de processamento interno.
-- **A Decisão Final:** Criamos os scripts finais (`run_cluster_final.py` e `job_apuana_final.slurm`) solicitando **64 CPUs**. Reduzimos o teto de tempo para **1 hora**. 
-- **Justificativa Computacional:** Ao injetar 64 CPUs e conceder 1 hora de teto de processamento, estamos despejando **64 horas-CPU** no ensemble. Estamos cortando o tempo de relógio global pela metade, enquanto injetamos **4 vezes mais força computacional real** na construção de modelos (Random Forests treinam árvores simutaneamente por thread).
+- **A Decisão Final:** Criamos os scripts finais (`run_cluster_final.py` e `job_apuana_final.slurm`) solicitando originalmente **64 CPUs** e reduzindo o teto de tempo para **1 hora** para acelerar a validação. 
+- **O Teto Físico do Servidor:** Durante a submissão no cluster Apuana, esbarramos no limite de recursos físicos/políticas da partição, que impôs um teto máximo alocável de **32 CPUs**. A arquitetura precisou ser executada com essa restrição imprevista, o que cortou o grau de paralelismo desejado pela metade e estendeu ligeiramente o tempo real de treinamento nas Árvores de Decisão dos datasets maiores.
 
 O resultado esperado desta última arquitetura é a execução impecável de toda a fila de dados, finalizando o experimento em prazo acelerado e gerando métricas de ensemble com precisão superior.
 
