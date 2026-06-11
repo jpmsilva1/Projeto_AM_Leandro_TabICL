@@ -20,44 +20,44 @@ Com o código validado, o workload primário foi redirecionado gratuitamente par
 ## 4. Análise e Tratamento de Anomalias Matemáticas (Scikit-Learn)
 Durante o teste de estresse contínuo, mapeamos comportamentos atípicos gerados por datasets extremamente esparsos ("sujos") do repositório OpenML:
 
-### A. O Bug Oculto do OpenML: Colisão de Task ID vs Dataset ID
-- **Problema Descoberto no Estresse:** Durante a execução de datasets pesados (como `houses` e `KDDCup09_appetency`), notamos um comportamento bizarro na tela. O dataset `KDDCup09_appetency`, que deveria ser uma classificação binária com 50.000 amostras, estava sendo carregado com **1829 amostras, 1024 features e 657 classes**.
-- **A Causa Raiz:** Descobrimos que o dicionário de datasets do projeto usava o **Task ID (tid)**. Nosso código tentava fazer `openml.datasets.get_dataset(tid)`. Se, por pura coincidência, um dataset de imagens genérico tivesse o mesmo ID numérico da nossa Task, o OpenML baixava o dataset errado (explicando as 1024 features de embeddings e 657 classes).
+### A. Inconsistência na API do OpenML: Sobreposição de Task ID e Dataset ID
+- **Anomalia Identificada:** Durante o processamento de bases extensas (como `houses` e `KDDCup09_appetency`), observou-se uma divergência estrutural. O dataset `KDDCup09_appetency`, esperado como uma classificação binária de 50.000 amostras, foi instanciado com **1829 amostras, 1024 features e 657 classes**.
+- **Causa Raiz:** A análise apontou que o dicionário interno utilizava o identificador da tarefa (**Task ID - tid**) como argumento direto para a função `openml.datasets.get_dataset(tid)`. Devido à arquitetura do OpenML, IDs numéricos de tarefas e datasets podem colidir, resultando no download de conjuntos de dados não correlacionados (como tarefas de visão computacional).
 - **A Solução Definitiva:** Corrigimos o código da Rodada Final para **sempre** buscar a Task primeiro (`task = openml.tasks.get_task(tid)`) e somente depois baixar o dataset referenciado por ela (`openml.datasets.get_dataset(task.dataset_id)`). Isso eliminou completamente os "falsos datasets" que corrompiam a execução.
 
 ### B. O Paradoxo de Amostras vs. Classes (Datasets Esparsos Reais)
 - **Problema:** Um dataset foi carregado com 50 classes para apenas 66 amostras no total. Ao aplicar o `test_size=0.3`, o subconjunto de Teste reteve amostras de apenas uma fração das 50 classes originais. 
-- **O Colapso:** A biblioteca *Scikit-Learn* explodiu no cálculo do AUC (`roc_auc_score(..., multi_class='ovo')`) com o erro: *"Number of classes in y_true not equal to the number of columns in y_score"*. A matemática da Curva ROC (que avalia pares de classes) quebra quando tenta calcular a taxa de Falsos Positivos para uma classe com 0 amostras reais presentes.
-- **A Solução Científica (Filtragem Dinâmica):** Implementamos uma função `compute_auc_safe` que intercepta esse colapso. Ela detecta automaticamente o subconjunto de classes que "sobreviveram" no Test Set, recorta a matriz de probabilidades apenas para essas colunas, re-normaliza para que a soma seja 1.0, e injeta o parâmetro explicíto `labels=classes_presentes`. Isso blindou o código contra qualquer erro dimensional futuro.
+- **Falha Computacional:** A biblioteca *Scikit-Learn* apresentou erro de execução no cálculo da métrica AUC (`roc_auc_score(..., multi_class='ovo')`), emitindo a exceção: *"Number of classes in y_true not equal to the number of columns in y_score"*. O cálculo pareado da Curva ROC torna-se matematicamente indefinido ao tentar mensurar a taxa de falsos positivos para classes sem instâncias amostrais no conjunto de avaliação.
+- **Solução Metodológica (Filtragem Dinâmica):** Foi desenvolvida a função `compute_auc_safe` para tratar essa exceção dimensional. O método identifica as classes efetivamente presentes no conjunto de teste, aplica um recorte vetorial na matriz de probabilidades e realiza a re-normalização estatística. Essa abordagem garantiu a estabilidade do pipeline perante partições esparsas.
 
 ### B. Fallback para "Single Class" e NaNs Esperados
 - **Problema:** Datasets como o `JapaneseVowels` demonstraram comportamento anômalo interno nos modelos base do AutoGluon devido ao formato intrínseco dos dados (timeseries multivariável forçada para tabular). Isso resultou em `AUC=nan`.
 - **A Solução:** Adotamos o retorno explícito e gracioso de `np.nan` nestes casos matematicamente insolúveis, para preservar a integridade da extração de outros indicadores como Acurácia e Tempo de Treinamento, impedindo que o script encerrasse de forma prematura.
 
 ## 5. Arquitetura da Rodada Definitiva (Escalonamento e Limite de 32 CPUs no Apuana)
-Para gerar a Tabela Final dos Resultados (e compensar o peso computacional extremo dos 10 maiores datasets da benchmark), projetamos uma abordagem de força-bruta matemática.
+Para viabilizar a geração dos resultados finais e acomodar o custo computacional exigido pelos 10 maiores datasets do benchmark, adotou-se uma estratégia de maximização de paralelismo.
 
 - **A Constatação:** O gargalo no tempo total não é linear. O maior tempo de espera vem do *AutoGluon Extreme*, que obedece a um teto fixo de horas. Se deixarmos o limite em 2h usando 8 CPUs, entregamos **16 horas-CPU** de poder de processamento interno.
 - **A Decisão Final:** Criamos os scripts finais (`run_cluster_final.py` e `job_apuana_final.slurm`) solicitando originalmente **64 CPUs** e reduzindo o teto de tempo para **1 hora** para acelerar a validação. 
-- **O Teto Físico do Servidor:** Durante a submissão no cluster Apuana, esbarramos no limite de recursos físicos/políticas da partição, que impôs um teto máximo alocável de **32 CPUs**. A arquitetura precisou ser executada com essa restrição imprevista, o que cortou o grau de paralelismo desejado pela metade e estendeu ligeiramente o tempo real de treinamento nas Árvores de Decisão dos datasets maiores.
+- **Teto Físico do Servidor:** Durante a submissão ao cluster Apuana, a alocação foi restringida pelas políticas de gestão de recursos da partição, impondo um limite de **32 CPUs**. A arquitetura operou sob esta restrição de infraestrutura, reduzindo o paralelismo projetado e estendendo marginalmente o tempo real de convergência das Árvores de Decisão nos datasets de grande porte.
 
 O resultado esperado desta última arquitetura é a execução impecável de toda a fila de dados, finalizando o experimento em prazo acelerado e gerando métricas de ensemble com precisão superior.
 
 ## 6. Análise da Execução Final (Soft Limits vs Extensões C++)
-Durante a madrugada de execução dos datasets pesados (como `waveform-5000`), um fenômeno fascinante de "timeout" foi mapeado, oferecendo um forte insight metodológico para a defesa do TCC:
+Durante a execução de instâncias de alta complexidade (ex: `waveform-5000`), observou-se uma divergência no controle de tempo máximo (*timeout*), levantando um ponto metodológico relevante:
 
 ### A. O Comportamento Contraintuitivo dos Limites de Tempo
 Observamos que o **AutoGluon Default**, configurado com um limite de 30 minutos (`time_limit=1800`), demorou **1 hora e 12 minutos** para concluir a predição, ultrapassando não apenas o seu próprio limite, mas também o tempo gasto pelo **AutoGluon Extreme** (cravado em 60 minutos exatos).
 
 * **Por que isso aconteceu?** O limite nativo do AutoGluon é um *Soft Limit*. O framework avalia o cronômetro apenas no intervalo *entre* o treinamento de dois sub-modelos. Como o perfil *Default* obrigatoriamente engloba a tentativa de treino de Redes Neurais pesadas (FastAI/Torch), quando o algoritmo entra nessas redes no "minuto 29", ele fica travado processando as *epochs* e só vai verificar o relógio 40 minutos depois, estourando a barreira teórica de tempo.
-* **O Python não aborta Extensões em C/C++:** Para forçar o cumprimento do tempo, implementamos em código um "Alarme de Segurança" usando a biblioteca `signal` do Python (com limite rígido de 45 min para o Default). No entanto, como o processamento de Redes Neurais e Árvores é delegado para o nível do Kernel através de C++ (por baixo dos panos), o sinal do Python é solenemente ignorado pelo Sistema Operacional até que a extensão em C++ libere o processo de volta para o Python.
+* **Comportamento de Extensões C/C++:** Para assegurar o cumprimento do tempo de execução, foi implementado um controle de interrupção (via biblioteca `signal` do Python). Contudo, como o processamento primário (Árvores e Redes Neurais) é delegado a extensões compiladas em C++, os sinais do Python não interrompem a rotina subjacente até que o processo retorne o controle ao interpretador principal.
 
 ### B. A Inteligência do Perfil Extreme
 Ironicamente, o modo *Extreme* (`best_quality`), com limite de 60 minutos, encerrou cravado no tempo correto (61 minutos). Isso ocorre porque, ao ativar o modo *best_quality*, o AutoGluon altera sua heurística interna: sabendo que tem pouco tempo para fazer dezenas de validações cruzadas (bagging e stacking), ele ativa uma auto-preservação e frequentemente decide **pular completamente as Redes Neurais lentas**, focando o tempo nas Árvores de Decisão rápidas para entregar um ensemble robusto dentro da regra do relógio.
 
-### C. A Vantagem Competitiva do TabICL
-O maior achado acadêmico extraído deste episódio ocorreu no dataset `waveform-5000`. Enquanto os algoritmos de estado-da-arte do AutoGluon lutavam contra gargalos de C++ e levavam mais de 1 hora para entregar um `AUC=0.9757` (Default) e `0.9744` (Extreme, que ironicamente sofreu *overfitting* de ensemble), o **TabICL** demonstrou a eficiência brutal do "In-Context Learning". 
-O modelo precisou de absurdos **5.6 SEGUNDOS** para engolir o dataset inteiro e devolver o melhor AUC absoluto de todos os testes: **AUC=0.9785**. Isso configura um triunfo não apenas de precisão, mas de eficiência computacional esmagadora.
+### C. Análise Comparativa de Eficiência (TabICL)
+Uma observação acadêmica substancial foi obtida no dataset `waveform-5000`. Enquanto os ensembles tradicionais do AutoGluon atingiram tempos de execução superiores a 1 hora, resultando em `AUC=0.9757` (Default) e `0.9744` (Extreme - denotando leve *overfitting* de ensemble), o modelo **TabICL** demonstrou alta otimização baseada em *In-Context Learning*. 
+O modelo inferiu as predições em **5.6 segundos**, atingindo o maior valor absoluto para a amostra: **AUC=0.9785**. Tal resultado atesta não apenas precisão competitiva, mas ganho expressivo de eficiência computacional.
 
 ## 7. Curadoria de Datasets e o Paradoxo do Benchmark 10/10/10
 Durante a fase final de consolidação dos 30 datasets exigidos pelo edital da disciplina, deparamo-nos com um impasse arquitetural significativo envolvendo as métricas do benchmark TabArena-v0.1 e as exigências do projeto.
@@ -70,8 +70,8 @@ Ao auditar a planilha oficial de curadoria dos autores originais do TabArena (`T
 1. **Falta de Bases Pequenas:** Dos 50 datasets plenamente aprovados com o selo "Yes" de qualidade pelos curadores (Andrej e Lennart), **apenas 4 datasets se enquadravam como pequenos** (ex: `diabetes`, `ilpd`).
 2. **Escassez de Bases Puras:** Quando aplicamos o filtro de restrições do nosso pipeline (exigir que a tarefa fosse estritamente de *Classificação* e que não sofresse de Data Leakage temporal ou de grupo), o universo de datasets perfeitos e aprovados caiu para **aproximadamente 18 datasets** no total.
 
-### C. A Solução (Compromisso Metodológico)
-Para bater a cota obrigatória de 30 datasets sem incorrer em falhas metodológicas graves (como usar Regressão ou Datasets com vazamento temporal), o nosso grupo e o template base do projeto adotaram a única saída técnica possível:
+### C. Solução e Compromisso Metodológico
+Para atingir o requisito de 30 datasets sem comprometer o rigor científico (evitando o uso de bases de regressão ou submetidas a vazamento temporal), optou-se pela seguinte abordagem metodológica:
 - Preenchemos as vagas restantes com datasets "clássicos" e estruturalmente sólidos do OpenML (como `mushroom` e `spambase`), mesmo sabendo que estes possuíam um *flag* de rejeição ou "condicional" pela curadoria moderna do TabArena por serem considerados fáceis ou obsoletos.
 - **A Estratificação Final (3/17/10):** A escolha de usar 3 Pequenos, 17 Médios e 10 Grandes reflete esse funil de qualidade. Nós priorizamos a integridade do modelo (evitar regressão e leakage) em detrimento da simetria arbitrária de tamanhos.
 - **Validação Docente:** Este paradoxo da base original foi documentado e validado em reunião com o professor, autorizando o uso da distribuição 3/17/10 como uma demonstração de rigor acadêmico frente às limitações do paper.
