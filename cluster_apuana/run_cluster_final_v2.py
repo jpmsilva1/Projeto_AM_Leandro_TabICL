@@ -18,7 +18,6 @@ from sklearn.preprocessing import LabelEncoder, OrdinalEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from imblearn.metrics import geometric_mean_score
 
 import torch
 
@@ -124,6 +123,16 @@ def compute_auc(y_true, y_proba, n_classes):
         logging.warning(f"AUC calculation failed: {e}")
         return np.nan
 
+def g_mean_score(y_true, y_pred):
+    classes = np.unique(y_true)
+    recalls = []
+    for c in classes:
+        mask = y_true == c
+        if not mask.any(): continue
+        recalls.append(float((y_pred[mask] == c).mean()))
+    if not recalls: return 0.0
+    return float(np.exp(np.mean(np.log(np.clip(recalls, 1e-12, 1.0)))))
+
 def compute_cross_entropy(y_true, y_proba, n_classes):
     try: return float(log_loss(y_true, y_proba, labels=np.arange(n_classes)))
     except: return np.nan
@@ -144,7 +153,7 @@ def run_baseline(model_name, build_fn, X_train, y_train, X_test, y_test, n_class
         
     fit_predict_time = time.perf_counter() - t0
     acc = accuracy_score(y_test, preds)
-    gmean = geometric_mean_score(y_test, preds)
+    gmean = g_mean_score(y_test, preds)
     auc = compute_auc(y_test, probs, n_classes) if probs is not None else np.nan
     ce = compute_cross_entropy(y_test, probs, n_classes) if probs is not None else np.nan
     
@@ -208,7 +217,7 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
         
         total_time = time.perf_counter() - t0
         acc = accuracy_score(y_test, y_pred)
-        gmean = geometric_mean_score(y_test, y_pred)
+        gmean = g_mean_score(y_test, y_pred)
         auc = compute_auc(y_test, y_proba, n_classes)
         ce = compute_cross_entropy(y_test, y_proba, n_classes)
         
@@ -297,7 +306,7 @@ def run_tuning(model_name, objective_func, model_class, X_train, y_train, X_test
         y_pred = y_pred.ravel()
         
     acc = accuracy_score(y_test, y_pred)
-    gmean = geometric_mean_score(y_test, y_pred)
+    gmean = g_mean_score(y_test, y_pred)
     auc = compute_auc(y_test, y_proba, n_classes) if y_proba is not None else np.nan
     ce = compute_cross_entropy(y_test, y_proba, n_classes) if y_proba is not None else np.nan
     
