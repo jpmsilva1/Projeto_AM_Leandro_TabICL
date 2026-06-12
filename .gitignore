@@ -29,3 +29,5 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+cluster_apuana/*.log
+cluster_apuana/logs/
