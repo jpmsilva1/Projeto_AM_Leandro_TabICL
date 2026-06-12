@@ -1,0 +1,158 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{setspace}
+
+\title{Relatório Final: Avaliação do Modelo TabICL v2}
+\author{João Pedro Miranda da Silva \and Maria Clara Falcão Guerra Barretto \and Vinicius Limeira Valença}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Este relatório apresenta a avaliação sistemática do modelo fundacional TabICL v2 na tarefa de classificação supervisionada em dados tabulares. O modelo utiliza a arquitetura Transformer e o paradigma de In-Context Learning (ICL) para gerar predições sem a necessidade empírica de atualização de pesos. Avaliamos a performance do modelo utilizando o benchmark TabArena-v0.1, especificamente sobre uma seleção de 30 datasets divididos em três regimes de tamanho (Small, Medium e Large). A performance foi confrontada rigorosamente com três baselines fortes baseados em árvores de decisão (LightGBM, XGBoost e CatBoost) utilizando hiperparâmetros tunados (pytabkit), além de um pipeline comercial de AutoML (AutoGluon). O estudo abrange uma ampla análise de hiperparâmetros, custo computacional e validações estatísticas frequentistas e bayesianas.
+\end{abstract}
+
+\newpage
+\tableofcontents
+
+\newpage
+\hypersetup{pageanchor=true}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\onehalfspacing
+
+\section{Introdução}
+
+\subsection{Contexto e motivação}
+Historicamente, algoritmos baseados em árvores de decisão (Gradient Boosted Decision Trees - GBDTs), como XGBoost, LightGBM e CatBoost, estabeleceram a hegemonia incontestável na modelagem de dados tabulares não homogêneos. No entanto, o sucesso massivo dos Foundation Models e dos Grandes Modelos de Linguagem (LLMs) em dados textuais trouxe à tona a indagação sobre a viabilidade de aplicar o paradigma do \textit{In-Context Learning} (ICL) ao universo tabular. O objetivo é permitir que um modelo, pré-treinado em um vasto corpus de tabelas sintéticas e reais, seja capaz de inferir padrões de novos dados em tempo de inferência, utilizando instâncias de treino diretamente como "contexto" no prompt, dispensando assim a etapa tradicional e custosa de \textit{Gradient Descent} e a busca massiva por hiperparâmetros.
+
+\subsection{Modelo atribuído}
+Para este projeto, foi atribuída a avaliação do modelo fundacional \textbf{TabICL v2} (versão 2.1.1), desenvolvido pela equipe Soda/Inria. O modelo utiliza uma arquitetura puramente baseada em Transformers e foi pré-treinado em dados sintéticos para generalizar distribuições tabulares complexas. Ao invés de aprender os pesos da rede na base de treino do usuário, o TabICL insere as características (features) e os rótulos (labels) dos dados de treino como tokens de atenção no seu contexto de inferência. O modelo, então, prevê os rótulos de novas amostras baseando-se nas interações de atenção calculadas entre o novo dado e o conjunto de contexto, num formato tipicamente *out-of-the-box*.
+
+\subsection{Contribuições do Trabalho}
+A principal contribuição deste relatório consiste na execução de um teste de estresse abrangente do TabICL v2 frente ao atual estado-da-arte consolidado (GBDTs otimizados e AutoGluon). Nossa análise cobre o desempenho de precisão (AUC OvO, Accuracy, G-Mean, Cross-Entropy) em 30 datasets heterogêneos originários do benchmark TabArena-v0.1. Exploramos a fundo as limitações arquiteturais do modelo relativas ao uso de memória e tempo de execução. O estudo estatístico posterior valida rigorosamente a relevância estatística dos achados com testes frequentistas e de região de equivalência prática (ROPE) Bayesiana.
+
+\section*{Etapa 1: Fundamentação teórica do modelo}
+\addcontentsline{toc}{section}{Etapa 1: Fundamentação teórica do modelo}
+
+\subsection{Motivação e intuição}
+A intuição por trás do TabICL v2 reside na hipótese de que a relação entre variáveis preditoras ($X$) e a resposta ($Y$) pode ser abstraída como um problema de modelagem de sequência. Se um modelo for exposto a uma diversidade suficiente de superfícies de decisão (linearidades, periodicidades, interações categóricas) durante o pré-treinamento, ele aprende um algoritmo de aprendizado genérico na sua estrutura de pesos. Durante o \textit{deploy}, as amostras de treino fornecidas pelo usuário funcionam como exemplos ICL (poucos ou muitos "shots"), onde o mecanismo de auto-atenção mapeia a nova observação aos vizinhos contextuais que definem a fronteira de decisão daquela tarefa específica.
+
+\subsection{Arquitetura e formulação}
+O núcleo da arquitetura do TabICL é baseado no framework Transformer. A entrada tabular bruta é inicialmente projetada para um espaço de *embeddings* contínuos. Tanto as variáveis numéricas (escalonadas dinamicamente) quanto as categóricas (mapeadas internamente) são codificadas. A estrutura incorpora camadas de atenção tradicionais para permitir a modelagem cruzada entre instâncias. Para suportar tarefas multiclasse, a camada final realiza um Softmax sobre os *logits* gerados pelas representações contextuais combinadas das classes alvo.
+
+\subsection{Complexidade computacional}
+O ponto mais sensível da arquitetura de In-Context Learning é a sua complexidade de atenção instanciada. O cálculo tradicional da auto-atenção ($Attention(Q,K,V)$) entre todas as instâncias de teste e as instâncias de treino do contexto escala quadraticamente com o número de amostras $n$. Isso confere ao TabICL uma complexidade teórica de $\mathcal{O}(n^2 \cdot p)$, onde $p$ é a dimensionalidade das features. Consequentemente, para datasets com centenas de features e milhares de amostras (regime *Large*), o consumo de memória RAM/VRAM sofre um crescimento explosivo, culminando frequentemente em falhas \textit{Out-Of-Memory} (OOM) no hardware. 
+
+\subsection{Posicionamento na literatura tabular SOTA}
+Dentro do Estado-da-Arte (SOTA) tabular, o TabICL busca preencher o nicho da "Classificação Instantânea Forte". Enquanto modelos como XGBoost e LightGBM são insuperáveis no teto de precisão e escalabilidade quando perfeitamente parametrizados (e com engenharia de features), o TabICL oferece uma solução \textit{frictionless}: não requer pré-processamento manual das variáveis, nem validação cruzada exaustiva para achar a melhor profundidade de árvore ou taxa de aprendizado. Sua proposta o coloca frente a frente com frameworks de AutoML (como o AutoGluon), porém operando em ordens de magnitude mais rápidas (segundos ao invés de horas) em bases compactas.
+
+\subsection{Hiperparâmetros principais e faixas}
+Apesar de ser projetado para operar perfeitamente em configuração *default*, submetemos o TabICL a um processo de sintonização via Optuna (com \textit{TPE Sampler}) buscando o teto do seu potencial. A grade de hiperparâmetros explorada na Etapa Experimental abordou:
+\begin{itemize}
+    \item \textbf{n\_estimators:} [4 a 32, passo 4] - Define o tamanho do \textit{ensemble} de contexto.
+    \item \textbf{softmax\_temperature:} [0.3 a 1.5, escala log] - Controla a calibração de confiança das probabilidades.
+    \item \textbf{outlier\_threshold:} [2.0 a 6.0] - Limiar para o \textit{clipping} das features numéricas extremas.
+    \item \textbf{average\_logits:} [Booleano] - Estratégia de combinação do ensemble (em *logits* ou em probabilidades diretas).
+    \item \textbf{norm\_methods:} [quantile, robust, power, none] - Método de escalonamento espacial do *embedding* contínuo.
+\end{itemize}
+
+\section*{Etapa 2: Estudo Experimental}
+\addcontentsline{toc}{section}{Etapa 2: Estudo experimental}
+
+\subsection{Metodologia}
+A configuração empírica do projeto buscou garantir absoluta justiça comparativa (prevenindo vazamento de dados) e reprodutibilidade científica. Todos os processos metodológicos listados a seguir estão nativamente unificados no script orquestrador do *cluster* de testes \texttt{cluster\_apuana/run\_cluster\_final\_v2.py}.
+
+\paragraph{Seleção de Datasets e Regimes:} O escopo englobou 30 bases de dados extraídas do \textit{benchmark} moderno TabArena-v0.1. A seleção incluiu problemas binários e multiclasse com alta assimetria e features híbridas (numéricas e categóricas). O recorte final das 30 bases obedeceu à seguinte estratificação de regimes de tamanho: \textbf{3 Small} ($<1.000$ instâncias), \textbf{17 Medium} ($1.000$ a $10.000$ instâncias) e \textbf{10 Large} ($>10.000$ instâncias). Esta distribuição assimétrica de 3/17/10 foi empiricamente adotada por espelhar a densidade real dos datasets mais desafiadores presentes na curadoria do TabArena, superando as restrições da curadoria inicial e permitindo testar com rigor as falhas de OOM do modelo fundacional nos regimes maiores.
+
+\paragraph{Pipeline e Pré-processamento:} A arquitetura adotou um particionamento estratificado rigoroso (70\% Treino / 30\% Teste) travado sob a \texttt{seed=42}. Apesar de o TabICL processar variáveis categóricas e preencher valores ausentes internamente sem assistência, os \textit{baselines} tradicionais falham perante dados brutos sujos. Portanto, foi estabelecido um pipeline de processamento padronizado contendo \texttt{OrdinalEncoder} para codificação limpa das categorias (prevenindo a explosão da esparsidade que o One-Hot provocaria nos dados) e o \texttt{SimpleImputer} ancorado na mediana para o tratamento de \textit{missing values}. Este pipeline de \textit{fit/transform} foi aplicado estritamente \textbf{após} a divisão dos dados, neutralizando qualquer vetor de \textit{Data Leakage}. As inferências e computações das métricas (AUC OvO, Accuracy, G-Mean e Log-Loss) foram conduzidas isoladamente para os conjuntos de treino e teste, visando mapear padrões de *overfitting*.
+
+\paragraph{Ambiente Computacional:} A infraestrutura lógica baseia-se em Python 3.11 com as bibliotecas: \texttt{tabicl==2.1.1} (baseado em PyTorch), \texttt{optuna==4.8.0} (motor de otimização Bayesiana TPE) e a interface otimizada \texttt{pytabkit==1.7.3} para a chamada limpa dos métodos GBDT.
+
+\subsection{Baselines e referência AutoML}
+O poder preditivo do TabICL v2 foi contrastado contra três eixos principais de tecnologia \textit{Machine Learning} construídos diretamente na orquestração principal (\texttt{run\_cluster\_final\_v2.py}):
+\begin{enumerate}
+    \item \textbf{TabICL (Grupo):} O modelo designado operou com parâmetros de salvaguarda de memória explícitos (\texttt{device="cuda"} com \texttt{offload\_mode="disk"}), visando resistir aos gargalos do \textit{Attention Mechanism} em bases como o `isolet`.
+    \item \textbf{Baselines GBDT Otimizados:} Empregamos as iterações mais maduras dos *Gradient Boosted Trees*: LightGBM, XGBoost e CatBoost. Optou-se por utilizar o wrapper \texttt{\_TD\_Classifier} (implementado pelo \texttt{pytabkit}), que injeta instantaneamente um perfil de \textit{hyperparameters} originário de um intenso processo de meta-aprendizado (TD - Tuned Defaults), convertendo os baselines em competidores de nível SOTA sem necessidade de buscas massivas.
+    \item \textbf{Baselines GBDT com Tuning Ativo:} Submetemos as três árvores do item anterior ao Optuna durante a rodada, comparando os ganhos residuais do tuning ativo na nossa base isolada contra os meta-parâmetros do \texttt{pytabkit}.
+    \item \textbf{AutoML Reference:} AutoGluon (\texttt{TabularPredictor}), acionado nos *presets* \texttt{medium\_quality} (Default) e no implacável \texttt{best\_quality} (Extreme). O tempo de montagem para o Extreme foi ancorado com o teto absoluto fixado.
+\end{enumerate}
+
+\subsection{Resultados gerais}
+% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+
+\subsection{Análise por regime}
+% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+
+\subsection{Análise estatística}
+% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+
+\subsection{Custo vs. desempenho}
+% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+
+\section{Discussão}
+% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+
+\section{Reprodutibilidade}
+% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+
+\section{Conclusões}
+% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+
+\clearpage
+\appendix
+\section{Tabela dos 30 datasets escolhidos}
+\begin{table}[htpb]
+\centering
+\small
+\caption{Características dos 30 datasets avaliados no benchmark TabArena-v0.1.}
+\label{tab:datasets}
+\vspace{0.2cm}
+\begin{tabular}{@{}llrrrc@{}}
+\toprule
+\textbf{Dataset} & \textbf{TID (Task)} & \textbf{Instâncias} & \textbf{Features} & \textbf{Classes} & \textbf{Regime} \\ \midrule
+blood-transfusion-service-center & 1464 & 748 & 5 & 2 & Small \\
+diabetes & 37 & 768 & 9 & 2 & Small \\
+anneal & 2 & 898 & 39 & 5 & Small \\
+credit-g & 168757 & 1.000 & 21 & 2 & Medium \\
+qsar-biodeg & 359956 & 1.055 & 42 & 2 & Medium \\
+baseball & 2077 & 1.340 & 17 & 3 & Medium \\
+yeast & 2073 & 1.484 & 9 & 10 & Medium \\
+splice & 45 & 3.190 & 61 & 3 & Medium \\
+Bioresponse & 359967 & 3.751 & 1777 & 2 & Medium \\
+hypothyroid & 3011 & 3.772 & 30 & 4 & Medium \\
+hiva\_agnostic & 3892 & 4.229 & 1618 & 2 & Medium \\
+spambase & 43 & 4.601 & 58 & 2 & Medium \\
+waveform-5000 & 58 & 5.000 & 41 & 3 & Medium \\
+churn & 359968 & 5.000 & 21 & 2 & Medium \\
+page-blocks & 30 & 5.473 & 11 & 5 & Medium \\
+optdigits & 28 & 5.620 & 65 & 10 & Medium \\
+satimage & 2074 & 6.430 & 37 & 6 & Medium \\
+isolet & 3481 & 7.797 & 618 & 26 & Medium \\
+mushroom & 24 & 8.124 & 23 & 2 & Medium \\
+JapaneseVowels & 3510 & 9.961 & 15 & 9 & Medium \\
+pendigits & 32 & 10.992 & 17 & 10 & Large \\
+nursery & 26 & 12.960 & 9 & 5 & Large \\
+letter & 6 & 20.000 & 17 & 26 & Large \\
+houses & 3688 & 20.640 & 9 & 2 & Large \\
+Amazon\_employee\_access & 359979 & 32.769 & 10 & 2 & Large \\
+KDDCup09\_appetency & 3945 & 50.000 & 231 & 2 & Large \\
+APSFailure & 168868 & 76.000 & 171 & 2 & Large \\
+KDD98 & 361329 & 82.318 & 478 & 2 & Large \\
+Diabetes130US & 211986 & 101.766 & 50 & 3 & Large \\
+porto-seguro & 360113 & 595.212 & 58 & 2 & Large \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
