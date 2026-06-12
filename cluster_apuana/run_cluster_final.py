@@ -3,6 +3,7 @@ import sys
 import time
 import signal
 import warnings
+import multiprocessing
 import numpy as np
 import pandas as pd
 import openml

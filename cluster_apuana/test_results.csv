@@ -1,0 +1,5 @@
+model,ACC,AUC_OVO,G_Mean,CE,total_time_s,dataset,regime
+TabICL,0.795556,0.772742,0.586839,0.463957,2.88,blood-transfusion-service-center,small
+LightGBM_TD,0.746667,0.724442,0.632319,0.551365,0.23,blood-transfusion-service-center,small
+XGBoost_TD,0.737778,0.712855,0.617852,0.628701,0.13,blood-transfusion-service-center,small
+AutoGluon_Default,0.791111,0.732023,0.609647,0.495763,15.64,blood-transfusion-service-center,small

@@ -26,7 +26,8 @@ echo "=========================================="
 
 mkdir -p logs
 
-python run_ag_extreme_joao.py
+cd $HOME/Projeto_AM_Leandro_TabICL/cluster_apuana/tatica_enxame/joao
+python run_ag_extreme.py
 
 echo "=========================================="
 echo "Job Finalizado."
