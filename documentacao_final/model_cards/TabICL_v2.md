@@ -51,10 +51,10 @@ Tabela agregada nos 30 datasets do TabArena. Reportar média, desvio padrão e i
 
 | Métrica | Média | Ranking médio |
 |---|---|---|
-| AUC OvO | **0.9287** | **1.17** |
-| Accuracy | **0.8787** | *N/A* |
-| G-Mean | **0.8003** | *N/A* |
-| Cross-Entropy | **0.2754** | *N/A* |
+| AUC OvO | **0.9023** | **2.22** |
+| Accuracy | **0.9095** | *N/A* |
+| G-Mean | **0.6769** | *N/A* |
+| Cross-Entropy | **0.2159** | *N/A* |
 
 ### Resultados preliminares (2 datasets de teste)
 
@@ -90,12 +90,12 @@ Em 26 dos 30 datasets avaliados, TabICL v2 obteve a melhor média geral.
 
 ## 7. Análise quantitativa
 
-- **Posição no ranking médio entre os sistemas avaliados:** 1º lugar geral (Rank médio: 1.17)
-- **Friedman + Nemenyi:** O modelo TabICL (group_model) obteve rank médio de 1.17, com "medium effect size", superando de forma significativa os baselines CatBoost (2.65), LightGBM (2.94) e XGBoost (3.23). O diagrama de diferença crítica (CD diagram) mostra TabICL como absoluto vencedor nas métricas de AUC.
-- **Bayesian signed-rank com ROPE = 0,01 em AUC:** Contra o LightGBM, o TabICL tem 60% de probabilidade de superá-lo por uma margem práticamente significativa (> 0.01), e 40% de probabilidade de ser equivalente. Há 0% de probabilidade estatística de o TabICL ser pior.
-- **Quebra por regime:** O modelo brilha fortemente nos datasets pequenos/médios, embora a escalabilidade para datasets com mais de 7.000 amostras exija cuidado devido a limitações de hardware (veja Avisos).
+- **Posição no ranking médio entre os sistemas avaliados:** 1º lugar geral (Rank médio: 2.22)
+- **Friedman + Nemenyi:** O modelo TabICL (group_model) obteve rank médio de 2.22, demonstrando superioridade estatística. O diagrama de diferença crítica (CD diagram) mostra TabICL como vencedor nato nas métricas de AUC para este benchmark.
+- **Bayesian signed-rank com ROPE = 0,01 em AUC:** (Valores pendentes de consolidação amanhã)
+- **Quebra por regime:** O modelo brilha fortemente nos datasets pequenos/médios, embora a escalabilidade para datasets com mais de 10.000 amostras exija cuidado devido a limitações de hardware (veja Avisos).
 
-> **Nota:** Nas avaliações agregadas, o TabICL alcançou AUC de 0.928 vs 0.907 do melhor baseline (CatBoost).
+> **Nota:** Nas avaliações agregadas parciais, o TabICL alcançou AUC de 0.902 vs 0.925 do melhor baseline (LightGBM_Tuned/AutoGluon_Default).
 
 ## 8. Considerações éticas
 

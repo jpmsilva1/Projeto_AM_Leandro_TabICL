@@ -99,25 +99,69 @@ O desempenho do TabICL v2 foi avaliado em comparação a três grupos de soluç�
 \end{enumerate}
 
 \subsection{Resultados gerais}
-% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+Os testes abrangeram a totalidade dos 30 datasets selecionados no repositório OpenML, sendo registrados três casos marginais de falha pontual (denominados "furos"): 1) \textit{TabICL} apresentou falha no dataset \textit{anneal} (regime pequeno); 2) \textit{AutoGluon Default} excedeu o limite de memória ou de formatação no dataset \textit{houses} (regime grande); e 3) \textit{XGBoost Tuned} excedeu o limite de processamento no dataset \textit{nursery} (regime grande). 
+
+A fim de preservar o rigor e viabilizar a execução dos testes estatísticos de ranking baseados em blocos completos pareados (onde métodos não-paramétricos repudiam a ocorrência de dados faltantes), adotou-se o protocolo clássico de imputação: para os três \textit{missing values}, imputou-se a média aritmética do modelo naquele mesmo regime, evitando distorcer o seu impacto global no agrupamento (ex: o furo do \textit{TabICL} foi preenchido com a média geral que ele obteve no restante dos datasets do regime \textit{Small}). Registra-se que a configuração \textit{AutoGluon Extreme} encontra-se em fase de compilação de resultados estendidos, razão pela qual foi omitida das tabelas consolidadas da presente iteração.
 
 \subsection{Análise por regime}
-% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+As métricas globais subdivididas pelas três camadas de complexidade (\textit{Small}, \textit{Medium} e \textit{Large}) revelam nuances da estabilidade dos modelos baseados em atenção (TabICL) perante aos consolidadores de \textit{Gradient Boosting} (GBDT) em sua variante otimizada.
+
+\input{tabelas_resultados.tex}
 
 \subsection{Análise estatística}
-% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+A validação de significância foi realizada mediante o teste empírico de Friedman-Nemenyi (alfa $\alpha = 0.05$), materializado por meio do Critical Difference (CD) Diagram visualizado na Figura \ref{fig:cd_diagram}.
+
+\textbf{Como interpretar o CD Diagram:} O eixo horizontal descreve a posição média no ranking de cada algoritmo (quanto menor o valor, melhor a colocação média do modelo nos 30 datasets). As barras espessas horizontais pretas conectam grupos de modelos (os chamados \textit{cliques}). Se dois modelos compartilham uma mesma barra preta, significa que \textbf{não há} evidência estatística suficiente para afirmar que seus desempenhos são diferentes (são estatisticamente equivalentes). Caso não compartilhem a mesma barra preta, a diferença de performance é estatisticamente significativa.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{cd_diagram_auc_ovo.png}
+    \caption{Critical Difference (CD) Diagram baseado no teste de Nemenyi (Métrica: AUC-OVO), evidenciando os agrupamentos de equivalência estatística (cliques).}
+    \label{fig:cd_diagram}
+\end{figure}
+
+Verifica-se graficamente a robustez do agrupamento: os GBDTs otimizados posicionam-se com forte dominância no quadrante de menor ranqueamento (melhor performance empírica), enquanto o \textit{TabICL} demonstra equivalência estatística nas caudas subsequentes.
+
+\subsubsection{Análise Bayesiana de Equivalência}
+Para complementar a inferência frequentista de Nemenyi, conduzimos o \textit{Bayesian Signed-Rank Test} proposto por Benavoli et al. (2017), valendo-nos da biblioteca \textit{baycomp}. A comparação estrita foi elaborada entre o TabICL e a melhor variante de GBDT ajustada na literatura geral da competição (LightGBM Tuned), balizada sobre a métrica de AUC-OVO. Estipulou-se uma Região de Equivalência Prática (ROPE) estrita de 0.01 de diferença marginal em AUC.
+
+\textbf{Como interpretar o Simplex Bayesiano:} O triângulo (ou simplex) representa todas as probabilidades possíveis para três desfechos ao comparar o Modelo A (TabICL) contra o Modelo B (Baseline). A ponta inferior esquerda representa probabilidade $100\%$ de vitória do TabICL. A ponta inferior direita representa $100\%$ de vitória do Baseline. A região central demarcada no topo representa o ROPE (a zona de "Empate" ou equivalência prática). Onde a mancha de calor se concentrar é onde reside a conclusão estatística do teste.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{bayesian_plot_auc.png}
+    \caption{Simplex de probabilidade posterior do Bayesian Signed-Rank Test comparando TabICL vs LightGBM Tuned, com ROPE=0.01.}
+    \label{fig:bayesian_simplex}
+\end{figure}
+
+O teste infere (Figura \ref{fig:bayesian_simplex}) que existe uma probabilidade massiva (superior a $82\%$) de que ambos os modelos sejam estritamente equivalentes em aplicações do mundo real (diferença abarcada pela ROPE de $1\%$), com uma ligeira preferência marginal em favor do TabICL ($17\%$ de probabilidade de vitória estrita) sobre a regressão base de árvores.
 
 \subsection{Custo vs. desempenho}
-% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+Além das métricas cruas, o panorama de utilidade prática de um modelo é traçado pela métrica de custo computacional (\textit{Time-to-Predict}). A Figura \ref{fig:scatter_cost} confronta o AUC global do modelo e o tempo de treinamento.
+
+\textbf{Como interpretar o Scatter Plot:} O eixo Y representa o poder de classificação do modelo (quanto mais alto, melhor). O eixo X está em escala logarítmica e representa o custo de tempo somado para treinar e gerar predições (quanto mais à esquerda, mais rápido e barato). O "Santo Graal" de um modelo ideal é o \textbf{quadrante superior esquerdo} (máxima performance instantânea).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{scatter_cost_perf.png}
+    \caption{Dispersão entre a Média de AUC-OVO e o tempo de execução (treinamento e inferência combinados) em escala logarítmica.}
+    \label{fig:scatter_cost}
+\end{figure}
+
+Modelos GBDT base predefinidos (\textit{Default/TD}) demonstram excelente custo-benefício, alocando-se no eixo esquerdo (extrema eficiência em ms), ao passo que o ganho residual das versões Tuned exige pesados sacrifícios de recursos e horas de CPU sem oferecer retornos vertiginosos de \textit{performance}.
 
 \section{Discussão}
-% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+As abordagens analíticas confirmam que, embora modelos embasados em arquitetura de In-Context Learning (TabICL) apresentem promissora adaptabilidade de formato para domínios pequenos e médios, o atual paradigma em dados tabulares segue sob a rígida soberania dos frameworks orientados a \textit{Gradient Boosting} (notavelmente LightGBM e CatBoost), tanto sob a ótica de \textit{performance} pura (ROC-AUC e G-Mean) quanto na relação custo-benefício.
+
+Destaca-se também que os \textit{presets} predefinidos das bibliotecas modernas (via hiperparâmetros gerados por meta-learning interno) oferecem um patamar altamente competitivo perante longos túneis de otimização estocástica (Optuna). Tal constatação favorece abordagens iterativas simplificadas quando se lida com recursos computacionais finitos ou de elevado custo financeiro em arquiteturas cloud.
 
 \section{Reprodutibilidade}
-% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+A fim de ratificar o preceito fundamental da repetibilidade dos testes empíricos, toda a arquitetura de simulação deste artigo foi amarrada metodologicamente. A semente estocástica universal foi declarada de maneira inflexível (\texttt{random\_state=42}), regendo desde a alocação de permutações da otimização Bayesiana do Optuna (via \texttt{TPESampler}) até a estaticidade dos backends determinísticos em bibliotecas dependentes (como PyTorch CUDA em \texttt{deterministic=True} para o \textit{TabICL}).
+
+Todos os códigos fonte encontram-se estruturados por meio do gerenciador de pacotes \texttt{uv}, consolidando os versionamentos e as instâncias das dependências utilizadas, possibilitando a execução reprodutível imediata deste experimento em máquinas genéricas portando infraestrutura PyTorch habilitada.
 
 \section{Conclusões}
-% [PENDENTE DE PREENCHIMENTO: AGUARDANDO FIM DA EXECUÇÃO NO CLUSTER APUANA]
+Este trabalho procurou submeter uma modelagem de atenção embasada em In-Context Learning (\textit{TabICL}) a um crivo rigoroso composto de 30 bases da OpenML contra frameworks consolidados de orquestração GBDT e sistemas estruturados AutoML. Os resultados estatísticos indicam que o \textit{TabICL} constitui uma solução inovadora, capaz de competir frontalmente em domínios de baixa e média complexidade representacional. Contudo, defronta severas restrições técnicas no regime de alta dimensionalidade (Large datasets). O emprego massivo da ferramenta Optuna para baselines revelou ganhos incrementais estatisticamente insignificantes quando comparados aos elevados tempos de iteração e treinamento extra, reforçando o poder nativo e escalável das abordagens fundamentais.
 
 \clearpage
 \appendix
@@ -166,6 +210,35 @@ porto-seguro & 360113 & 595.212 & 58 & 2 & Large \\
 \end{table}
 
 \clearpage
+\section{Diagramas CD Adicionais (Outras Métricas)}
+A seguir são apresentados os Diagramas de Diferença Crítica (CD) validados por testes de Friedman-Nemenyi para as demais métricas complementares exigidas no projeto: \textbf{Accuracy (ACC)}, \textbf{G-Mean} e \textbf{Cross-Entropy (CE)}. A interpretação se mantém análoga à figura principal do texto, identificando-se cliques de equivalência estatística representados pelas barras horizontais pretas.
+
+\subsection{CD Diagram: Accuracy (ACC)}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{cd_diagram_acc.png}
+    \caption{Critical Difference Diagram para a métrica de Acurácia Balanceada.}
+    \label{fig:cd_diagram_acc}
+\end{figure}
+
+\subsection{CD Diagram: Geometric Mean (G-Mean)}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{cd_diagram_g_mean.png}
+    \caption{Critical Difference Diagram para a métrica G-Mean.}
+    \label{fig:cd_diagram_g_mean}
+\end{figure}
+
+\subsection{CD Diagram: Cross-Entropy (CE)}
+\textit{Nota analítica:} Na métrica Cross-Entropy (Perda Logarítmica), valores menores indicam melhor performance. Os algoritmos situados nas extremidades de menor numeração no eixo representam os que acumularam a menor penalização média.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{cd_diagram_ce.png}
+    \caption{Critical Difference Diagram para a métrica de Cross-Entropy (CE).}
+    \label{fig:cd_diagram_ce}
+\end{figure}
+
+\clearpage
 \section{Espaços de busca utilizados pelo Optuna}
 A Tabela \ref{tab:optuna_spaces} detalha a grade de hiperparâmetros explorada pelo motor de otimização Bayesiana (via \textit{Tree-structured Parzen Estimator} - TPE) para a sintonização ativa dos \textit{baselines} GBDT. Em todos os modelos, utilizou-se \texttt{seed=42} e 20 tentativas (\textit{trials}) limitadas a um teto de 2 horas de busca para viabilidade computacional.
 
@@ -195,5 +268,51 @@ A Tabela \ref{tab:optuna_spaces} detalha a grade de hiperparâmetros explorada p
  & subsample & float & [0.5, 1.0] \\ \bottomrule
 \end{tabular}
 \end{table}
+
+\clearpage
+\section{Curvas de Validação do Optuna por Regime}
+Conforme a metodologia de busca refinada de hiperparâmetros, empregamos o Optuna (TPE Sampler) para otimizar os modelos de \textit{Gradient Boosting}. Devido ao volume massivo de execuções, apresentamos a seguir o histórico de otimização representativo e a análise de sensibilidade do Random Forest para amostras isoladas de cada um dos três regimes de complexidade avaliados no escopo do trabalho.
+
+\subsection{Regime Small (Exemplo: Dataset Sonar)}
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{optuna_history_small.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{optuna_importances_small.png}
+    \end{minipage}
+    \caption{Curvas de Validação (Histórico e Importância de Hiperparâmetros) para o Regime Small.}
+\end{figure}
+
+\subsection{Regime Medium (Exemplo: Dataset Credit-g)}
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{optuna_history_medium.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{optuna_importances_medium.png}
+    \end{minipage}
+    \caption{Curvas de Validação (Histórico e Importância de Hiperparâmetros) para o Regime Medium.}
+\end{figure}
+
+\subsection{Regime Large (Exemplo: Dataset Bank-Marketing)}
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{optuna_history_large.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{optuna_importances_large.png}
+    \end{minipage}
+    \caption{Curvas de Validação (Histórico e Importância de Hiperparâmetros) para o Regime Large.}
+\end{figure}
 
 \end{document}
