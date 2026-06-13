@@ -51,4 +51,4 @@ Caso necessite de um ambiente "imaculado", que não compartilhe núcleo, rotas P
    ```
 
 ---
-*Nota: A execução completa do pipeline principal contempla 30 datasets tabulares, centenas de fits em baselines de GBDT, e otimização por ensembles heterogêneos de Deep Learning, recomendando-se um hardware compatível com operações intensivas de CPU.*
+
