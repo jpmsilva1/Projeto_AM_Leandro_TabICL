@@ -24,8 +24,8 @@ import torch
 # --- CONFIGURAÇÕES GERAIS ---
 SEED = 42
 N_TRIALS = 20  # Reduzido de 50 para 20 para caber no prazo
-AG_EXTREME_TIME_LIMIT = 1800  # Reduzido de 1h para 30min para caber no prazo
-AG_DEFAULT_TIME_LIMIT = 1800  # Mantido 30min
+AG_EXTREME_TIME_LIMIT = 14400  # 4 horas para a rodada final definitiva
+AG_DEFAULT_TIME_LIMIT = 1800   # 30 minutos cravados para o modelo Base
 
 # Determinismo Global
 os.environ["PYTHONHASHSEED"] = str(SEED)
