@@ -142,18 +142,21 @@ print("✅ Gráfico de Dispersão gerado.")
 # 5. BAYESIAN SIGNED-RANK TEST (Baycomp)
 pivot_auc = df.pivot(index='dataset', columns='model', values='AUC_OVO')
 tabicl_scores = pivot_auc['TabICL'].values
-lgb_scores = pivot_auc['LightGBM_Tuned'].values # ou o que teve a melhor media
-baseline_name = 'LightGBM_Tuned'
 
-try:
-    # rope=0.01 (diferença de 1% em AUC é ignorável / praticamente equivalente)
-    test = SignedRankTest(tabicl_scores, lgb_scores, rope=0.01)
-    probs = test.probs()
-    fig = test.plot(names=('TabICL', baseline_name))
-    fig.suptitle(f'Bayesian Signed-Rank\nTabICL vs {baseline_name} (ROPE=0.01)')
-    fig.savefig('cluster_apuana/resultados_estat_finais/plots/bayesian_plot_auc.png', bbox_inches='tight', dpi=300)
-    plt.close(fig)
-    print(f"✅ Gráfico Bayesiano gerado em bayesian_plot_auc.png")
-    print(f"Probabilidades: TabICL ganha: {probs[0]:.3f}, Equivalentes: {probs[1]:.3f}, Baseline ganha: {probs[2]:.3f}")
-except Exception as e:
-    print(f"⚠️ Erro ao gerar gráfico bayesiano: {e}")
+baselines = ['LightGBM_Tuned', 'AutoGluon_Extreme_4h']
+
+for baseline_name in baselines:
+    baseline_scores = pivot_auc[baseline_name].values
+    try:
+        # rope=0.01 (diferença de 1% em AUC é ignorável / praticamente equivalente)
+        test = SignedRankTest(tabicl_scores, baseline_scores, rope=0.01)
+        probs = test.probs()
+        fig = test.plot(names=('TabICL', baseline_name.replace('_4h', '')))
+        fig.suptitle(f'Bayesian Signed-Rank\nTabICL vs {baseline_name} (ROPE=0.01)')
+        filename = f'bayesian_plot_auc_{baseline_name.lower()}.png'
+        fig.savefig(f'cluster_apuana/resultados_estat_finais/plots/{filename}', bbox_inches='tight', dpi=300)
+        plt.close(fig)
+        print(f"✅ Gráfico Bayesiano gerado em {filename}")
+        print(f"Probabilidades vs {baseline_name}: TabICL ganha: {probs[0]:.3f}, Equivalentes: {probs[1]:.3f}, Baseline ganha: {probs[2]:.3f}")
+    except Exception as e:
+        print(f"⚠️ Erro ao gerar gráfico bayesiano para {baseline_name}: {e}")

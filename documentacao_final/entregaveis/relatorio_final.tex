@@ -132,18 +132,27 @@ A validação de significância foi realizada mediante o teste empírico de Frie
 O TabICL obteve o melhor rank médio geral, integrando o mesmo agrupamento de equivalência estatística que o AutoGluon Extreme. Embora o AutoGluon Extreme apresente vantagem nas medianas absolutas de AUC em alguns regimes, a consistência de ranks do TabICL ao longo dos 30 datasets resultou em posição mais favorável no ranking médio. Os GBDTs com tuning ocupam posições intermediárias, com o XGBoost Tuned apresentando o pior rank médio no grupo.
 
 \subsubsection{Análise Bayesiana de Equivalência}
-Para complementar a inferência frequentista de Nemenyi, conduzimos o \textit{Bayesian Signed-Rank Test} proposto por Benavoli et al. (2017), valendo-nos da biblioteca \textit{baycomp}. A comparação foi realizada entre o TabICL e o LightGBM Tuned para a métrica AUC-OVO. Estipulou-se uma Região de Equivalência Prática (ROPE) estrita de 0.01 de diferença marginal em AUC.
+Para complementar a inferência frequentista de Nemenyi, realizou-se o \textit{Bayesian Signed-Rank Test} proposto por Benavoli et al. (2017), via biblioteca \textit{baycomp}. Foram conduzidas duas comparações com Região de Equivalência Prática (ROPE) de 0,01 em AUC-OVO: o TabICL contra o LightGBM Tuned (melhor GBDT ajustado) e contra o AutoGluon Extreme 4h.
 
-\textbf{Como interpretar o Simplex Bayesiano:} O triângulo (ou simplex) representa todas as probabilidades possíveis para três desfechos ao comparar o Modelo A (TabICL) contra o Modelo B (Baseline). A ponta inferior esquerda representa probabilidade $100\%$ de vitória do TabICL. A ponta inferior direita representa $100\%$ de vitória do Baseline. A região central demarcada no topo representa o ROPE (a zona de "Empate" ou equivalência prática). Onde a mancha de calor se concentrar é onde reside a conclusão estatística do teste.
+\textbf{Como interpretar o Simplex Bayesiano:} O triângulo (ou simplex) representa todas as probabilidades possíveis para três desfechos. A ponta inferior esquerda representa probabilidade $100\%$ de vitória do TabICL. A ponta inferior direita representa $100\%$ de vitória do Baseline. A região central demarcada no topo representa o ROPE (a zona de "Empate" ou equivalência prática). Onde a mancha de calor se concentrar é onde reside a conclusão estatística do teste.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.65\textwidth]{bayesian_plot_auc.png}
-    \caption{Simplex de probabilidade posterior do Bayesian Signed-Rank Test comparando TabICL vs LightGBM Tuned, com ROPE=0.01.}
-    \label{fig:bayesian_simplex}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{bayesian_plot_auc_lightgbm_tuned.png}
+        \caption{Simplex de probabilidade posterior do Bayesian Signed-Rank Test comparando TabICL vs LightGBM Tuned, com ROPE=0.01.}
+        \label{fig:bayesian_lgb}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{bayesian_plot_auc_autogluon_extreme_4h.png}
+        \caption{Simplex de probabilidade posterior do Bayesian Signed-Rank Test comparando TabICL vs AutoGluon Extreme 4h, com ROPE=0.01.}
+        \label{fig:bayesian_ag}
+    \end{minipage}
 \end{figure}
 
-O teste indica (Figura \ref{fig:bayesian_simplex}) que a probabilidade de equivalência prática entre os modelos, dentro da ROPE de $1\%$, é superior a $82\%$, com probabilidade de vitória estrita em favor do TabICL da ordem de $17\%$, e probabilidade residual de vitória do LightGBM Tuned inferior a $1\%$.
+Na comparação com o LightGBM Tuned (Figura \ref{fig:bayesian_lgb}), o teste indica P(equivalente) $\approx 83\%$, P(TabICL vence) $\approx 16{,}8\%$ e P(LightGBM vence) $< 1\%$. Na comparação com o AutoGluon Extreme 4h (Figura \ref{fig:bayesian_ag}), a probabilidade de equivalência prática sobe para $99{,}6\%$, indicando que ambos os modelos produzem resultados indistinguíveis dentro da ROPE de $1\%$ em AUC-OVO.
 
 \subsection{Custo vs. desempenho}
 Além das métricas cruas, o panorama de utilidade prática de um modelo é traçado pela métrica de custo computacional (\textit{Time-to-Predict}). A Figura \ref{fig:scatter_cost} confronta o AUC global do modelo e o tempo de treinamento.
