@@ -177,7 +177,16 @@ Observa-se também que os hiperparâmetros padrão das bibliotecas modernas (via
 \section{Reprodutibilidade}
 Para garantir a reprodutibilidade dos experimentos, adotou-se semente aleatória fixa (\texttt{random\_state=42}) em todas as etapas: particionamento dos dados, otimização bayesiana do Optuna (via \texttt{TPESampler}) e backend determinístico do PyTorch (\texttt{deterministic=True}) utilizado pelo TabICL.
 
-Todos os códigos estão organizados com o gerenciador de pacotes \texttt{uv}, com dependências fixadas em \texttt{pyproject.toml} e \texttt{uv.lock}, permitindo reprodução do ambiente em qualquer máquina com suporte a PyTorch.
+Todos os códigos estão organizados com o gerenciador de pacotes \texttt{uv}, com dependências fixadas em \texttt{pyproject.toml} e \texttt{uv.lock}, permitindo reprodução do ambiente em qualquer máquina com suporte a PyTorch. Os comandos para reprodução completa são:
+
+\begin{verbatim}
+uv sync
+uv run pytest tests/test_pipeline.py -v               # smoke test
+uv run python experiments/run_experiment.py            # experimento completo
+uv run python experiments/gerar_graficos_e_tabelas.py # graficos e tabelas
+\end{verbatim}
+
+Um \texttt{Dockerfile} está disponível na raiz do repositório para reprodução em ambiente containerizado.
 
 \section{Conclusões}
 Este trabalho avaliou o modelo TabICL v2 — baseado em In-Context Learning — em comparação com métodos consolidados de classificação supervisionada em dados tabulares, sobre 30 datasets do benchmark TabArena-v0.1. Os resultados estatísticos indicam que o TabICL alcança desempenho competitivo e superior em ranking médio de AUC-OVO, Acurácia e Cross-Entropy nos regimes Small e Medium, sem necessidade de etapa de tuning. A principal limitação observada é a complexidade quadrática do mecanismo de atenção ($\mathcal{O}(n^2)$), que restringe a aplicabilidade em datasets de grande porte sem hardware adequado (GPU com alta VRAM). O trabalho reforça que a abordagem de foundation models para dados tabulares constitui alternativa viável e eficiente aos pipelines clássicos de AutoML em cenários de escala pequena e média.

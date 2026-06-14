@@ -160,16 +160,16 @@ Resultados agregados nos 30 datasets do TabArena-v0.1 (conjunto de teste, seed=4
 ## 10. Reprodutibilidade
 
 - **Ambiente:** Python 3.11.15; dependências fixadas em `pyproject.toml` e `uv.lock` (gerenciador `uv`).
-- **Hardware utilizado nos experimentos principais:** cluster HPC Apuana (SLURM), GPU NVIDIA, com scripts em `cluster_apuana/`. Execução local de testes: Apple Silicon (aarch64), CPU only.
-- **Tempo total de execução:** aproximadamente 4 horas por membro do grupo para o AutoGluon Extreme (Tática de Enxame distribuída); experimentos com TabICL e GBDTs completados em ~2 horas no cluster.
+- **Hardware utilizado nos experimentos principais:** cluster HPC Apuana (SLURM), GPU NVIDIA, com scripts em `experiments/`. Execução local de testes: Apple Silicon (aarch64), CPU only.
+- **Tempo total de execução:** aproximadamente 4 horas por membro do grupo para o AutoGluon Extreme (execução distribuída); experimentos com TabICL e GBDTs completados em ~2 horas no cluster.
 - **Seed utilizada:** 42, fixa em split, tuning (Optuna TPESampler) e backend determinístico do PyTorch.
 - **Hash do commit:** `56b6c935ef274cec5415811ee5d252ba2b62a021`
 - **Comandos para reproduzir:**
   ```bash
   uv sync
-  uv run pytest tests/test_pipeline.py -v          # smoke test
-  uv run python cluster_apuana/run_cluster_final_v2.py  # experimento completo
-  uv run python cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py
+  uv run pytest tests/test_pipeline.py -v               # smoke test
+  uv run python experiments/run_experiment.py            # experimento completo
+  uv run python experiments/gerar_graficos_e_tabelas.py # gráficos e tabelas LaTeX
   ```
 - **Versões-chave:**
   - `tabicl==2.1.1`
