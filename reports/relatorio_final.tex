@@ -82,7 +82,7 @@ norm\_methods & cat. / \{quantile, robust, ...\} & Método de escalonamento espa
 \addcontentsline{toc}{section}{Etapa 2: Estudo experimental}
 
 \subsection{Metodologia}
-A configuração do projeto foi estruturada visando assegurar a comparabilidade e reprodutibilidade científica. Os processos metodológicos descritos estão unificados no script orquestrador \texttt{cluster\_apuana/run\_cluster\_final\_v2.py}.
+A configuração do projeto foi estruturada visando assegurar a comparabilidade e reprodutibilidade científica. Os processos metodológicos descritos estão unificados no script orquestrador \texttt{experiments/run\_experiment.py}.
 
 \paragraph{Seleção de Datasets e Regimes:} O escopo empírico deste trabalho compreende 30 bases de dados tabulares extraídas do \textit{benchmark} TabArena-v0.1. Inicialmente, a curadoria proposta pela disciplina oferecia uma lista prévia de datasets. Contudo, a análise da lista curada revelou que apenas 3 datasets contemplavam o regime \textbf{Small} ($n < 1.000$). Assim, a distribuição final adotada foi de \textbf{3 Small}, \textbf{17 Medium} ($1.000 \leq n \leq 10.000$) e \textbf{10 Large} ($n > 10.000$), incorporando todos os datasets de pequeno porte disponíveis na curadoria. Essa distribuição assimétrica em relação ao esquema 10/10/10 previsto no enunciado é uma limitação a ser considerada na interpretação dos resultados. A seleção manteve, ainda, equilíbrio entre tarefas de classificação binária e multiclasse, bem como diversidade na presença de atributos categóricos e valores ausentes.
 
@@ -91,7 +91,7 @@ A configuração do projeto foi estruturada visando assegurar a comparabilidade 
 \paragraph{Ambiente Computacional:} A infraestrutura baseou-se em Python 3.11 com as bibliotecas: \texttt{tabicl==2.1.1} (backend PyTorch), \texttt{optuna==4.8.0} (otimização bayesiana) e a interface \texttt{pytabkit==1.7.3} para integração dos algoritmos base.
 
 \subsection{Baselines e referência AutoML}
-O desempenho do TabICL v2 foi avaliado em comparação a três grupos de soluções \textit{Machine Learning}, integradas na orquestração principal (\texttt{run\_cluster\_final\_v2.py}):
+O desempenho do TabICL v2 foi avaliado em comparação a três grupos de soluções \textit{Machine Learning}, integradas na orquestração principal (\texttt{run\_experiment.py}):
 \begin{enumerate}
     \item \textbf{TabICL (Modelo Atribuído):} O modelo designado foi parametrizado com restrições explícitas de processamento (\texttt{device="cuda"} com \texttt{offload\_mode="disk"}) para atenuar as sobrecargas do \textit{Attention Mechanism} nos datasets de maior dimensionalidade.
     \item \textbf{Baselines GBDT Otimizados:} Utilizou-se as implementações de LightGBM, XGBoost e CatBoost. A execução ocorreu via módulo \texttt{\_TD\_Classifier} (framework \texttt{pytabkit}), que aplica um perfil predefinido de hiperparâmetros originário de meta-aprendizado.
