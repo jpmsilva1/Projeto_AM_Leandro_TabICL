@@ -10,8 +10,7 @@ venv/
 # Notebooks
 .ipynb_checkpoints/
 
-# Resultados experimentais
-results/
+# Cache e artefatos temporários
 cache/
 *.csv.gz
 *.parquet
