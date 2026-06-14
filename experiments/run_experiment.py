@@ -139,7 +139,7 @@ def compute_cross_entropy(y_true, y_proba, n_classes):
 
 # --- BASELINES DEFAULT ---
 def run_baseline(model_name, build_fn, X_train, y_train, X_test, y_test, n_classes, **kwargs):
-    logging.info(f"  🔧 Iniciando {model_name}...")
+    logging.info(f"   Iniciando {model_name}...")
     t0 = time.perf_counter()
     model = build_fn(**kwargs)
     
@@ -188,7 +188,7 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
     time_limit = AG_EXTREME_TIME_LIMIT if preset == "best_quality" else AG_DEFAULT_TIME_LIMIT
     alarm_limit = time_limit + 1800  # Margem de segurança de 30min
     
-    logging.info(f"  ⚙️ Iniciando {name} (limite={time_limit//60}min)...")
+    logging.info(f"  Iniciando {name} (limite={time_limit//60}min)...")
     
     ag_path = tempfile.mkdtemp()
     train_df = pd.DataFrame(X_train)
@@ -233,7 +233,7 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
         shutil.rmtree(ag_path, ignore_errors=True)
         raise e
 
-# --- OPTUNA TUNING CORRIGIDO ---
+# --- OPTUNA TUNING ---
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
@@ -319,7 +319,7 @@ def run_tuning(model_name, objective_func, model_class, X_train, y_train, X_test
 
 # --- MAIN ---
 def main():
-    logging.info("🔥 INICIANDO PIPELINE V2 (LEAKAGE CORRIGIDO) NO APUANA 🔥")
+    logging.info(" INICIANDO PIPELINE ")
     all_results = []
     if os.path.exists(RESULTS_FILE):
         all_results = pd.read_csv(RESULTS_FILE).to_dict('records')
@@ -348,7 +348,7 @@ def main():
                 dataset = openml.datasets.get_dataset(task.dataset_id, download_data=True, download_qualities=False, download_features_meta_data=True)
             except openml.exceptions.OpenMLServerException as e:
                 if "Unknown task" in str(e):
-                    logging.warning(f"  ⚠️ Task {ds['tid']} inexistente. Tentando como Dataset ID direto...")
+                    logging.warning(f"   Task {ds['tid']} inexistente. Tentando como Dataset ID direto...")
                     dataset = openml.datasets.get_dataset(ds["tid"], download_data=True, download_qualities=False, download_features_meta_data=True)
                 else:
                     raise e
