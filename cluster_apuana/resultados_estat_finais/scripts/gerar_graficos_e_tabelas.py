@@ -131,7 +131,7 @@ sns.scatterplot(data=global_agg, x='total_time_s', y='AUC_OVO', hue='model', s=2
 plt.xscale('log')
 plt.xlabel('Tempo Médio de Treinamento/Inferência (s) - Log Scale')
 plt.ylabel('Média AUC-OVO')
-plt.title('Custo vs. Desempenho Geral (Com AutoGluon Extreme 4h)')
+plt.title('Custo vs. Desempenho Geral')
 for i in range(global_agg.shape[0]):
     plt.text(global_agg['total_time_s'][i] * 1.1, global_agg['AUC_OVO'][i], global_agg['model'][i], size='small', color='black')
 plt.legend([],[], frameon=False)
