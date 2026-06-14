@@ -21,8 +21,10 @@ COPY pyproject.toml uv.lock ./
 # Sincroniza o ambiente instalando as exatas versões blindadas pelo uv.lock
 RUN uv sync --frozen
 
-# Copia apenas a pasta contendo os scripts vitais da entrega
+# Copia o código-fonte e os scripts de experimento
 COPY src/ ./src/
+COPY data/ ./data/
+COPY experiments/ ./experiments/
 
 # Configura o ponto de entrada usando o ambiente isolado do UV para rodar o pipeline
-CMD ["uv", "run", "python", "src/run_cluster_final_v2.py"]
+CMD ["uv", "run", "python", "experiments/run_experiment.py"]
