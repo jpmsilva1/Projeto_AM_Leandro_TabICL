@@ -123,18 +123,29 @@ A validação de significância foi realizada mediante o teste empírico de Frie
 Verifica-se graficamente a robustez do agrupamento: o \textit{TabICL} assegura a melhor classificação no Mean Rank, figurando no mesmo clique de equivalência estatística que a suíte formidável do \textit{AutoGluon Extreme 4h}. Apesar do AutoGluon obter ligeira vantagem nas medianas absolutas, a consistência de rankings do TabICL ao longo dos 30 datasets o coroa como metodologicamente superior. Os GBDTs otimizados posicionam-se com moderada dominância no corpo intermediário, com \textit{XGBoost} encabeçando a extremidade de menor performance empírica.
 
 \subsubsection{Análise Bayesiana de Equivalência}
-Para complementar a inferência frequentista de Nemenyi, conduzimos o \textit{Bayesian Signed-Rank Test} proposto por Benavoli et al. (2017), valendo-nos da biblioteca \textit{baycomp}. A comparação estrita foi elaborada entre o TabICL e a melhor variante de GBDT ajustada na literatura geral da competição (LightGBM Tuned), balizada sobre a métrica de AUC-OVO. Estipulou-se uma Região de Equivalência Prática (ROPE) estrita de 0.01 de diferença marginal em AUC.
+Para complementar a inferência frequentista de Nemenyi, conduzimos o \textit{Bayesian Signed-Rank Test} proposto por Benavoli et al. (2017), valendo-nos da biblioteca \textit{baycomp}. Foram elaboradas duas comparações estritas: a primeira contra a melhor variante de GBDT ajustada (LightGBM Tuned), e a segunda contra o estado-da-arte em AutoML (AutoGluon Extreme 4h). Estipulou-se uma Região de Equivalência Prática (ROPE) estrita de 0.01 de diferença marginal em AUC para ambas.
 
-\textbf{Como interpretar o Simplex Bayesiano:} O triângulo (ou simplex) representa todas as probabilidades possíveis para três desfechos ao comparar o Modelo A (TabICL) contra o Modelo B (Baseline). A ponta inferior esquerda representa probabilidade $100\%$ de vitória do TabICL. A ponta inferior direita representa $100\%$ de vitória do Baseline. A região central demarcada no topo representa o ROPE (a zona de "Empate" ou equivalência prática). Onde a mancha de calor se concentrar é onde reside a conclusão estatística do teste.
+\textbf{Como interpretar o Simplex Bayesiano:} O triângulo (ou simplex) representa todas as probabilidades possíveis para três desfechos. A ponta inferior esquerda representa probabilidade $100\%$ de vitória do TabICL. A ponta inferior direita representa $100\%$ de vitória do Baseline. A região central demarcada no topo representa o ROPE (a zona de "Empate" ou equivalência prática). Onde a mancha de calor se concentrar é onde reside a conclusão estatística do teste.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.65\textwidth]{bayesian_plot_auc.png}
-    \caption{Simplex de probabilidade posterior do Bayesian Signed-Rank Test comparando TabICL vs LightGBM Tuned, com ROPE=0.01.}
-    \label{fig:bayesian_simplex}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{bayesian_plot_auc_lightgbm_tuned.png}
+        \caption{Simplex de probabilidade posterior do Bayesian Signed-Rank Test comparando TabICL vs LightGBM Tuned, com ROPE=0.01.}
+        \label{fig:bayesian_lgb}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{bayesian_plot_auc_autogluon_extreme_4h.png}
+        \caption{Simplex de probabilidade posterior do Bayesian Signed-Rank Test comparando TabICL vs AutoGluon Extreme 4h, com ROPE=0.01.}
+        \label{fig:bayesian_ag}
+    \end{minipage}
 \end{figure}
 
-O teste infere (Figura \ref{fig:bayesian_simplex}) que existe uma probabilidade massiva (superior a $82\%$) de que ambos os modelos sejam estritamente equivalentes em aplicações do mundo real (diferença abarcada pela ROPE de $1\%$), com uma ligeira preferência marginal em favor do TabICL ($17\%$ de probabilidade de vitória estrita) sobre a regressão base de árvores.
+O primeiro teste (Figura \ref{fig:bayesian_lgb}) infere que existe uma probabilidade massiva (superior a $83\%$) de que o TabICL e o LightGBM Tuned sejam estritamente equivalentes em aplicações do mundo real (diferença abarcada pela ROPE de $1\%$), com uma preferência marginal em favor do TabICL ($16.8\%$ de probabilidade de vitória estrita). 
+
+O segundo teste (Figura \ref{fig:bayesian_ag}), considerado o confronto definitivo deste trabalho, demonstra uma probabilidade colossal de $99.6\%$ de que o TabICL é estatisticamente equivalente ao AutoGluon Extreme 4h. Isso consolida o fato de que um modelo de \textit{In-Context Learning} puro consegue reproduzir a fronteira de decisão de um complexo *ensemble* de AutoML sem nenhuma etapa de treinamento.
 
 \subsection{Custo vs. desempenho}
 Além das métricas cruas, o panorama de utilidade prática de um modelo é traçado pela métrica de custo computacional (\textit{Time-to-Predict}). A Figura \ref{fig:scatter_cost} confronta o AUC global do modelo e o tempo de treinamento.
