@@ -3,11 +3,11 @@
 **Projeto Final — Disciplina de Aprendizagem de Máquina (2026-1)**  
 **Prof. Leandro Almeida — CIn/UFPE**
 
-| Integrante | Papel |
+| Integrante | E-mail |
 |---|---|
-| João Pedro Miranda da Silva | Experimentos (cluster Apuana, AutoGluon Extreme) |
-| Maria Clara Falcão Guerra Barretto | Análise estatística, relatório, model card |
-| Vinicius Limeira Valença | Experimentos (AutoGluon Extreme, pipeline) |
+| João Pedro Miranda da Silva | jpms5@cin.ufpe.br |
+| Maria Clara Falcão Guerra Barretto | mcfgb@cin.ufpe.br |
+| Vinicius Limeira Valença | vlv3@cin.ufpe.br |
 
 ---
 
