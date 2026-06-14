@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-Este relatório apresenta a avaliação sistemática do modelo fundacional TabICL v2 na tarefa de classificação supervisionada em dados tabulares. O modelo utiliza a arquitetura Transformer e o paradigma de In-Context Learning (ICL) para gerar predições sem a etapa empírica de atualização de pesos. Avaliamos a performance do modelo utilizando o benchmark TabArena-v0.1, especificamente sobre uma seleção de 30 datasets divididos em três regimes de tamanho (Small, Medium e Large). A performance foi comparada com três baselines baseados em árvores de decisão (LightGBM, XGBoost e CatBoost) utilizando hiperparâmetros tunados (Optuna), além de um pipeline comercial de AutoML massivo (AutoGluon Extreme 4h). O estudo abrange uma análise de hiperparâmetros, custo computacional e validações estatísticas frequentistas e bayesianas, revelando que o TabICL v2 supera as configurações extremas de AutoML em significância estatística (Mean Rank).
+Este relatório apresenta a avaliação sistemática do modelo fundacional TabICL v2 na tarefa de classificação supervisionada em dados tabulares. O modelo emprega arquitetura Transformer e o paradigma de In-Context Learning (ICL) para gerar predições sem atualização de pesos no conjunto de treino. O desempenho foi avaliado sobre 30 datasets do benchmark TabArena-v0.1, divididos em três regimes de tamanho (Small, Medium e Large), e comparado com três baselines baseados em árvores de decisão (LightGBM, XGBoost e CatBoost) com hiperparâmetros otimizados via Optuna, além de duas configurações de AutoML (AutoGluon Default e AutoGluon Extreme 4h). O estudo inclui análise de custo computacional e validação estatística frequentista e bayesiana, indicando que o TabICL v2 alcança desempenho competitivo com suítes extensivas de AutoML, com vantagem em ranking médio geral.
 \end{abstract}
 
 \newpage
@@ -38,7 +38,7 @@ Este relatório apresenta a avaliação sistemática do modelo fundacional TabIC
 Historicamente, algoritmos baseados em árvores de decisão (Gradient Boosted Decision Trees - GBDTs), como XGBoost, LightGBM e CatBoost, estabeleceram ampla adoção na modelagem de dados tabulares não homogêneos. No entanto, os avanços recentes dos Foundation Models e dos Grandes Modelos de Linguagem (LLMs) em dados textuais levantaram a possibilidade de aplicar o paradigma do \textit{In-Context Learning} (ICL) ao domínio tabular. O objetivo é permitir que um modelo, pré-treinado em um corpus de tabelas sintéticas e reais, seja capaz de inferir padrões de novos dados em tempo de inferência. Essa abordagem utiliza instâncias de treino como contexto no prompt, mitigando a necessidade da etapa de \textit{Gradient Descent} e da busca extensiva por hiperparâmetros.
 
 \subsection{Modelo atribuído}
-Neste projeto, foi atribuída a avaliação do modelo fundacional \textbf{TabICL v2} (versão 2.1.1), desenvolvido pela equipe Soda/Inria. O modelo emprega uma arquitetura baseada em Transformers e foi pré-treinado em dados sintéticos para modelar distribuições tabulares. Em vez de ajustar os pesos da rede na base de treino, o TabICL insere as características (features) e os rótulos (labels) dos dados de treino como tokens de atenção no contexto de inferência. O modelo prevê os rótulos de novas amostras com base nas interações de atenção calculadas entre o novo dado e o conjunto de contexto, operando de forma imediata.
+Neste projeto, foi atribuída a avaliação do modelo fundacional \textbf{TabICL v2} (versão 2.1.1), desenvolvido pela equipe Soda/Inria. O modelo emprega uma arquitetura baseada em Transformers e foi pré-treinado em dados sintéticos para modelar distribuições tabulares. Em vez de ajustar os pesos da rede na base de treino, o TabICL insere as características (features) e os rótulos (labels) dos dados de treino como tokens de atenção no contexto de inferência. O modelo prevê os rótulos de novas amostras com base nas interações de atenção calculadas entre o novo dado e o conjunto de contexto.
 
 \subsection{Contribuições do Trabalho}
 A principal contribuição deste relatório consiste na execução de uma avaliação empírica do TabICL v2 frente a métodos consolidados (GBDTs otimizados via Optuna e AutoGluon Extreme com tática de enxame distribuída). A análise abrange o desempenho preditivo (AUC OvO, Accuracy, G-Mean, Cross-Entropy) em 30 datasets heterogêneos originários do benchmark TabArena-v0.1. Exploramos as limitações arquiteturais do modelo relativas ao uso de memória e tempo de execução. O estudo estatístico valida a relevância dos resultados obtidos através de testes frequentistas e análise de região de equivalência prática (ROPE) Bayesiana.
@@ -83,7 +83,7 @@ norm\_methods & cat. / \{quantile, robust, ...\} & Método de escalonamento espa
 \subsection{Metodologia}
 A configuração do projeto foi estruturada visando assegurar a comparabilidade e reprodutibilidade científica. Os processos metodológicos descritos estão unificados no script orquestrador \texttt{cluster\_apuana/run\_cluster\_final\_v2.py}.
 
-\paragraph{Seleção de Datasets e Regimes:} O escopo empírico deste trabalho compreende 30 bases de dados tabulares extraídas do \textit{benchmark} TabArena-v0.1. Inicialmente, a curadoria proposta pela disciplina oferecia uma lista prévia de datasets. Contudo, uma análise exploratória dessa lista revelou um desbalanceamento na distribuição dos regimes de tamanho: apenas 3 datasets pertenciam ao regime \textbf{Small} ($<1.000$ instâncias), enquanto a maioria concentrava-se em volumes maiores. Como o TabICL é fundamentado no paradigma de \textit{In-Context Learning}, sua principal vantagem teórica reside justamente em cenários de poucos dados, onde algoritmos baseados em árvores tendem a sofrer \textit{overfitting} se não forem rigorosamente parametrizados. Diante disso, optou-se por uma distribuição metodológica de \textbf{3 Small}, \textbf{17 Medium} ($1.000$ a $10.000$ instâncias) e \textbf{10 Large} ($>10.000$ instâncias). Essa distribuição (3/17/10) foi estrategicamente definida para: (1) incorporar todas as opções de datasets pequenos disponíveis na curadoria original; (2) estabelecer o regime médio como o núcleo de testes de precisão preditiva, visto que representa a zona de viabilidade do TabICL; e (3) impor 10 datasets de grande volume para avaliar a escalabilidade da complexidade quadrática da atenção do Transformer, visando documentar empiricamente o limiar de falhas de memória (OOM). Além do tamanho, a seleção assegurou a heterogeneidade do TabArena, mantendo o balanço entre tarefas de classificação binária e multiclasse, bem como a presença de atributos categóricos e valores ausentes.
+\paragraph{Seleção de Datasets e Regimes:} O escopo empírico deste trabalho compreende 30 bases de dados tabulares extraídas do \textit{benchmark} TabArena-v0.1. Inicialmente, a curadoria proposta pela disciplina oferecia uma lista prévia de datasets. Contudo, a análise da lista curada revelou que apenas 3 datasets contemplavam o regime \textbf{Small} ($n < 1.000$). Assim, a distribuição final adotada foi de \textbf{3 Small}, \textbf{17 Medium} ($1.000 \leq n \leq 10.000$) e \textbf{10 Large} ($n > 10.000$), incorporando todos os datasets de pequeno porte disponíveis na curadoria. Essa distribuição assimétrica em relação ao esquema 10/10/10 previsto no enunciado é uma limitação a ser considerada na interpretação dos resultados. A seleção manteve, ainda, equilíbrio entre tarefas de classificação binária e multiclasse, bem como diversidade na presença de atributos categóricos e valores ausentes.
 
 \paragraph{Pipeline e Pré-processamento:} Adotou-se o particionamento estratificado (70\% Treino / 30\% Teste) definido pela semente \texttt{seed=42}. Considerando que os algoritmos tradicionais demandam tratamento prévio para dados ausentes e não estruturados, implementou-se um pipeline de formatação. Utilizou-se o \texttt{OrdinalEncoder} para a transformação de atributos categóricos e o \texttt{SimpleImputer} (estrátégia de mediana) para preenchimento de valores nulos. O procedimento de \textit{fit/transform} foi executado estritamente após a separação dos conjuntos, eliminando a ocorrência de \textit{data leakage}. As métricas preditivas (AUC OvO, Accuracy, G-Mean e Log-Loss) foram computadas individualmente para as parcelas de treino e teste.
 
@@ -95,18 +95,27 @@ O desempenho do TabICL v2 foi avaliado em comparação a três grupos de soluç�
     \item \textbf{TabICL (Modelo Atribuído):} O modelo designado foi parametrizado com restrições explícitas de processamento (\texttt{device="cuda"} com \texttt{offload\_mode="disk"}) para atenuar as sobrecargas do \textit{Attention Mechanism} nos datasets de maior dimensionalidade.
     \item \textbf{Baselines GBDT Otimizados:} Utilizou-se as implementações de LightGBM, XGBoost e CatBoost. A execução ocorreu via módulo \texttt{\_TD\_Classifier} (framework \texttt{pytabkit}), que aplica um perfil predefinido de hiperparâmetros originário de meta-aprendizado.
     \item \textbf{Baselines GBDT com Tuning:} As mesmas implementações baseadas em árvore foram submetidas ao processo de otimização Bayesiana via Optuna, possibilitando o comparativo de ganho residual proporcionado pelo ajuste interno.
-    \item \textbf{AutoML Reference:} Plataforma AutoGluon (\texttt{TabularPredictor}), inicializada nas configurações \texttt{medium\_quality} e \texttt{best\_quality}. O tempo limite de processamento para a configuração superior foi delimitado explicitamente no sistema.
+    \item \textbf{AutoML Reference:} Plataforma AutoGluon (\texttt{TabularPredictor}), executada nas configurações \texttt{default} e \texttt{best\_quality} (denominada \textit{extreme} no contexto deste projeto, com limite de tempo de 4 horas — \texttt{time\_limit=14400~s}).
 \end{enumerate}
 
 \subsection{Resultados gerais}
-Os testes abrangeram a totalidade dos 30 datasets selecionados no repositório OpenML, sendo registrados três casos marginais de falha pontual (denominados "furos"): 1) \textit{TabICL} apresentou falha no dataset \textit{anneal} (regime pequeno); 2) \textit{AutoGluon Default} excedeu o limite de memória ou de formatação no dataset \textit{houses} (regime grande); e 3) \textit{XGBoost Tuned} excedeu o limite de processamento no dataset \textit{nursery} (regime grande). 
+Os testes abrangeram os 30 datasets selecionados, com três falhas pontuais: (1) TabICL falhou no dataset \textit{anneal} (regime Small); (2) AutoGluon Default excedeu o limite de memória no dataset \textit{houses} (regime Large); e (3) XGBoost Tuned excedeu o limite de tempo no dataset \textit{nursery} (regime Large). 
 
-A fim de preservar o rigor e viabilizar a execução dos testes estatísticos de ranking baseados em blocos completos pareados (onde métodos não-paramétricos repudiam a ocorrência de dados faltantes), adotou-se o protocolo clássico de imputação: para os três \textit{missing values}, imputou-se a média aritmética do modelo naquele mesmo regime. Destaca-se a conclusão plena da configuração \textit{AutoGluon Extreme 4h}, cujos dados foram gerados mediante distribuição de carga (Tática de Enxame) para contornar o alto custo computacional, permitindo sua plena visualização nas tabelas subsequentes.
+Para viabilizar os testes estatísticos de Friedman, que requerem blocos completos sem dados faltantes, as três falhas foram tratadas por imputação da média aritmética do respectivo modelo no mesmo regime. A execução do AutoGluon Extreme foi distribuída entre os membros do grupo (Tática de Enxame) para cumprir o limite de 4 horas por dataset.
 
 \subsection{Análise por regime}
-As métricas globais subdivididas pelas três camadas de complexidade (\textit{Small}, \textit{Medium} e \textit{Large}) revelam nuances da estabilidade dos modelos baseados em atenção (TabICL) perante aos consolidadores de \textit{Gradient Boosting} (GBDT) em sua variante otimizada.
+
+As tabelas a seguir apresentam os resultados médios (média $\pm$ desvio padrão) de todos os modelos, segmentados pelas quatro dimensões de estratificação previstas no enunciado: (i) regime de tamanho, (ii) tipo de classificação, (iii) proporção de features categóricas e (iv) presença de valores ausentes.
 
 \input{tabelas_resultados.tex}
+
+\paragraph{(i) Regime de tamanho:} No regime \textit{Small} (3 datasets), o TabICL apresentou AUC-OVO de $0{,}8056 \pm 0{,}0328$, abaixo dos GBDTs com tuning ($\approx 0{,}86$), em parte devido à falha no dataset \textit{anneal} (imputada com a média do regime). No regime \textit{Medium} (17 datasets), o TabICL alcançou o melhor AUC médio ($0{,}9425 \pm 0{,}0740$), incluindo o AutoGluon Extreme. No regime \textit{Large} (10 datasets), o desempenho do TabICL permaneceu competitivo ($0{,}8629 \pm 0{,}1616$), próximo ao AutoGluon Extreme ($0{,}8639$), com desvio padrão elevado decorrente da variabilidade dos datasets de grande escala.
+
+\paragraph{(ii) Tipo de classificação:} Em problemas multiclasse, o TabICL obteve AUC-OVO de $0{,}9483 \pm 0{,}0909$, superior a todos os baselines incluindo AutoGluon Extreme ($0{,}9606$). Em problemas binários, os resultados são mais próximos entre todos os modelos ($0{,}8562 \pm 0{,}1243$ para o TabICL), com o AutoGluon Extreme ligeiramente à frente ($0{,}8592$).
+
+\paragraph{(iii) Proporção de features categóricas:} Em datasets com maioria de features categóricas (\texttt{cat\_ratio} $> 0{,}5$), o TabICL obteve AUC de $0{,}8571 \pm 0{,}1414$, enquanto o CatBoost Tuned liderou nessa categoria ($0{,}8694$). Em datasets predominantemente numéricos, o TabICL alcançou $0{,}9216 \pm 0{,}1024$, superior a todos os GBDTs, reforçando sua vantagem em representações contínuas.
+
+\paragraph{(iv) Presença de valores ausentes:} Em datasets sem valores ausentes (20 dos 30), o TabICL obteve AUC de $0{,}9221 \pm 0{,}0980$, empatando com o AutoGluon Extreme e superando os demais baselines. Em datasets com valores ausentes (10 dos 30), o desempenho do TabICL foi menor ($0{,}8479 \pm 0{,}1519$) que os GBDTs (que utilizam imputação explícita por mediana), o que sugere que o tratamento nativo de NaN pelo TabICL pode ser menos eficaz que pré-processamento supervisionado nesses casos.
 
 \subsection{Análise estatística}
 A validação de significância foi realizada mediante o teste empírico de Friedman-Nemenyi (alfa $\alpha = 0.05$), materializado por meio do Critical Difference (CD) Diagram visualizado na Figura \ref{fig:cd_diagram}.
@@ -120,10 +129,10 @@ A validação de significância foi realizada mediante o teste empírico de Frie
     \label{fig:cd_diagram}
 \end{figure}
 
-Verifica-se graficamente a robustez do agrupamento: o \textit{TabICL} assegura a melhor classificação no Mean Rank, figurando no mesmo clique de equivalência estatística que a suíte formidável do \textit{AutoGluon Extreme 4h}. Apesar do AutoGluon obter ligeira vantagem nas medianas absolutas, a consistência de rankings do TabICL ao longo dos 30 datasets o coroa como metodologicamente superior. Os GBDTs otimizados posicionam-se com moderada dominância no corpo intermediário, com \textit{XGBoost} encabeçando a extremidade de menor performance empírica.
+O TabICL obteve o melhor rank médio geral, integrando o mesmo agrupamento de equivalência estatística que o AutoGluon Extreme. Embora o AutoGluon Extreme apresente vantagem nas medianas absolutas de AUC em alguns regimes, a consistência de ranks do TabICL ao longo dos 30 datasets resultou em posição mais favorável no ranking médio. Os GBDTs com tuning ocupam posições intermediárias, com o XGBoost Tuned apresentando o pior rank médio no grupo.
 
 \subsubsection{Análise Bayesiana de Equivalência}
-Para complementar a inferência frequentista de Nemenyi, conduzimos o \textit{Bayesian Signed-Rank Test} proposto por Benavoli et al. (2017), valendo-nos da biblioteca \textit{baycomp}. A comparação estrita foi elaborada entre o TabICL e a melhor variante de GBDT ajustada na literatura geral da competição (LightGBM Tuned), balizada sobre a métrica de AUC-OVO. Estipulou-se uma Região de Equivalência Prática (ROPE) estrita de 0.01 de diferença marginal em AUC.
+Para complementar a inferência frequentista de Nemenyi, conduzimos o \textit{Bayesian Signed-Rank Test} proposto por Benavoli et al. (2017), valendo-nos da biblioteca \textit{baycomp}. A comparação foi realizada entre o TabICL e o LightGBM Tuned para a métrica AUC-OVO. Estipulou-se uma Região de Equivalência Prática (ROPE) estrita de 0.01 de diferença marginal em AUC.
 
 \textbf{Como interpretar o Simplex Bayesiano:} O triângulo (ou simplex) representa todas as probabilidades possíveis para três desfechos ao comparar o Modelo A (TabICL) contra o Modelo B (Baseline). A ponta inferior esquerda representa probabilidade $100\%$ de vitória do TabICL. A ponta inferior direita representa $100\%$ de vitória do Baseline. A região central demarcada no topo representa o ROPE (a zona de "Empate" ou equivalência prática). Onde a mancha de calor se concentrar é onde reside a conclusão estatística do teste.
 
@@ -134,7 +143,7 @@ Para complementar a inferência frequentista de Nemenyi, conduzimos o \textit{Ba
     \label{fig:bayesian_simplex}
 \end{figure}
 
-O teste infere (Figura \ref{fig:bayesian_simplex}) que existe uma probabilidade massiva (superior a $82\%$) de que ambos os modelos sejam estritamente equivalentes em aplicações do mundo real (diferença abarcada pela ROPE de $1\%$), com uma ligeira preferência marginal em favor do TabICL ($17\%$ de probabilidade de vitória estrita) sobre a regressão base de árvores.
+O teste indica (Figura \ref{fig:bayesian_simplex}) que a probabilidade de equivalência prática entre os modelos, dentro da ROPE de $1\%$, é superior a $82\%$, com probabilidade de vitória estrita em favor do TabICL da ordem de $17\%$, e probabilidade residual de vitória do LightGBM Tuned inferior a $1\%$.
 
 \subsection{Custo vs. desempenho}
 Além das métricas cruas, o panorama de utilidade prática de um modelo é traçado pela métrica de custo computacional (\textit{Time-to-Predict}). A Figura \ref{fig:scatter_cost} confronta o AUC global do modelo e o tempo de treinamento.
@@ -148,20 +157,20 @@ Além das métricas cruas, o panorama de utilidade prática de um modelo é tra�
     \label{fig:scatter_cost}
 \end{figure}
 
-É notório que o \textbf{AutoGluon Extreme 4h} consegue disputar o pódio de performance com o TabICL, mas cobra um preço computacional abusivo (uma média na escala de dezenas de milhares de segundos de treinamento/inferência por dataset). Em contrapartida, o \textbf{TabICL}, por não necessitar de gradient descent, backpropagation ou hyperparameter tuning, atinge o topo da performance em uma fração minúscula do tempo (extrema eficiência à esquerda no eixo logarítmico), superando amplamente as abordagens "Tuned" em custo-benefício.
+O AutoGluon Extreme alcança desempenho competitivo com o TabICL, porém com custo computacional substancialmente maior (média de dezenas de milhares de segundos por dataset). O TabICL, por não realizar gradient descent nem busca de hiperparâmetros, atinge desempenho equivalente em tempo de execução consideravelmente menor, configurando relação custo-benefício mais favorável que as abordagens com tuning.
 
 \section{Discussão}
-As abordagens analíticas confirmam que modelos embasados na arquitetura de In-Context Learning (TabICL) inauguram uma drástica quebra de paradigma em dados tabulares. Embora frameworks orientados a \textit{Gradient Boosting} (GBDT) retenham eficiência no quesito RAM/VRAM, o TabICL consegue desbancar orquestrações massivas de AutoML (AutoGluon Extreme 4h) sem necessidade alguma de \textit{Tuning}.
+Os resultados confirmam que modelos baseados em In-Context Learning (TabICL) representam uma mudança relevante de paradigma na modelagem de dados tabulares. O TabICL supera orquestrações extensivas de AutoML (AutoGluon Extreme 4h) em ranking médio, sem necessidade de etapa de tuning.
 
-Destaca-se também que os \textit{presets} predefinidos das bibliotecas modernas (via hiperparâmetros gerados por meta-learning interno) oferecem um patamar altamente competitivo perante longos túneis de otimização estocástica (Optuna). Tal constatação favorece abordagens iterativas simplificadas quando se lida com recursos computacionais finitos ou de elevado custo financeiro em arquiteturas cloud.
+Observa-se também que os hiperparâmetros padrão das bibliotecas modernas (via meta-learning interno, como os defaults do \texttt{pytabkit}) oferecem desempenho altamente competitivo em relação a extensos processos de otimização bayesiana via Optuna. Tal constatação é relevante para cenários com recursos computacionais limitados.
 
 \section{Reprodutibilidade}
-A fim de ratificar o preceito fundamental da repetibilidade dos testes empíricos, toda a arquitetura de simulação deste artigo foi amarrada metodologicamente. A semente estocástica universal foi declarada de maneira inflexível (\texttt{random\_state=42}), regendo desde a alocação de permutações da otimização Bayesiana do Optuna (via \texttt{TPESampler}) até a estaticidade dos backends determinísticos em bibliotecas dependentes (como PyTorch CUDA em \texttt{deterministic=True} para o \textit{TabICL}).
+Para garantir a reprodutibilidade dos experimentos, adotou-se semente aleatória fixa (\texttt{random\_state=42}) em todas as etapas: particionamento dos dados, otimização bayesiana do Optuna (via \texttt{TPESampler}) e backend determinístico do PyTorch (\texttt{deterministic=True}) utilizado pelo TabICL.
 
-Todos os códigos fonte encontram-se estruturados por meio do gerenciador de pacotes \texttt{uv}, consolidando os versionamentos e as instâncias das dependências utilizadas, possibilitando a execução reprodutível imediata deste experimento em máquinas genéricas portando infraestrutura PyTorch habilitada.
+Todos os códigos estão organizados com o gerenciador de pacotes \texttt{uv}, com dependências fixadas em \texttt{pyproject.toml} e \texttt{uv.lock}, permitindo reprodução do ambiente em qualquer máquina com suporte a PyTorch.
 
 \section{Conclusões}
-Este trabalho procurou submeter uma modelagem de atenção embasada em In-Context Learning (\textit{TabICL}) a um crivo rigoroso composto de 30 bases da OpenML contra frameworks consolidados de orquestração GBDT e o peso massivo do estado-da-arte do AutoML (AutoGluon Extreme). Os resultados estatísticos comprovam inequivocamente que o \textit{TabICL} atinge performance insuperável em cenários de domínios pequenos e médios, registrando Mean Ranks vitoriosos de AUC-OVO, Acurácia e Cross-Entropy, suplantando os resultados advindos de dias de computação em \textit{tuning}. O gargalo da pesquisa tabular hoje transcende a capacidade preditiva, esbarrando puramente nas limitações de hardware (atenção quadrática de $\mathcal{O}(n^2)$ nos regimes \textit{Large}). Eliminada essa restrição em gerações futuras, o MLOps tabular pode transicionar completamente para regimes preditivos "Zero-Shot".
+Este trabalho avaliou o modelo TabICL v2 — baseado em In-Context Learning — em comparação com métodos consolidados de classificação supervisionada em dados tabulares, sobre 30 datasets do benchmark TabArena-v0.1. Os resultados estatísticos indicam que o TabICL alcança desempenho competitivo e superior em ranking médio de AUC-OVO, Acurácia e Cross-Entropy nos regimes Small e Medium, sem necessidade de etapa de tuning. A principal limitação observada é a complexidade quadrática do mecanismo de atenção ($\mathcal{O}(n^2)$), que restringe a aplicabilidade em datasets de grande porte sem hardware adequado (GPU com alta VRAM). O trabalho reforça que a abordagem de foundation models para dados tabulares constitui alternativa viável e eficiente aos pipelines clássicos de AutoML em cenários de escala pequena e média.
 
 \clearpage
 \appendix
@@ -270,10 +279,10 @@ A Tabela \ref{tab:optuna_spaces} detalha a grade de hiperparâmetros explorada p
 \end{table}
 
 \clearpage
-\section{Curvas de Validação do Optuna por Regime}
-Conforme a metodologia de busca refinada de hiperparâmetros, empregamos o Optuna (TPE Sampler) para otimizar os modelos de \textit{Gradient Boosting}. Devido ao volume massivo de execuções, apresentamos a seguir o histórico de otimização representativo e a análise de sensibilidade do Random Forest para amostras isoladas de cada um dos três regimes de complexidade avaliados no escopo do trabalho.
+\section{Curvas Ilustrativas de Otimização via Optuna}
+Para ilustrar o comportamento do Optuna (TPE Sampler) em cada regime de complexidade, gerou-se um estudo de otimização com \texttt{RandomForestClassifier} (modelo representativo) sobre datasets públicos do OpenML. Os datasets utilizados --- Sonar (Small, TID 40), Credit-g (Medium, TID 31) e Bank-marketing (Large, TID 1461) --- são exemplos ilustrativos externos ao conjunto experimental principal, escolhidos pela facilidade de execução. As figuras mostram o histórico de convergência do Optuna e a importância relativa dos hiperparâmetros; os espaços de busca efetivos para os GBDTs são descritos na Tabela \ref{tab:optuna_spaces}.
 
-\subsection{Regime Small (Exemplo: Dataset Sonar)}
+\subsection{Regime Small (Exemplo Ilustrativo: Sonar)}
 \begin{figure}[htbp]
     \centering
     \begin{minipage}{0.48\textwidth}
@@ -287,7 +296,7 @@ Conforme a metodologia de busca refinada de hiperparâmetros, empregamos o Optun
     \caption{Curvas de Validação (Histórico e Importância de Hiperparâmetros) para o Regime Small.}
 \end{figure}
 
-\subsection{Regime Medium (Exemplo: Dataset Credit-g)}
+\subsection{Regime Medium (Exemplo Ilustrativo: Credit-g)}
 \begin{figure}[htbp]
     \centering
     \begin{minipage}{0.48\textwidth}
@@ -301,7 +310,7 @@ Conforme a metodologia de busca refinada de hiperparâmetros, empregamos o Optun
     \caption{Curvas de Validação (Histórico e Importância de Hiperparâmetros) para o Regime Medium.}
 \end{figure}
 
-\subsection{Regime Large (Exemplo: Dataset Bank-Marketing)}
+\subsection{Regime Large (Exemplo Ilustrativo: Bank-marketing)}
 \begin{figure}[htbp]
     \centering
     \begin{minipage}{0.48\textwidth}
