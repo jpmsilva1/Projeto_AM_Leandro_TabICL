@@ -1,0 +1,11 @@
+model,ACC,AUC_OVO,G_Mean,CE,total_time_s,dataset,regime
+AutoGluon_Extreme_4h,0.791111,0.753899,0.51457,0.470525,14408.79,blood-transfusion-service-center,small
+AutoGluon_Extreme_4h,0.735931,0.83465,0.675497,0.47734,14452.8,diabetes,small
+AutoGluon_Extreme_4h,1.0,1.0,1.0,0.57499,14472.4,anneal,small
+AutoGluon_Extreme_4h,0.77,0.793598,0.609449,0.494562,14421.36,credit-g,medium
+AutoGluon_Extreme_4h,0.88959,0.931331,0.85432,0.349164,14446.16,qsar-biodeg,medium
+AutoGluon_Extreme_4h,0.945274,0.903215,0.544374,0.154404,14447.1,baseball,medium
+AutoGluon_Extreme_4h,0.627803,0.886836,0.04318,1.668003,14629.79,yeast,medium
+AutoGluon_Extreme_4h,0.958203,0.9955,0.951891,0.434026,14440.65,splice,medium
+AutoGluon_Extreme_4h,0.782416,0.866181,0.77733,0.455737,14461.48,Bioresponse,medium
+AutoGluon_Extreme_4h,0.967314,0.991709,0.000754,0.308653,14477.92,hypothyroid,medium

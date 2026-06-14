@@ -1,0 +1,257 @@
+{
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/run_cluster.py": {
+    "mtime": 1780690348.8647072,
+    "ast_hash": "695d2fd7eb747e2764aa589de3af394e",
+    "semantic_hash": "695d2fd7eb747e2764aa589de3af394e"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/run_cluster_final.py": {
+    "mtime": 1780842689.1417837,
+    "ast_hash": "537c4bd062c37f9435a8d544e3f94548",
+    "semantic_hash": "537c4bd062c37f9435a8d544e3f94548"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/run_optuna.py": {
+    "mtime": 1780690368.3076255,
+    "ast_hash": "0ba303f26be3c90bc2bc4a8c74801a3e",
+    "semantic_hash": "0ba303f26be3c90bc2bc4a8c74801a3e"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/test_hiva.py": {
+    "mtime": 1780617554.808589,
+    "ast_hash": "8c1866f90e83b3a2c6fb37ec5534a8ff",
+    "semantic_hash": "8c1866f90e83b3a2c6fb37ec5534a8ff"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/data/__init__.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/data/load_tabarena.py": {
+    "mtime": 1779905211.9236867,
+    "ast_hash": "4b1dde8882c73c309b03abf0fd586e8b",
+    "semantic_hash": "4b1dde8882c73c309b03abf0fd586e8b"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/generate_stats.py": {
+    "mtime": 1780515043.8992467,
+    "ast_hash": "3982278a32a5db3a6cf4f6801c8fdd65",
+    "semantic_hash": "3982278a32a5db3a6cf4f6801c8fdd65"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/kaggle/kaggle_continue.py": {
+    "mtime": 1780515043.8994157,
+    "ast_hash": "c21b7a54d108884a65fa4ab369a6e08d",
+    "semantic_hash": "c21b7a54d108884a65fa4ab369a6e08d"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/kaggle/kaggle_pipeline.py": {
+    "mtime": 1780515043.899713,
+    "ast_hash": "90416c91031ec769a79adc5abf2758f5",
+    "semantic_hash": "90416c91031ec769a79adc5abf2758f5"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/__init__.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/models/__init__.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "b841c3c851809377278dd20b908870a0",
+    "semantic_hash": "b841c3c851809377278dd20b908870a0"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/models/automl.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "ec0bd61913081007e39316cbfe68440e",
+    "semantic_hash": "ec0bd61913081007e39316cbfe68440e"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/models/baselines.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "6fb796bdc1dba951e8c39fe475d5c778",
+    "semantic_hash": "6fb796bdc1dba951e8c39fe475d5c778"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/models/group_model.py": {
+    "mtime": 1780352184.7894819,
+    "ast_hash": "946bf1e03ace17f3ee18fe343f6b1d92",
+    "semantic_hash": "946bf1e03ace17f3ee18fe343f6b1d92"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/models/tabicl_tuning.py": {
+    "mtime": 1779382930.1780725,
+    "ast_hash": "1f185e44827239ea2c95073298c8c430",
+    "semantic_hash": "1f185e44827239ea2c95073298c8c430"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/pipeline/__init__.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "052d593bf30d714a62140b28861b8315",
+    "semantic_hash": "052d593bf30d714a62140b28861b8315"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/pipeline/evaluate.py": {
+    "mtime": 1780515043.8999944,
+    "ast_hash": "dadf8dfff53b7575a4c130a7246e1cb9",
+    "semantic_hash": "dadf8dfff53b7575a4c130a7246e1cb9"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/pipeline/regime.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "d396a4e2e30f129edd5723bdcac459c9",
+    "semantic_hash": "d396a4e2e30f129edd5723bdcac459c9"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/pipeline/run_all.py": {
+    "mtime": 1780515043.9001849,
+    "ast_hash": "f48eebed1c59a9a07e328c37ab6707a1",
+    "semantic_hash": "f48eebed1c59a9a07e328c37ab6707a1"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/pipeline/split.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "826ee8e7c8dfdbfa498bfde50cd44bd5",
+    "semantic_hash": "826ee8e7c8dfdbfa498bfde50cd44bd5"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/pipeline/stats.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "ebb1c1d7653974ed553c84c2dc969bea",
+    "semantic_hash": "ebb1c1d7653974ed553c84c2dc969bea"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/pipeline/tune.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "69b6d38858d18b3c4e123d7a7c78f93d",
+    "semantic_hash": "69b6d38858d18b3c4e123d7a7c78f93d"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/reports/__init__.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/src/reports/results_table.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "a846e2ed64fa48961e59e37c05fa3dff",
+    "semantic_hash": "a846e2ed64fa48961e59e37c05fa3dff"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/tests/__init__.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/tests/test_pipeline.py": {
+    "mtime": 1777930324.0,
+    "ast_hash": "76f23f7be63438c8c49eb3c90969fe0b",
+    "semantic_hash": "76f23f7be63438c8c49eb3c90969fe0b"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/valida_openml.py": {
+    "mtime": 1780704079.749831,
+    "ast_hash": "81382d3355e49b36c352b82e222d095b",
+    "semantic_hash": "81382d3355e49b36c352b82e222d095b"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/README.md": {
+    "mtime": 1777930324.0,
+    "ast_hash": "bdb6b862b75d054a30bd8f101d141e2c",
+    "semantic_hash": "bdb6b862b75d054a30bd8f101d141e2c"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/erros_optuna.txt": {
+    "mtime": 1780702901.8871343,
+    "ast_hash": "fc44d3a60f9c46dfc4fe1ac10cbfbff3",
+    "semantic_hash": "fc44d3a60f9c46dfc4fe1ac10cbfbff3"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/erros_tabarena.txt": {
+    "mtime": 1780702902.71837,
+    "ast_hash": "cdf009914339e30240b377c9e54392d6",
+    "semantic_hash": "cdf009914339e30240b377c9e54392d6"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/relatorio_preliminar.md": {
+    "mtime": 1780703624.4540281,
+    "ast_hash": "47855b22f7a44f28e076336428f06f7f",
+    "semantic_hash": "47855b22f7a44f28e076336428f06f7f"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/resultado_optuna.txt": {
+    "mtime": 1780702903.4230435,
+    "ast_hash": "45fc6227d89131c0a9d1fb1559d9a1f3",
+    "semantic_hash": "45fc6227d89131c0a9d1fb1559d9a1f3"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/resultado_tabarena.txt": {
+    "mtime": 1780702904.2401226,
+    "ast_hash": "60f61570cadf195e1911780a10b2e23f",
+    "semantic_hash": "60f61570cadf195e1911780a10b2e23f"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/runpod_log.txt": {
+    "mtime": 1780703200.6211805,
+    "ast_hash": "6c0a3f1bdaf1b03ac745ba9b27232137",
+    "semantic_hash": "6c0a3f1bdaf1b03ac745ba9b27232137"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/tabelas_organizadas.md": {
+    "mtime": 1780709610.842273,
+    "ast_hash": "dcf56ad5d3ae568a66e099c61850c928",
+    "semantic_hash": "dcf56ad5d3ae568a66e099c61850c928"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/cluster_apuana/apuana_cluster_plan.md": {
+    "mtime": 1780842715.4750035,
+    "ast_hash": "f21b73091854e92d2b743977b6288242",
+    "semantic_hash": "f21b73091854e92d2b743977b6288242"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/docs/ESTADO_DO_PROJETO.md": {
+    "mtime": 1780515043.899001,
+    "ast_hash": "b55ca527a13490246a87562aad443410",
+    "semantic_hash": "b55ca527a13490246a87562aad443410"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/docs/INFRAESTRUTURA.md": {
+    "mtime": 1777930324.0,
+    "ast_hash": "8b1cde465036229bf671f5a6edcb7b7b",
+    "semantic_hash": "8b1cde465036229bf671f5a6edcb7b7b"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/docs/RODAR_NO_KAGGLE.md": {
+    "mtime": 1780515043.8991172,
+    "ast_hash": "94e00968b0b16e1b0993581299e141d5",
+    "semantic_hash": "94e00968b0b16e1b0993581299e141d5"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/docs/anneal_preprocessing_notes.md": {
+    "mtime": 1780515043.9046876,
+    "ast_hash": "91645c6635cc944e4af070511a018dbb",
+    "semantic_hash": "91645c6635cc944e4af070511a018dbb"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/entregaveis/README.md": {
+    "mtime": 1777930324.0,
+    "ast_hash": "3ab29900c37fa499a5029712c242cc0d",
+    "semantic_hash": "3ab29900c37fa499a5029712c242cc0d"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/entregaveis/relatorio_final.md": {
+    "mtime": 1779493817.7619689,
+    "ast_hash": "31b995820404b137f35673c2e84052b4",
+    "semantic_hash": "31b995820404b137f35673c2e84052b4"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/historico_de_abordagens.md": {
+    "mtime": 1780800784.92187,
+    "ast_hash": "74cc7f55f4a491773ca646d9be3833ae",
+    "semantic_hash": "74cc7f55f4a491773ca646d9be3833ae"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/kaggle/kaggle_pipeline.md": {
+    "mtime": 1780540195.839219,
+    "ast_hash": "bc4a2889759a36417f5345186c743f88",
+    "semantic_hash": "bc4a2889759a36417f5345186c743f88"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/model_cards/TEMPLATE.md": {
+    "mtime": 1777930324.0,
+    "ast_hash": "ab6a3f8e5d83b8d23075757acf8bef13",
+    "semantic_hash": "ab6a3f8e5d83b8d23075757acf8bef13"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/model_cards/TabICL_v2.md": {
+    "mtime": 1779905249.4537642,
+    "ast_hash": "361deab4db99d45aa047045ddff67f61",
+    "semantic_hash": "361deab4db99d45aa047045ddff67f61"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Instructions Datasets/projeto-final-AM (1).pdf": {
+    "mtime": 1779903702.9549196,
+    "ast_hash": "ec354a8e40d00903fa2014b3694f8167",
+    "semantic_hash": "ec354a8e40d00903fa2014b3694f8167"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/Resultados Preliminares/relatorio_preliminar.pdf": {
+    "mtime": 1780703763.9013267,
+    "ast_hash": "5bde09fefd1bbbc62c0522a56b3b7630",
+    "semantic_hash": "5bde09fefd1bbbc62c0522a56b3b7630"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/entregaveis/relatorio-template.pdf": {
+    "mtime": 1777930324.0,
+    "ast_hash": "752b4c78e8163b4de610b42df9b5fda5",
+    "semantic_hash": "752b4c78e8163b4de610b42df9b5fda5"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/entregaveis/rubrica.pdf": {
+    "mtime": 1777930324.0,
+    "ast_hash": "f91e5b91cdd98e1acc2fb026735d49ca",
+    "semantic_hash": "f91e5b91cdd98e1acc2fb026735d49ca"
+  },
+  "/Users/joaopms/Downloads/projeto-final-AM-template-main/entregaveis/slides-template.pdf": {
+    "mtime": 1777930324.0,
+    "ast_hash": "5542ae57343710eea9a7a184ebe299c3",
+    "semantic_hash": "5542ae57343710eea9a7a184ebe299c3"
+  }
+}

@@ -1,0 +1,3839 @@
+{
+  "nodes": [
+    {
+      "id": "check_csv",
+      "label": "check_csv.py",
+      "file_type": "code",
+      "source_file": "check_csv.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_generate_final_stats",
+      "label": "generate_final_stats.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_generate_final_stats_demsar_analysis_custom",
+      "label": "demsar_analysis_custom()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_generate_final_stats_bayesian_pairwise_custom",
+      "label": "bayesian_pairwise_custom()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_generate_final_stats_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L50",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_check_csv2",
+      "label": "check_csv2.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/check_csv2.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_check_tabicl",
+      "label": "check_tabicl.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/check_tabicl.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_fetch_metadata",
+      "label": "fetch_metadata.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/fetch_metadata.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gerar_graficos_e_tabelas",
+      "label": "gerar_graficos_e_tabelas.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gerar_graficos_e_tabelas_gerar_tabela_latex",
+      "label": "gerar_tabela_latex()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L46",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gerar_optuna_exemplos",
+      "label": "gerar_optuna_exemplos.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gerar_optuna_exemplos_objective",
+      "label": "objective()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_inject_tex",
+      "label": "inject_tex.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/inject_tex.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final",
+      "label": "run_cluster_final.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_timeouterror",
+      "label": "TimeoutError",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
+      "id": "exception",
+      "label": "Exception",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_timeout_handler",
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_preprocess",
+      "label": "preprocess()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L81",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_g_mean_score",
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L99",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_compute_auc",
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L109",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_compute_cross_entropy",
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L125",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_run_baseline",
+      "label": "run_baseline()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L130",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_build_lightgbm",
+      "label": "build_lightgbm()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L156",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_build_xgboost",
+      "label": "build_xgboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L160",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_build_catboost",
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L164",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_build_tabicl",
+      "label": "build_tabicl()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L168",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_run_autogluon",
+      "label": "run_autogluon()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L173",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_cross_val_objective",
+      "label": "cross_val_objective()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L230",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_objective_lgb",
+      "label": "objective_lgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L255",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_objective_xgb",
+      "label": "objective_xgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L268",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_objective_cat",
+      "label": "objective_cat()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L284",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_run_tuning",
+      "label": "run_tuning()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L297",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L352",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2",
+      "label": "run_cluster_final_v2.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_timeout_handler",
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L65",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_build_preprocessor",
+      "label": "build_preprocessor()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L103",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_compute_auc",
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L115",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_g_mean_score",
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L126",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_compute_cross_entropy",
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L136",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_run_baseline",
+      "label": "run_baseline()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L141",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_build_lightgbm",
+      "label": "build_lightgbm()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L166",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_build_xgboost",
+      "label": "build_xgboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L170",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_build_catboost",
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L174",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_build_tabicl",
+      "label": "build_tabicl()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L178",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_run_autogluon",
+      "label": "run_autogluon()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L183",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_objective_lgb",
+      "label": "objective_lgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L241",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_objective_xgb",
+      "label": "objective_xgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L255",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_objective_cat",
+      "label": "objective_cat()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L268",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_run_tuning",
+      "label": "run_tuning()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L282",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_run_cluster_final_v2_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L321",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme",
+      "label": "run_ag_extreme.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_timeout_handler",
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L73",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_build_preprocessor",
+      "label": "build_preprocessor()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_compute_auc",
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_g_mean_score",
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L99",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_compute_cross_entropy",
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L112",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_run_autogluon_extreme",
+      "label": "run_autogluon_extreme()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L119",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L176",
+      "_origin": "ast"
+    },
+    {
+      "id": "clara_run_ag_extreme_rationale_1",
+      "label": "=================================================================== TATICA ENXAM",
+      "file_type": "rationale",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme",
+      "label": "run_ag_extreme.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_timeout_handler",
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L73",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_build_preprocessor",
+      "label": "build_preprocessor()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_compute_auc",
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_g_mean_score",
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L99",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_compute_cross_entropy",
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L112",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_run_autogluon_extreme",
+      "label": "run_autogluon_extreme()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L119",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L176",
+      "_origin": "ast"
+    },
+    {
+      "id": "joao_run_ag_extreme_rationale_1",
+      "label": "=================================================================== TATICA ENXAM",
+      "file_type": "rationale",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "tatica_enxame_setup_enxame",
+      "label": "setup_enxame.sh",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/setup_enxame.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "users_joaopms_downloads_projeto_final_am_template_main_cluster_apuana_tatica_enxame_setup_enxame_sh__entry",
+      "label": "setup_enxame.sh script",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/setup_enxame.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme",
+      "label": "run_ag_extreme.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_timeout_handler",
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L73",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_build_preprocessor",
+      "label": "build_preprocessor()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L77",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_compute_auc",
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_g_mean_score",
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L99",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_compute_cross_entropy",
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L112",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_run_autogluon_extreme",
+      "label": "run_autogluon_extreme()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L119",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L176",
+      "_origin": "ast"
+    },
+    {
+      "id": "vinicius_run_ag_extreme_rationale_1",
+      "label": "=================================================================== TATICA ENXAM",
+      "file_type": "rationale",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "cluster_apuana_test_v2",
+      "label": "test_v2.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/test_v2.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_gerar_graficos_e_tabelas",
+      "label": "gerar_graficos_e_tabelas.py",
+      "file_type": "code",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_gerar_graficos_e_tabelas_gerar_tabela_latex",
+      "label": "gerar_tabela_latex()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L46",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_gerar_optuna_exemplos",
+      "label": "gerar_optuna_exemplos.py",
+      "file_type": "code",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_gerar_optuna_exemplos_objective",
+      "label": "objective()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L32",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2",
+      "label": "run_cluster_final_v2.py",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_timeout_handler",
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L65",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_build_preprocessor",
+      "label": "build_preprocessor()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L103",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_compute_auc",
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L115",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_g_mean_score",
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L126",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_compute_cross_entropy",
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L136",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_run_baseline",
+      "label": "run_baseline()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L141",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_build_lightgbm",
+      "label": "build_lightgbm()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L166",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_build_xgboost",
+      "label": "build_xgboost()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L170",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_build_catboost",
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L174",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_build_tabicl",
+      "label": "build_tabicl()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L178",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_run_autogluon",
+      "label": "run_autogluon()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L183",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_objective_lgb",
+      "label": "objective_lgb()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L241",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_objective_xgb",
+      "label": "objective_xgb()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L255",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_objective_cat",
+      "label": "objective_cat()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L268",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_run_tuning",
+      "label": "run_tuning()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L282",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_run_cluster_final_v2_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L321",
+      "_origin": "ast"
+    },
+    {
+      "id": "gen_latex",
+      "label": "gen_latex.py",
+      "file_type": "code",
+      "source_file": "gen_latex.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "juntar_resultados",
+      "label": "juntar_resultados.py",
+      "file_type": "code",
+      "source_file": "juntar_resultados.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "juntar_resultados_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "juntar_resultados.py",
+      "source_location": "L5",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "check_csv",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "check_csv.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "matplotlib_pyplot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "autorank",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "baycomp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "cluster_apuana_generate_final_stats_demsar_analysis_custom",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "cluster_apuana_generate_final_stats_bayesian_pairwise_custom",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats",
+      "target": "cluster_apuana_generate_final_stats_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats_main",
+      "target": "cluster_apuana_generate_final_stats_demsar_analysis_custom",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_generate_final_stats_main",
+      "target": "cluster_apuana_generate_final_stats_bayesian_pairwise_custom",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/generate_final_stats.py",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_check_csv2",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/check_csv2.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_check_tabicl",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/check_tabicl.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_check_tabicl",
+      "target": "autorank",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/check_tabicl.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_fetch_metadata",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/fetch_metadata.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_fetch_metadata",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/fetch_metadata.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_fetch_metadata",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/fetch_metadata.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "matplotlib_pyplot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "seaborn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "autorank",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "baycomp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_graficos_e_tabelas",
+      "target": "scripts_gerar_graficos_e_tabelas_gerar_tabela_latex",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_graficos_e_tabelas.py",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "sklearn_ensemble",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "optuna_visualization_matplotlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "optuna",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "matplotlib_pyplot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_gerar_optuna_exemplos",
+      "target": "scripts_gerar_optuna_exemplos_objective",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/gerar_optuna_exemplos.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "scripts_inject_tex",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/resultados_estat_finais/scripts/inject_tex.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "multiprocessing",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "optuna",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "optuna_samplers",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "sklearn_preprocessing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "torch",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_timeouterror",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_timeouterror",
+      "target": "exception",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_timeout_handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_preprocess",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_compute_auc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_run_baseline",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_lightgbm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_xgboost",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L160",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_catboost",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L164",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_tabicl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_run_autogluon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "lightgbm",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L226",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "xgboost",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L227",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "catboost",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L228",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L230",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_objective_lgb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L255",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_objective_xgb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L268",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_objective_cat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L284",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_run_tuning",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L297",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L352",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_timeout_handler",
+      "target": "cluster_apuana_run_cluster_final_timeouterror",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L208",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L209",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L210",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_objective_lgb",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L266",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_objective_xgb",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L282",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_objective_cat",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L295",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L339",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L340",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L341",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_main",
+      "target": "cluster_apuana_run_cluster_final_preprocess",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L393",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "multiprocessing",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "random",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "optuna",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "optuna_samplers",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "sklearn_preprocessing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "sklearn_impute",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "sklearn_compose",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "sklearn_pipeline",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "torch",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_timeout_handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_build_preprocessor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_auc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_g_mean_score",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_run_baseline",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_build_lightgbm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_build_xgboost",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_build_catboost",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_build_tabicl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_run_autogluon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "lightgbm",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L237",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "xgboost",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "catboost",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_objective_lgb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L241",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_objective_xgb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L255",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_objective_cat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L268",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_run_tuning",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L282",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2",
+      "target": "cluster_apuana_run_cluster_final_v2_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L321",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_v2_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_v2_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L220",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L221",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_v2_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L309",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L310",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L311",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_main",
+      "target": "cluster_apuana_run_cluster_final_v2_build_preprocessor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L378",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "multiprocessing",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "random",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "sklearn_preprocessing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "sklearn_impute",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "sklearn_compose",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "clara_run_ag_extreme_timeout_handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "clara_run_ag_extreme_build_preprocessor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "clara_run_ag_extreme_compute_auc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "clara_run_ag_extreme_g_mean_score",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "clara_run_ag_extreme_compute_cross_entropy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "clara_run_ag_extreme_run_autogluon_extreme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme",
+      "target": "clara_run_ag_extreme_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme_run_autogluon_extreme",
+      "target": "clara_run_ag_extreme_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme_run_autogluon_extreme",
+      "target": "clara_run_ag_extreme_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme_run_autogluon_extreme",
+      "target": "clara_run_ag_extreme_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme_main",
+      "target": "clara_run_ag_extreme_build_preprocessor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme_main",
+      "target": "clara_run_ag_extreme_run_autogluon_extreme",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L243",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme_rationale_1",
+      "target": "clara_run_ag_extreme",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "multiprocessing",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "random",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "sklearn_preprocessing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "sklearn_impute",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "sklearn_compose",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "joao_run_ag_extreme_timeout_handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "joao_run_ag_extreme_build_preprocessor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "joao_run_ag_extreme_compute_auc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "joao_run_ag_extreme_g_mean_score",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "joao_run_ag_extreme_compute_cross_entropy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "joao_run_ag_extreme_run_autogluon_extreme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme",
+      "target": "joao_run_ag_extreme_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme_run_autogluon_extreme",
+      "target": "joao_run_ag_extreme_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme_run_autogluon_extreme",
+      "target": "joao_run_ag_extreme_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme_run_autogluon_extreme",
+      "target": "joao_run_ag_extreme_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme_main",
+      "target": "joao_run_ag_extreme_build_preprocessor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme_main",
+      "target": "joao_run_ag_extreme_run_autogluon_extreme",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L243",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme_rationale_1",
+      "target": "joao_run_ag_extreme",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tatica_enxame_setup_enxame",
+      "target": "users_joaopms_downloads_projeto_final_am_template_main_cluster_apuana_tatica_enxame_setup_enxame_sh__entry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/setup_enxame.sh",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tatica_enxame_setup_enxame",
+      "target": "venv_dir_bin_activate",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/setup_enxame.sh",
+      "source_location": "L45",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "multiprocessing",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "random",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "sklearn_preprocessing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "sklearn_impute",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "sklearn_compose",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "vinicius_run_ag_extreme_timeout_handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "vinicius_run_ag_extreme_build_preprocessor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "vinicius_run_ag_extreme_compute_auc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "vinicius_run_ag_extreme_g_mean_score",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "vinicius_run_ag_extreme_compute_cross_entropy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "vinicius_run_ag_extreme_run_autogluon_extreme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme",
+      "target": "vinicius_run_ag_extreme_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme_run_autogluon_extreme",
+      "target": "vinicius_run_ag_extreme_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme_run_autogluon_extreme",
+      "target": "vinicius_run_ag_extreme_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme_run_autogluon_extreme",
+      "target": "vinicius_run_ag_extreme_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme_main",
+      "target": "vinicius_run_ag_extreme_build_preprocessor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L232",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme_main",
+      "target": "vinicius_run_ag_extreme_run_autogluon_extreme",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L243",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme_rationale_1",
+      "target": "vinicius_run_ag_extreme",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_test_v2",
+      "target": "run_cluster_final_v2",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "cluster_apuana/test_v2.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "matplotlib_pyplot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "seaborn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "autorank",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "baycomp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_graficos_e_tabelas",
+      "target": "src_gerar_graficos_e_tabelas_gerar_tabela_latex",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_graficos_e_tabelas.py",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "sklearn_ensemble",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "optuna_visualization_matplotlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "optuna",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "matplotlib_pyplot",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gerar_optuna_exemplos",
+      "target": "src_gerar_optuna_exemplos_objective",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/gerar_optuna_exemplos.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "time",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "signal",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "warnings",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "logging",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "multiprocessing",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "numpy",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "random",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "optuna",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "optuna_samplers",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "sklearn_preprocessing",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "sklearn_impute",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "sklearn_compose",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "sklearn_pipeline",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "torch",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_timeout_handler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_build_preprocessor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_compute_auc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_g_mean_score",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_run_baseline",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_build_lightgbm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L166",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_build_xgboost",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_build_catboost",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L174",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_build_tabicl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_run_autogluon",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "lightgbm",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L237",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "xgboost",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "catboost",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_objective_lgb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L241",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_objective_xgb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L255",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_objective_cat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L268",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_run_tuning",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L282",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2",
+      "target": "src_run_cluster_final_v2_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L321",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_baseline",
+      "target": "src_run_cluster_final_v2_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_baseline",
+      "target": "src_run_cluster_final_v2_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L157",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_baseline",
+      "target": "src_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L158",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_autogluon",
+      "target": "src_run_cluster_final_v2_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L220",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_autogluon",
+      "target": "src_run_cluster_final_v2_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L221",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_autogluon",
+      "target": "src_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L222",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_tuning",
+      "target": "src_run_cluster_final_v2_g_mean_score",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L309",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_tuning",
+      "target": "src_run_cluster_final_v2_compute_auc",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L310",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_run_tuning",
+      "target": "src_run_cluster_final_v2_compute_cross_entropy",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L311",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_main",
+      "target": "src_run_cluster_final_v2_build_preprocessor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L378",
+      "weight": 1.0
+    },
+    {
+      "source": "gen_latex",
+      "target": "openml",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "gen_latex.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "juntar_resultados",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "juntar_resultados.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "juntar_resultados",
+      "target": "glob",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "juntar_resultados.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "juntar_resultados",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "juntar_resultados.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "juntar_resultados",
+      "target": "juntar_resultados_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "juntar_resultados.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "cluster_apuana_run_cluster_final_v2_timeout_handler",
+      "target": "cluster_apuana_run_cluster_final_timeouterror",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "cluster_apuana/run_cluster_final_v2.py",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "clara_run_ag_extreme_timeout_handler",
+      "target": "cluster_apuana_run_cluster_final_timeouterror",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "cluster_apuana/tatica_enxame/clara/run_ag_extreme.py",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "joao_run_ag_extreme_timeout_handler",
+      "target": "cluster_apuana_run_cluster_final_timeouterror",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "cluster_apuana/tatica_enxame/joao/run_ag_extreme.py",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "vinicius_run_ag_extreme_timeout_handler",
+      "target": "cluster_apuana_run_cluster_final_timeouterror",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "cluster_apuana/tatica_enxame/vinicius/run_ag_extreme.py",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "src_run_cluster_final_v2_timeout_handler",
+      "target": "cluster_apuana_run_cluster_final_timeouterror",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "entrega_final/src/run_cluster_final_v2.py",
+      "source_location": "L66",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

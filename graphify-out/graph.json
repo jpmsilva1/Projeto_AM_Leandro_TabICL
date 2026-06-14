@@ -1,0 +1,4716 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "run_cluster.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "run_cluster.py",
+      "id": "cluster_apuana_run_cluster"
+    },
+    {
+      "label": "TimeoutError",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "timeouterror",
+      "id": "cluster_apuana_run_cluster_timeouterror"
+    },
+    {
+      "label": "Exception",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "exception",
+      "id": "exception"
+    },
+    {
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L70",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "timeout_handler()",
+      "id": "cluster_apuana_run_cluster_timeout_handler"
+    },
+    {
+      "label": "preprocess()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L74",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "preprocess()",
+      "id": "cluster_apuana_run_cluster_preprocess"
+    },
+    {
+      "label": "safe_run()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L91",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "safe_run()",
+      "id": "cluster_apuana_run_cluster_safe_run"
+    },
+    {
+      "label": "build_tabicl()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L140",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "build_tabicl()",
+      "id": "cluster_apuana_run_cluster_build_tabicl"
+    },
+    {
+      "label": "build_lightgbm()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L144",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "build_lightgbm()",
+      "id": "cluster_apuana_run_cluster_build_lightgbm"
+    },
+    {
+      "label": "build_xgboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L148",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "build_xgboost()",
+      "id": "cluster_apuana_run_cluster_build_xgboost"
+    },
+    {
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L152",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "build_catboost()",
+      "id": "cluster_apuana_run_cluster_build_catboost"
+    },
+    {
+      "label": "load_done_pairs()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L157",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "load_done_pairs()",
+      "id": "cluster_apuana_run_cluster_load_done_pairs"
+    },
+    {
+      "label": "save_result()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": "L207",
+      "_origin": "ast",
+      "community": 9,
+      "norm_label": "save_result()",
+      "id": "cluster_apuana_run_cluster_save_result"
+    },
+    {
+      "label": "run_cluster_final.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "run_cluster_final.py",
+      "id": "cluster_apuana_run_cluster_final"
+    },
+    {
+      "label": "TimeoutError",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L34",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "timeouterror",
+      "id": "cluster_apuana_run_cluster_final_timeouterror"
+    },
+    {
+      "label": "timeout_handler()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L37",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "timeout_handler()",
+      "id": "cluster_apuana_run_cluster_final_timeout_handler"
+    },
+    {
+      "label": "preprocess()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L80",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "preprocess()",
+      "id": "cluster_apuana_run_cluster_final_preprocess"
+    },
+    {
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L98",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "g_mean_score()",
+      "id": "cluster_apuana_run_cluster_final_g_mean_score"
+    },
+    {
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "compute_auc()",
+      "id": "cluster_apuana_run_cluster_final_compute_auc"
+    },
+    {
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L124",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "compute_cross_entropy()",
+      "id": "cluster_apuana_run_cluster_final_compute_cross_entropy"
+    },
+    {
+      "label": "run_baseline()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L129",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "run_baseline()",
+      "id": "cluster_apuana_run_cluster_final_run_baseline"
+    },
+    {
+      "label": "build_lightgbm()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L155",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "build_lightgbm()",
+      "id": "cluster_apuana_run_cluster_final_build_lightgbm"
+    },
+    {
+      "label": "build_xgboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L159",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "build_xgboost()",
+      "id": "cluster_apuana_run_cluster_final_build_xgboost"
+    },
+    {
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L163",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "build_catboost()",
+      "id": "cluster_apuana_run_cluster_final_build_catboost"
+    },
+    {
+      "label": "build_tabicl()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L167",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "build_tabicl()",
+      "id": "cluster_apuana_run_cluster_final_build_tabicl"
+    },
+    {
+      "label": "run_autogluon()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L172",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "run_autogluon()",
+      "id": "cluster_apuana_run_cluster_final_run_autogluon"
+    },
+    {
+      "label": "cross_val_objective()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L229",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "cross_val_objective()",
+      "id": "cluster_apuana_run_cluster_final_cross_val_objective"
+    },
+    {
+      "label": "objective_lgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L254",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "objective_lgb()",
+      "id": "cluster_apuana_run_cluster_final_objective_lgb"
+    },
+    {
+      "label": "objective_xgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L267",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "objective_xgb()",
+      "id": "cluster_apuana_run_cluster_final_objective_xgb"
+    },
+    {
+      "label": "objective_cat()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L283",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "objective_cat()",
+      "id": "cluster_apuana_run_cluster_final_objective_cat"
+    },
+    {
+      "label": "run_tuning()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L296",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "run_tuning()",
+      "id": "cluster_apuana_run_cluster_final_run_tuning"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster_final.py",
+      "source_location": "L351",
+      "_origin": "ast",
+      "community": 5,
+      "norm_label": "main()",
+      "id": "cluster_apuana_run_cluster_final_main"
+    },
+    {
+      "label": "run_optuna.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "run_optuna.py",
+      "id": "cluster_apuana_run_optuna"
+    },
+    {
+      "label": "preprocess()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L60",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "preprocess()",
+      "id": "cluster_apuana_run_optuna_preprocess"
+    },
+    {
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "g_mean_score()",
+      "id": "cluster_apuana_run_optuna_g_mean_score"
+    },
+    {
+      "label": "compute_auc()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L89",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "compute_auc()",
+      "id": "cluster_apuana_run_optuna_compute_auc"
+    },
+    {
+      "label": "compute_cross_entropy()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L105",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "compute_cross_entropy()",
+      "id": "cluster_apuana_run_optuna_compute_cross_entropy"
+    },
+    {
+      "label": "cross_val_objective()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L114",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "cross_val_objective()",
+      "id": "cluster_apuana_run_optuna_cross_val_objective"
+    },
+    {
+      "label": "objective_lgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L139",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "objective_lgb()",
+      "id": "cluster_apuana_run_optuna_objective_lgb"
+    },
+    {
+      "label": "objective_xgb()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L152",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "objective_xgb()",
+      "id": "cluster_apuana_run_optuna_objective_xgb"
+    },
+    {
+      "label": "objective_cat()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L166",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "objective_cat()",
+      "id": "cluster_apuana_run_optuna_objective_cat"
+    },
+    {
+      "label": "run_tuning()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L179",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "run_tuning()",
+      "id": "cluster_apuana_run_optuna_run_tuning"
+    },
+    {
+      "label": "run_autogluon_default()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L233",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "run_autogluon_default()",
+      "id": "cluster_apuana_run_optuna_run_autogluon_default"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_optuna.py",
+      "source_location": "L271",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "main()",
+      "id": "cluster_apuana_run_optuna_main"
+    },
+    {
+      "label": "test_hiva.py",
+      "file_type": "code",
+      "source_file": "cluster_apuana/test_hiva.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 20,
+      "norm_label": "test_hiva.py",
+      "id": "cluster_apuana_test_hiva"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "data/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 21,
+      "norm_label": "__init__.py",
+      "id": "data_init"
+    },
+    {
+      "label": "load_tabarena.py",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "load_tabarena.py",
+      "id": "data_load_tabarena"
+    },
+    {
+      "label": "TabularDataset",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L48",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "tabulardataset",
+      "id": "data_load_tabarena_tabulardataset"
+    },
+    {
+      "label": ".n_samples()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L57",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": ".n_samples()",
+      "id": "data_load_tabarena_tabulardataset_n_samples"
+    },
+    {
+      "label": ".n_features()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L61",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": ".n_features()",
+      "id": "data_load_tabarena_tabulardataset_n_features"
+    },
+    {
+      "label": ".n_classes()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L65",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": ".n_classes()",
+      "id": "data_load_tabarena_tabulardataset_n_classes"
+    },
+    {
+      "label": ".n_categorical()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L69",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": ".n_categorical()",
+      "id": "data_load_tabarena_tabulardataset_n_categorical"
+    },
+    {
+      "label": ".has_missing()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L73",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": ".has_missing()",
+      "id": "data_load_tabarena_tabulardataset_has_missing"
+    },
+    {
+      "label": ".regime()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L77",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": ".regime()",
+      "id": "data_load_tabarena_tabulardataset_regime"
+    },
+    {
+      "label": "classify_regime()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L81",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "classify_regime()",
+      "id": "data_load_tabarena_classify_regime"
+    },
+    {
+      "label": "load_task()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L90",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "load_task()",
+      "id": "data_load_tabarena_load_task"
+    },
+    {
+      "label": "iter_datasets()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L107",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "iter_datasets()",
+      "id": "data_load_tabarena_iter_datasets"
+    },
+    {
+      "label": "summarize()",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L114",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "summarize()",
+      "id": "data_load_tabarena_summarize"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L114",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "dataframe",
+      "id": "data_load_tabarena_py_dataframe"
+    },
+    {
+      "label": "Carregamento padronizado dos 30 datasets do TabArena-v0.1.  Os 30 datasets sao s",
+      "file_type": "rationale",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "carregamento padronizado dos 30 datasets do tabarena-v0.1.  os 30 datasets sao s",
+      "id": "data_load_tabarena_rationale_1"
+    },
+    {
+      "label": "Retorna 'small', 'medium' ou 'large' conforme o numero de amostras.",
+      "file_type": "rationale",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L82",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "retorna 'small', 'medium' ou 'large' conforme o numero de amostras.",
+      "id": "data_load_tabarena_rationale_82"
+    },
+    {
+      "label": "Carrega um dataset do OpenML pelo task_id, com cache.",
+      "file_type": "rationale",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L91",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "carrega um dataset do openml pelo task_id, com cache.",
+      "id": "data_load_tabarena_rationale_91"
+    },
+    {
+      "label": "Itera sobre todos os datasets configurados.",
+      "file_type": "rationale",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L108",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "itera sobre todos os datasets configurados.",
+      "id": "data_load_tabarena_rationale_108"
+    },
+    {
+      "label": "Tabela-resumo (n_samples, n_features, n_classes, regime, missing).",
+      "file_type": "rationale",
+      "source_file": "data/load_tabarena.py",
+      "source_location": "L115",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "tabela-resumo (n_samples, n_features, n_classes, regime, missing).",
+      "id": "data_load_tabarena_rationale_115"
+    },
+    {
+      "label": "generate_stats.py",
+      "file_type": "code",
+      "source_file": "generate_stats.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "generate_stats.py",
+      "id": "generate_stats"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "generate_stats.py",
+      "source_location": "L8",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "main()",
+      "id": "generate_stats_main"
+    },
+    {
+      "label": "kaggle_continue.py",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "kaggle_continue.py",
+      "id": "kaggle_kaggle_continue"
+    },
+    {
+      "label": "load_task()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L60",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "load_task()",
+      "id": "kaggle_kaggle_continue_load_task"
+    },
+    {
+      "label": "preprocess()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "preprocess()",
+      "id": "kaggle_kaggle_continue_preprocess"
+    },
+    {
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L92",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "g_mean_score()",
+      "id": "kaggle_kaggle_continue_g_mean_score"
+    },
+    {
+      "label": "_compute_metrics_safe()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L97",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "_compute_metrics_safe()",
+      "id": "kaggle_kaggle_continue_compute_metrics_safe"
+    },
+    {
+      "label": "evaluate()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L130",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "evaluate()",
+      "id": "kaggle_kaggle_continue_evaluate"
+    },
+    {
+      "label": "TabICLSafe",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L157",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "tabiclsafe",
+      "id": "kaggle_kaggle_continue_tabiclsafe"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L162",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": ".__init__()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_init"
+    },
+    {
+      "label": "._select_fit()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L170",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "._select_fit()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_select_fit"
+    },
+    {
+      "label": "._apply_selection()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L181",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "._apply_selection()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_apply_selection"
+    },
+    {
+      "label": "._is_oom()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L190",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "._is_oom()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_is_oom"
+    },
+    {
+      "label": "._make()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L196",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "._make()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_make"
+    },
+    {
+      "label": "._fit_with_fallback()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L201",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "._fit_with_fallback()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_fit_with_fallback"
+    },
+    {
+      "label": ".fit()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L220",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": ".fit()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_fit"
+    },
+    {
+      "label": ".predict()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L238",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": ".predict()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_predict"
+    },
+    {
+      "label": ".predict_proba()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L241",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": ".predict_proba()",
+      "id": "kaggle_kaggle_continue_tabiclsafe_predict_proba"
+    },
+    {
+      "label": "build_tabicl_safe()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L245",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "build_tabicl_safe()",
+      "id": "kaggle_kaggle_continue_build_tabicl_safe"
+    },
+    {
+      "label": "AutoGluonWrapper",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L265",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "autogluonwrapper",
+      "id": "kaggle_kaggle_continue_autogluonwrapper"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L266",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": ".__init__()",
+      "id": "kaggle_kaggle_continue_autogluonwrapper_init"
+    },
+    {
+      "label": ".fit()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L275",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": ".fit()",
+      "id": "kaggle_kaggle_continue_autogluonwrapper_fit"
+    },
+    {
+      "label": ".predict()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L293",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": ".predict()",
+      "id": "kaggle_kaggle_continue_autogluonwrapper_predict"
+    },
+    {
+      "label": ".predict_proba()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L296",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": ".predict_proba()",
+      "id": "kaggle_kaggle_continue_autogluonwrapper_predict_proba"
+    },
+    {
+      "label": ".cleanup()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L300",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": ".cleanup()",
+      "id": "kaggle_kaggle_continue_autogluonwrapper_cleanup"
+    },
+    {
+      "label": "ag_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L308",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "ag_search_space()",
+      "id": "kaggle_kaggle_continue_ag_search_space"
+    },
+    {
+      "label": "build_autogluon_default()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L311",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "build_autogluon_default()",
+      "id": "kaggle_kaggle_continue_build_autogluon_default"
+    },
+    {
+      "label": "build_autogluon_extreme()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L314",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "build_autogluon_extreme()",
+      "id": "kaggle_kaggle_continue_build_autogluon_extreme"
+    },
+    {
+      "label": "tabicl_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L324",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "tabicl_search_space()",
+      "id": "kaggle_kaggle_continue_tabicl_search_space"
+    },
+    {
+      "label": "lgbm_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L341",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "lgbm_search_space()",
+      "id": "kaggle_kaggle_continue_lgbm_search_space"
+    },
+    {
+      "label": "build_lgbm()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L352",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "build_lgbm()",
+      "id": "kaggle_kaggle_continue_build_lgbm"
+    },
+    {
+      "label": "xgb_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L356",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "xgb_search_space()",
+      "id": "kaggle_kaggle_continue_xgb_search_space"
+    },
+    {
+      "label": "build_xgb()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L367",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "build_xgb()",
+      "id": "kaggle_kaggle_continue_build_xgb"
+    },
+    {
+      "label": "catboost_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L372",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "catboost_search_space()",
+      "id": "kaggle_kaggle_continue_catboost_search_space"
+    },
+    {
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L381",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "build_catboost()",
+      "id": "kaggle_kaggle_continue_build_catboost"
+    },
+    {
+      "label": "tune_model()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L400",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "tune_model()",
+      "id": "kaggle_kaggle_continue_tune_model"
+    },
+    {
+      "label": "run_statistical_analysis()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L452",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "run_statistical_analysis()",
+      "id": "kaggle_kaggle_continue_run_statistical_analysis"
+    },
+    {
+      "label": "============================================================================= C\u00e9",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "============================================================================= ce",
+      "id": "kaggle_kaggle_continue_rationale_1"
+    },
+    {
+      "label": "Carrega dataset com retry autom\u00e1tico para erros 504/503 do OpenML.",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L61",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "carrega dataset com retry automatico para erros 504/503 do openml.",
+      "id": "kaggle_kaggle_continue_rationale_61"
+    },
+    {
+      "label": "Computa auc_ovo, accuracy, g_mean, cross_entropy para um conjunto.",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L98",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "computa auc_ovo, accuracy, g_mean, cross_entropy para um conjunto.",
+      "id": "kaggle_kaggle_continue_rationale_98"
+    },
+    {
+      "label": "TabICL com OOM fallback (GPU\u2192CPU) e feature selection autom\u00e1tica.",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L158",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "tabicl com oom fallback (gpu\u2192cpu) e feature selection automatica.",
+      "id": "kaggle_kaggle_continue_rationale_158"
+    },
+    {
+      "label": "Se n_features > MAX_FEATURES, seleciona top-k por vari\u00e2ncia.",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L171",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "se n_features > max_features, seleciona top-k por variancia.",
+      "id": "kaggle_kaggle_continue_rationale_171"
+    },
+    {
+      "label": "Remove model files do disco para liberar espa\u00e7o no Kaggle.",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_continue.py",
+      "source_location": "L301",
+      "_origin": "ast",
+      "community": 2,
+      "norm_label": "remove model files do disco para liberar espaco no kaggle.",
+      "id": "kaggle_kaggle_continue_rationale_301"
+    },
+    {
+      "label": "kaggle_pipeline.py",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "kaggle_pipeline.py",
+      "id": "kaggle_kaggle_pipeline"
+    },
+    {
+      "label": "install_packages()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "install_packages()",
+      "id": "kaggle_kaggle_pipeline_install_packages"
+    },
+    {
+      "label": "TabularDataset",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L142",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "tabulardataset",
+      "id": "kaggle_kaggle_pipeline_tabulardataset"
+    },
+    {
+      "label": ".n_samples()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L149",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": ".n_samples()",
+      "id": "kaggle_kaggle_pipeline_tabulardataset_n_samples"
+    },
+    {
+      "label": ".n_features()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L151",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": ".n_features()",
+      "id": "kaggle_kaggle_pipeline_tabulardataset_n_features"
+    },
+    {
+      "label": ".n_classes()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L153",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": ".n_classes()",
+      "id": "kaggle_kaggle_pipeline_tabulardataset_n_classes"
+    },
+    {
+      "label": "load_task()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L155",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "load_task()",
+      "id": "kaggle_kaggle_pipeline_load_task"
+    },
+    {
+      "label": "preprocess()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L161",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "preprocess()",
+      "id": "kaggle_kaggle_pipeline_preprocess"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L161",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "dataframe",
+      "id": "kaggle_kaggle_pipeline_py_dataframe"
+    },
+    {
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L185",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "g_mean_score()",
+      "id": "kaggle_kaggle_pipeline_g_mean_score"
+    },
+    {
+      "label": "ndarray",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L185",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "ndarray",
+      "id": "kaggle_kaggle_pipeline_py_ndarray"
+    },
+    {
+      "label": "_score_set()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L190",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "_score_set()",
+      "id": "kaggle_kaggle_pipeline_score_set"
+    },
+    {
+      "label": "evaluate()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L204",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "evaluate()",
+      "id": "kaggle_kaggle_pipeline_evaluate"
+    },
+    {
+      "label": "tabicl_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L234",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "tabicl_search_space()",
+      "id": "kaggle_kaggle_pipeline_tabicl_search_space"
+    },
+    {
+      "label": "Trial",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L234",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "trial",
+      "id": "kaggle_kaggle_pipeline_py_trial"
+    },
+    {
+      "label": "build_tabicl()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L252",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "build_tabicl()",
+      "id": "kaggle_kaggle_pipeline_build_tabicl"
+    },
+    {
+      "label": "lgbm_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L267",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "lgbm_search_space()",
+      "id": "kaggle_kaggle_pipeline_lgbm_search_space"
+    },
+    {
+      "label": "build_lgbm()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L278",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "build_lgbm()",
+      "id": "kaggle_kaggle_pipeline_build_lgbm"
+    },
+    {
+      "label": "xgb_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L283",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "xgb_search_space()",
+      "id": "kaggle_kaggle_pipeline_xgb_search_space"
+    },
+    {
+      "label": "build_xgb()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L294",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "build_xgb()",
+      "id": "kaggle_kaggle_pipeline_build_xgb"
+    },
+    {
+      "label": "catboost_search_space()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L300",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "catboost_search_space()",
+      "id": "kaggle_kaggle_pipeline_catboost_search_space"
+    },
+    {
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L309",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "build_catboost()",
+      "id": "kaggle_kaggle_pipeline_build_catboost"
+    },
+    {
+      "label": "tune_model()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L326",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "tune_model()",
+      "id": "kaggle_kaggle_pipeline_tune_model"
+    },
+    {
+      "label": "run_statistical_analysis()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L378",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "run_statistical_analysis()",
+      "id": "kaggle_kaggle_pipeline_run_statistical_analysis"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L415",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "main()",
+      "id": "kaggle_kaggle_pipeline_main"
+    },
+    {
+      "label": "============================================================================= Pi",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "============================================================================= pi",
+      "id": "kaggle_kaggle_pipeline_rationale_1"
+    },
+    {
+      "label": "Instala pacotes necess\u00e1rios que n\u00e3o v\u00eam pr\u00e9-instalados no Kaggle.",
+      "file_type": "rationale",
+      "source_file": "kaggle/kaggle_pipeline.py",
+      "source_location": "L33",
+      "_origin": "ast",
+      "community": 3,
+      "norm_label": "instala pacotes necessarios que nao vem pre-instalados no kaggle.",
+      "id": "kaggle_kaggle_pipeline_rationale_33"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "src/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 28,
+      "norm_label": "__init__.py",
+      "id": "src_init"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "src/models/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 15,
+      "norm_label": "__init__.py",
+      "id": "models_init"
+    },
+    {
+      "label": "Modelos do projeto: baselines, AutoML e modelo do grupo.  Importacoes sao feitas",
+      "file_type": "rationale",
+      "source_file": "src/models/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 15,
+      "norm_label": "modelos do projeto: baselines, automl e modelo do grupo.  importacoes sao feitas",
+      "id": "models_init_rationale_1"
+    },
+    {
+      "label": "automl.py",
+      "file_type": "code",
+      "source_file": "src/models/automl.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "automl.py",
+      "id": "models_automl"
+    },
+    {
+      "label": "build_autogluon()",
+      "file_type": "code",
+      "source_file": "src/models/automl.py",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "build_autogluon()",
+      "id": "models_automl_build_autogluon"
+    },
+    {
+      "label": "TabularPredictor",
+      "file_type": "code",
+      "source_file": "src/models/automl.py",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "tabularpredictor",
+      "id": "tabularpredictor"
+    },
+    {
+      "label": "AutoGluon 1.4 nos presets `default` (curto) e `extreme` (4 horas).  O preset `ex",
+      "file_type": "rationale",
+      "source_file": "src/models/automl.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "autogluon 1.4 nos presets `default` (curto) e `extreme` (4 horas).  o preset `ex",
+      "id": "models_automl_rationale_1"
+    },
+    {
+      "label": "Constroi um TabularPredictor do AutoGluon.      Args:         label: nome da col",
+      "file_type": "rationale",
+      "source_file": "src/models/automl.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 6,
+      "norm_label": "constroi um tabularpredictor do autogluon.      args:         label: nome da col",
+      "id": "models_automl_rationale_18"
+    },
+    {
+      "label": "baselines.py",
+      "file_type": "code",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "baselines.py",
+      "id": "models_baselines"
+    },
+    {
+      "label": "build_lightgbm()",
+      "file_type": "code",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "build_lightgbm()",
+      "id": "models_baselines_build_lightgbm"
+    },
+    {
+      "label": "LGBM_TD_Classifier",
+      "file_type": "code",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "lgbm_td_classifier",
+      "id": "lgbm_td_classifier"
+    },
+    {
+      "label": "build_xgboost()",
+      "file_type": "code",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "build_xgboost()",
+      "id": "models_baselines_build_xgboost"
+    },
+    {
+      "label": "XGB_TD_Classifier",
+      "file_type": "code",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L24",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "xgb_td_classifier",
+      "id": "xgb_td_classifier"
+    },
+    {
+      "label": "build_catboost()",
+      "file_type": "code",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L29",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "build_catboost()",
+      "id": "models_baselines_build_catboost"
+    },
+    {
+      "label": "CatBoost_TD_Classifier",
+      "file_type": "code",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L29",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "catboost_td_classifier",
+      "id": "catboost_td_classifier"
+    },
+    {
+      "label": "Baselines obrigatorios: LightGBM, XGBoost e CatBoost.  Por padrao usamos as vari",
+      "file_type": "rationale",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "baselines obrigatorios: lightgbm, xgboost e catboost.  por padrao usamos as vari",
+      "id": "models_baselines_rationale_1"
+    },
+    {
+      "label": "LightGBM com defaults meta-tunados (TD) do pytabkit.",
+      "file_type": "rationale",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L20",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "lightgbm com defaults meta-tunados (td) do pytabkit.",
+      "id": "models_baselines_rationale_20"
+    },
+    {
+      "label": "XGBoost com defaults meta-tunados (TD) do pytabkit.",
+      "file_type": "rationale",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "xgboost com defaults meta-tunados (td) do pytabkit.",
+      "id": "models_baselines_rationale_25"
+    },
+    {
+      "label": "CatBoost com defaults meta-tunados (TD) do pytabkit.",
+      "file_type": "rationale",
+      "source_file": "src/models/baselines.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 7,
+      "norm_label": "catboost com defaults meta-tunados (td) do pytabkit.",
+      "id": "models_baselines_rationale_30"
+    },
+    {
+      "label": "group_model.py",
+      "file_type": "code",
+      "source_file": "src/models/group_model.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "group_model.py",
+      "id": "models_group_model"
+    },
+    {
+      "label": "build_group_model()",
+      "file_type": "code",
+      "source_file": "src/models/group_model.py",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "build_group_model()",
+      "id": "models_group_model_build_group_model"
+    },
+    {
+      "label": "Placeholder do modelo principal do grupo.  Cada grupo deve substituir `build_gro",
+      "file_type": "rationale",
+      "source_file": "src/models/group_model.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "placeholder do modelo principal do grupo.  cada grupo deve substituir `build_gro",
+      "id": "models_group_model_rationale_1"
+    },
+    {
+      "label": "tabicl_tuning.py",
+      "file_type": "code",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "tabicl_tuning.py",
+      "id": "models_tabicl_tuning"
+    },
+    {
+      "label": "tabicl_search_space()",
+      "file_type": "code",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "tabicl_search_space()",
+      "id": "models_tabicl_tuning_tabicl_search_space"
+    },
+    {
+      "label": "Trial",
+      "file_type": "code",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "trial",
+      "id": "src_models_tabicl_tuning_py_trial"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "any",
+      "id": "src_models_tabicl_tuning_py_any"
+    },
+    {
+      "label": "tabicl_factory()",
+      "file_type": "code",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L61",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "tabicl_factory()",
+      "id": "models_tabicl_tuning_tabicl_factory"
+    },
+    {
+      "label": "TabICLClassifier",
+      "file_type": "code",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L61",
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "tabiclclassifier",
+      "id": "tabiclclassifier"
+    },
+    {
+      "label": "build_tabicl_factory()",
+      "file_type": "code",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L66",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "build_tabicl_factory()",
+      "id": "models_tabicl_tuning_build_tabicl_factory"
+    },
+    {
+      "label": "Espa\u00e7o de busca Optuna para TabICL v2.  Define o search_space e a factory para u",
+      "file_type": "rationale",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "espaco de busca optuna para tabicl v2.  define o search_space e a factory para u",
+      "id": "models_tabicl_tuning_rationale_1"
+    },
+    {
+      "label": "Amostra hiperpar\u00e2metros do TabICL v2 para um trial Optuna.",
+      "file_type": "rationale",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L33",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "amostra hiperparametros do tabicl v2 para um trial optuna.",
+      "id": "models_tabicl_tuning_rationale_33"
+    },
+    {
+      "label": "Cria um TabICLClassifier a partir de um dict de hiperpar\u00e2metros.",
+      "file_type": "rationale",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L62",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "cria um tabiclclassifier a partir de um dict de hiperparametros.",
+      "id": "models_tabicl_tuning_rationale_62"
+    },
+    {
+      "label": "Retorna uma factory compat\u00edvel com tune() que recebe apenas params.",
+      "file_type": "rationale",
+      "source_file": "src/models/tabicl_tuning.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "community": 10,
+      "norm_label": "retorna uma factory compativel com tune() que recebe apenas params.",
+      "id": "models_tabicl_tuning_rationale_67"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "src/pipeline/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 16,
+      "norm_label": "__init__.py",
+      "id": "pipeline_init"
+    },
+    {
+      "label": "Pipeline padronizado: split, tuning, evaluation, statistics e regime.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 16,
+      "norm_label": "pipeline padronizado: split, tuning, evaluation, statistics e regime.",
+      "id": "pipeline_init_rationale_1"
+    },
+    {
+      "label": "evaluate.py",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "evaluate.py",
+      "id": "pipeline_evaluate"
+    },
+    {
+      "label": "EvaluationResult",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "evaluationresult",
+      "id": "pipeline_evaluate_evaluationresult"
+    },
+    {
+      "label": ".to_dict()",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": ".to_dict()",
+      "id": "pipeline_evaluate_evaluationresult_to_dict"
+    },
+    {
+      "label": "g_mean_score()",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L47",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "g_mean_score()",
+      "id": "pipeline_evaluate_g_mean_score"
+    },
+    {
+      "label": "ndarray",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L47",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "ndarray",
+      "id": "src_pipeline_evaluate_py_ndarray"
+    },
+    {
+      "label": "_compute_metrics()",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L61",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "_compute_metrics()",
+      "id": "pipeline_evaluate_compute_metrics"
+    },
+    {
+      "label": "fit_predict_evaluate()",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L80",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "fit_predict_evaluate()",
+      "id": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L80",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "any",
+      "id": "src_pipeline_evaluate_py_any"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L80",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "dataframe",
+      "id": "src_pipeline_evaluate_py_dataframe"
+    },
+    {
+      "label": "Calculo das metricas exigidas: AUC OVO, ACC, G-Mean, Cross-Entropy e tempo.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "calculo das metricas exigidas: auc ovo, acc, g-mean, cross-entropy e tempo.",
+      "id": "pipeline_evaluate_rationale_1"
+    },
+    {
+      "label": "G-Mean: media geometrica do recall por classe.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L48",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "g-mean: media geometrica do recall por classe.",
+      "id": "pipeline_evaluate_rationale_48"
+    },
+    {
+      "label": "Retorna (auc_ovo, accuracy, g_mean, cross_entropy) para um conjunto.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "retorna (auc_ovo, accuracy, g_mean, cross_entropy) para um conjunto.",
+      "id": "pipeline_evaluate_rationale_67"
+    },
+    {
+      "label": "Treina e avalia um estimador no treino e no teste, medindo tempos.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/evaluate.py",
+      "source_location": "L87",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "treina e avalia um estimador no treino e no teste, medindo tempos.",
+      "id": "pipeline_evaluate_rationale_87"
+    },
+    {
+      "label": "regime.py",
+      "file_type": "code",
+      "source_file": "src/pipeline/regime.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "regime.py",
+      "id": "pipeline_regime"
+    },
+    {
+      "label": "assign_regimes()",
+      "file_type": "code",
+      "source_file": "src/pipeline/regime.py",
+      "source_location": "L17",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "assign_regimes()",
+      "id": "pipeline_regime_assign_regimes"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "src/pipeline/regime.py",
+      "source_location": "L17",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "dataframe",
+      "id": "src_pipeline_regime_py_dataframe"
+    },
+    {
+      "label": "aggregate_by_regime()",
+      "file_type": "code",
+      "source_file": "src/pipeline/regime.py",
+      "source_location": "L40",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "aggregate_by_regime()",
+      "id": "pipeline_regime_aggregate_by_regime"
+    },
+    {
+      "label": "Quebra dos resultados por regime de dataset.  Regimes considerados:     - tamanh",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/regime.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "quebra dos resultados por regime de dataset.  regimes considerados:     - tamanh",
+      "id": "pipeline_regime_rationale_1"
+    },
+    {
+      "label": "Adiciona colunas de regime a uma tabela de metadados de datasets.      Args:",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/regime.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "adiciona colunas de regime a uma tabela de metadados de datasets.      args:",
+      "id": "pipeline_regime_rationale_18"
+    },
+    {
+      "label": "Agrega a metrica por modelo e por valor do regime.      Args:         results: D",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/regime.py",
+      "source_location": "L46",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "agrega a metrica por modelo e por valor do regime.      args:         results: d",
+      "id": "pipeline_regime_rationale_46"
+    },
+    {
+      "label": "run_all.py",
+      "file_type": "code",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "run_all.py",
+      "id": "pipeline_run_all"
+    },
+    {
+      "label": "parse_args()",
+      "file_type": "code",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "parse_args()",
+      "id": "pipeline_run_all_parse_args"
+    },
+    {
+      "label": "Namespace",
+      "file_type": "code",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "namespace",
+      "id": "namespace"
+    },
+    {
+      "label": "_preprocess()",
+      "file_type": "code",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "_preprocess()",
+      "id": "pipeline_run_all_preprocess"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "dataframe",
+      "id": "src_pipeline_run_all_py_dataframe"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L80",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "main()",
+      "id": "pipeline_run_all_main"
+    },
+    {
+      "label": "Executa o pipeline completo: para cada dataset, treina e avalia todos os modelos",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "executa o pipeline completo: para cada dataset, treina e avalia todos os modelos",
+      "id": "pipeline_run_all_rationale_1"
+    },
+    {
+      "label": "Imputa NaN e converte categoricas para numerico.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/run_all.py",
+      "source_location": "L50",
+      "_origin": "ast",
+      "community": 0,
+      "norm_label": "imputa nan e converte categoricas para numerico.",
+      "id": "pipeline_run_all_rationale_50"
+    },
+    {
+      "label": "split.py",
+      "file_type": "code",
+      "source_file": "src/pipeline/split.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "split.py",
+      "id": "pipeline_split"
+    },
+    {
+      "label": "stratified_split()",
+      "file_type": "code",
+      "source_file": "src/pipeline/split.py",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "stratified_split()",
+      "id": "pipeline_split_stratified_split"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "src/pipeline/split.py",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "dataframe",
+      "id": "src_pipeline_split_py_dataframe"
+    },
+    {
+      "label": "ndarray",
+      "file_type": "code",
+      "source_file": "src/pipeline/split.py",
+      "source_location": "L13",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "ndarray",
+      "id": "src_pipeline_split_py_ndarray"
+    },
+    {
+      "label": "Split estratificado 70/30 com seed fixa.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/split.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "split estratificado 70/30 com seed fixa.",
+      "id": "pipeline_split_rationale_1"
+    },
+    {
+      "label": "Split 70/30 estratificado por classe.",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/split.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "split 70/30 estratificado por classe.",
+      "id": "pipeline_split_rationale_19"
+    },
+    {
+      "label": "stats.py",
+      "file_type": "code",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "stats.py",
+      "id": "pipeline_stats"
+    },
+    {
+      "label": "demsar_analysis()",
+      "file_type": "code",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "demsar_analysis()",
+      "id": "pipeline_stats_demsar_analysis"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "dataframe",
+      "id": "src_pipeline_stats_py_dataframe"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "path",
+      "id": "src_pipeline_stats_py_path"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "any",
+      "id": "src_pipeline_stats_py_any"
+    },
+    {
+      "label": "bayesian_pairwise()",
+      "file_type": "code",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L50",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "bayesian_pairwise()",
+      "id": "pipeline_stats_bayesian_pairwise"
+    },
+    {
+      "label": "Analise estatistica: Demsar (autorank) e Bayesiana com ROPE (baycomp).  Friedman",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "analise estatistica: demsar (autorank) e bayesiana com rope (baycomp).  friedman",
+      "id": "pipeline_stats_rationale_1"
+    },
+    {
+      "label": "Roda Friedman + post-hoc + CD diagram via autorank.      Args:         results:",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "roda friedman + post-hoc + cd diagram via autorank.      args:         results:",
+      "id": "pipeline_stats_rationale_25"
+    },
+    {
+      "label": "Roda Bayesian signed-rank test par a par com regiao de equivalencia ROPE.      A",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/stats.py",
+      "source_location": "L54",
+      "_origin": "ast",
+      "community": 8,
+      "norm_label": "roda bayesian signed-rank test par a par com regiao de equivalencia rope.      a",
+      "id": "pipeline_stats_rationale_54"
+    },
+    {
+      "label": "tune.py",
+      "file_type": "code",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "tune.py",
+      "id": "pipeline_tune"
+    },
+    {
+      "label": "tune()",
+      "file_type": "code",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "tune()",
+      "id": "pipeline_tune_tune"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "any",
+      "id": "src_pipeline_tune_py_any"
+    },
+    {
+      "label": "Trial",
+      "file_type": "code",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "trial",
+      "id": "src_pipeline_tune_py_trial"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "dataframe",
+      "id": "src_pipeline_tune_py_dataframe"
+    },
+    {
+      "label": "ndarray",
+      "file_type": "code",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "ndarray",
+      "id": "src_pipeline_tune_py_ndarray"
+    },
+    {
+      "label": "Busca de hiperparametros com Optuna em validacao cruzada (CV) no treino.  Implem",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "busca de hiperparametros com optuna em validacao cruzada (cv) no treino.  implem",
+      "id": "pipeline_tune_rationale_1"
+    },
+    {
+      "label": "Roda Optuna no espaco de busca passado e retorna (melhor_params, melhor_score).",
+      "file_type": "rationale",
+      "source_file": "src/pipeline/tune.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "community": 13,
+      "norm_label": "roda optuna no espaco de busca passado e retorna (melhor_params, melhor_score).",
+      "id": "pipeline_tune_rationale_32"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "src/reports/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 26,
+      "norm_label": "__init__.py",
+      "id": "reports_init"
+    },
+    {
+      "label": "results_table.py",
+      "file_type": "code",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "results_table.py",
+      "id": "reports_results_table"
+    },
+    {
+      "label": "summary_by_model()",
+      "file_type": "code",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "summary_by_model()",
+      "id": "reports_results_table_summary_by_model"
+    },
+    {
+      "label": "DataFrame",
+      "file_type": "code",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L12",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "dataframe",
+      "id": "src_reports_results_table_py_dataframe"
+    },
+    {
+      "label": "pivot_for_stats()",
+      "file_type": "code",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "pivot_for_stats()",
+      "id": "reports_results_table_pivot_for_stats"
+    },
+    {
+      "label": "export_markdown()",
+      "file_type": "code",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "export_markdown()",
+      "id": "reports_results_table_export_markdown"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "path",
+      "id": "src_reports_results_table_py_path"
+    },
+    {
+      "label": "Geracao de tabelas-resumo a partir do CSV de resultados brutos.",
+      "file_type": "rationale",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "geracao de tabelas-resumo a partir do csv de resultados brutos.",
+      "id": "reports_results_table_rationale_1"
+    },
+    {
+      "label": "Tabela com media e desvio de cada metrica, agrupada por modelo.",
+      "file_type": "rationale",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L16",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "tabela com media e desvio de cada metrica, agrupada por modelo.",
+      "id": "reports_results_table_rationale_16"
+    },
+    {
+      "label": "Pivota para `dataset x modelo` no formato esperado por autorank/baycomp.",
+      "file_type": "rationale",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L26",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "pivota para `dataset x modelo` no formato esperado por autorank/baycomp.",
+      "id": "reports_results_table_rationale_26"
+    },
+    {
+      "label": "Exporta a tabela-resumo em Markdown para inclusao no relatorio.",
+      "file_type": "rationale",
+      "source_file": "src/reports/results_table.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "community": 11,
+      "norm_label": "exporta a tabela-resumo em markdown para inclusao no relatorio.",
+      "id": "reports_results_table_rationale_31"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "tests/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 30,
+      "norm_label": "__init__.py",
+      "id": "tests_init"
+    },
+    {
+      "label": "test_pipeline.py",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "test_pipeline.py",
+      "id": "tests_test_pipeline"
+    },
+    {
+      "label": "small_dataset()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "small_dataset()",
+      "id": "tests_test_pipeline_small_dataset"
+    },
+    {
+      "label": "test_baseline_runs()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L30",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "test_baseline_runs()",
+      "id": "tests_test_pipeline_test_baseline_runs"
+    },
+    {
+      "label": "test_split_is_stratified()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L41",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "test_split_is_stratified()",
+      "id": "tests_test_pipeline_test_split_is_stratified"
+    },
+    {
+      "label": "test_split_seed_reproducibility()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L49",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "test_split_seed_reproducibility()",
+      "id": "tests_test_pipeline_test_split_seed_reproducibility"
+    },
+    {
+      "label": "test_evaluation_metrics_present()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L57",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "test_evaluation_metrics_present()",
+      "id": "tests_test_pipeline_test_evaluation_metrics_present"
+    },
+    {
+      "label": "test_g_mean_against_known()",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L75",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "test_g_mean_against_known()",
+      "id": "tests_test_pipeline_test_g_mean_against_known"
+    },
+    {
+      "label": "Smoke test: roda baselines em um dataset pequeno (breast_cancer) e valida saidas",
+      "file_type": "rationale",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "smoke test: roda baselines em um dataset pequeno (breast_cancer) e valida saidas",
+      "id": "tests_test_pipeline_rationale_1"
+    },
+    {
+      "label": "breast_cancer (n=569, 30 features, binario): roda em poucos segundos.",
+      "file_type": "rationale",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "breast_cancer (n=569, 30 features, binario): roda em poucos segundos.",
+      "id": "tests_test_pipeline_rationale_22"
+    },
+    {
+      "label": "Sanity-check do g_mean: classes equilibradas com 100% recall = 1.0.",
+      "file_type": "rationale",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": "L76",
+      "_origin": "ast",
+      "community": 1,
+      "norm_label": "sanity-check do g_mean: classes equilibradas com 100% recall = 1.0.",
+      "id": "tests_test_pipeline_rationale_76"
+    },
+    {
+      "label": "valida_openml.py",
+      "file_type": "code",
+      "source_file": "valida_openml.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 31,
+      "norm_label": "valida_openml.py",
+      "id": "valida_openml"
+    },
+    {
+      "label": "run_cluster.py main function",
+      "file_type": "code",
+      "source_file": "cluster_apuana/run_cluster.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 19,
+      "norm_label": "run_cluster.py main function",
+      "id": "cluster_apuana_run_cluster_main"
+    },
+    {
+      "label": "test_pipeline",
+      "file_type": "code",
+      "source_file": "tests/test_pipeline.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 17,
+      "norm_label": "test_pipeline",
+      "id": "tests_test_pipeline_pipeline"
+    },
+    {
+      "label": "valida_openml",
+      "file_type": "code",
+      "source_file": "valida_openml.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 17,
+      "norm_label": "valida_openml",
+      "id": "template_main_valida_openml"
+    },
+    {
+      "label": "README",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "readme",
+      "id": "template_main_readme"
+    },
+    {
+      "label": "relatorio_preliminar",
+      "file_type": "document",
+      "source_file": "Resultados Preliminares/relatorio_preliminar.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 27,
+      "norm_label": "relatorio_preliminar",
+      "id": "resultados_preliminares_relatorio_preliminar"
+    },
+    {
+      "label": "apuana_cluster_plan",
+      "file_type": "document",
+      "source_file": "cluster_apuana/apuana_cluster_plan.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 18,
+      "norm_label": "apuana_cluster_plan",
+      "id": "cluster_apuana_apuana_cluster_plan"
+    },
+    {
+      "label": "ESTADO_DO_PROJETO",
+      "file_type": "document",
+      "source_file": "docs/ESTADO_DO_PROJETO.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "estado_do_projeto",
+      "id": "docs_estado_do_projeto"
+    },
+    {
+      "label": "INFRAESTRUTURA",
+      "file_type": "document",
+      "source_file": "docs/INFRAESTRUTURA.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 23,
+      "norm_label": "infraestrutura",
+      "id": "docs_infraestrutura"
+    },
+    {
+      "label": "RODAR_NO_KAGGLE",
+      "file_type": "document",
+      "source_file": "docs/RODAR_NO_KAGGLE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 24,
+      "norm_label": "rodar_no_kaggle",
+      "id": "docs_rodar_no_kaggle"
+    },
+    {
+      "label": "anneal_preprocessing_notes",
+      "file_type": "document",
+      "source_file": "docs/anneal_preprocessing_notes.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 22,
+      "norm_label": "anneal_preprocessing_notes",
+      "id": "docs_anneal_preprocessing_notes"
+    },
+    {
+      "label": "relatorio_final",
+      "file_type": "document",
+      "source_file": "entregaveis/relatorio_final.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 14,
+      "norm_label": "relatorio_final",
+      "id": "entregaveis_relatorio_final"
+    },
+    {
+      "label": "historico_de_abordagens",
+      "file_type": "document",
+      "source_file": "historico_de_abordagens.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 29,
+      "norm_label": "historico_de_abordagens",
+      "id": "template_main_historico_de_abordagens"
+    },
+    {
+      "label": "TabICL_v2",
+      "file_type": "document",
+      "source_file": "model_cards/TabICL_v2.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 25,
+      "norm_label": "tabicl_v2",
+      "id": "model_cards_tabicl_v2"
+    },
+    {
+      "label": "README Entreg\u00e1veis",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_readme_doc",
+      "community": 12,
+      "norm_label": "readme entregaveis"
+    },
+    {
+      "label": "Relat\u00f3rio Template",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_relatorio_template_doc",
+      "community": 12,
+      "norm_label": "relatorio template"
+    },
+    {
+      "label": "Slides Template",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_slides_template_doc",
+      "community": 12,
+      "norm_label": "slides template"
+    },
+    {
+      "label": "Rubrica de Avalia\u00e7\u00e3o",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_rubrica_doc",
+      "community": 12,
+      "norm_label": "rubrica de avaliacao"
+    },
+    {
+      "label": "Etapa 1: Fundamenta\u00e7\u00e3o te\u00f3rica",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_readme_etapa_1",
+      "community": 12,
+      "norm_label": "etapa 1: fundamentacao teorica"
+    },
+    {
+      "label": "Etapa 2: Estudo experimental",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_readme_etapa_2",
+      "community": 12,
+      "norm_label": "etapa 2: estudo experimental"
+    },
+    {
+      "label": "TabArena",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_readme_tabarena",
+      "community": 12,
+      "norm_label": "tabarena"
+    },
+    {
+      "label": "AutoGluon",
+      "group": 1,
+      "file_type": "concept",
+      "id": "entregaveis_readme_autogluon",
+      "community": 12,
+      "norm_label": "autogluon"
+    }
+  ],
+  "links": [
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_build_catboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_build_lightgbm"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_build_tabicl"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_build_xgboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_load_done_pairs"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_safe_run"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_save_result"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_timeout_handler"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster",
+      "target": "cluster_apuana_run_cluster_timeouterror"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_timeout_handler",
+      "target": "cluster_apuana_run_cluster_timeouterror"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_timeouterror",
+      "target": "exception"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_timeouterror",
+      "target": "exception"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_build_tabicl",
+      "target": "tabiclclassifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_catboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_lightgbm"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_tabicl"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_build_xgboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_compute_auc"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_main"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_objective_cat"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_objective_lgb"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_objective_xgb"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_run_autogluon"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_run_baseline"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_run_tuning"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_timeout_handler"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final",
+      "target": "cluster_apuana_run_cluster_final_timeouterror"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_timeout_handler",
+      "target": "cluster_apuana_run_cluster_final_timeouterror"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_main",
+      "target": "cluster_apuana_run_cluster_final_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_compute_auc"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_compute_auc"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_compute_auc"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_autogluon",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_baseline",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_tuning",
+      "target": "cluster_apuana_run_cluster_final_compute_cross_entropy"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_build_tabicl",
+      "target": "tabiclclassifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_run_autogluon",
+      "target": "tabularpredictor"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_objective_cat",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_objective_lgb",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_cluster_final_objective_xgb",
+      "target": "cluster_apuana_run_cluster_final_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_compute_auc"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_compute_cross_entropy"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_main"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_objective_cat"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_objective_lgb"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_objective_xgb"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_run_autogluon_default"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna",
+      "target": "cluster_apuana_run_optuna_run_tuning"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_main",
+      "target": "cluster_apuana_run_optuna_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_run_autogluon_default",
+      "target": "cluster_apuana_run_optuna_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_run_tuning",
+      "target": "cluster_apuana_run_optuna_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_run_autogluon_default",
+      "target": "cluster_apuana_run_optuna_compute_auc"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_run_tuning",
+      "target": "cluster_apuana_run_optuna_compute_auc"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_run_autogluon_default",
+      "target": "cluster_apuana_run_optuna_compute_cross_entropy"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_run_tuning",
+      "target": "cluster_apuana_run_optuna_compute_cross_entropy"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_objective_cat",
+      "target": "cluster_apuana_run_optuna_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_objective_lgb",
+      "target": "cluster_apuana_run_optuna_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_objective_xgb",
+      "target": "cluster_apuana_run_optuna_cross_val_objective"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_main",
+      "target": "cluster_apuana_run_optuna_run_tuning"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_main",
+      "target": "cluster_apuana_run_optuna_run_autogluon_default"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "cluster_apuana_run_optuna_run_autogluon_default",
+      "target": "tabularpredictor"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena",
+      "target": "data_load_tabarena_classify_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena",
+      "target": "data_load_tabarena_iter_datasets"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena",
+      "target": "data_load_tabarena_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena",
+      "target": "data_load_tabarena_summarize"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena",
+      "target": "data_load_tabarena_tabulardataset"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_rationale_1",
+      "target": "data_load_tabarena"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime",
+      "target": "data_load_tabarena"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "data_load_tabarena"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_iter_datasets",
+      "target": "data_load_tabarena_tabulardataset"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_load_task",
+      "target": "data_load_tabarena_tabulardataset"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_tabulardataset",
+      "target": "data_load_tabarena_tabulardataset_has_missing"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_tabulardataset",
+      "target": "data_load_tabarena_tabulardataset_n_categorical"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_tabulardataset",
+      "target": "data_load_tabarena_tabulardataset_n_classes"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_tabulardataset",
+      "target": "data_load_tabarena_tabulardataset_n_features"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_tabulardataset",
+      "target": "data_load_tabarena_tabulardataset_n_samples"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_tabulardataset",
+      "target": "data_load_tabarena_tabulardataset_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_tabulardataset_regime",
+      "target": "data_load_tabarena_classify_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_rationale_82",
+      "target": "data_load_tabarena_classify_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime",
+      "target": "data_load_tabarena_classify_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_iter_datasets",
+      "target": "data_load_tabarena_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_rationale_91",
+      "target": "data_load_tabarena_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "data_load_tabarena_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_main",
+      "target": "data_load_tabarena_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_rationale_108",
+      "target": "data_load_tabarena_iter_datasets"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_summarize",
+      "target": "data_load_tabarena_iter_datasets"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_rationale_115",
+      "target": "data_load_tabarena_summarize"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "data_load_tabarena_summarize",
+      "target": "data_load_tabarena_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "generate_stats",
+      "target": "generate_stats_main"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "generate_stats",
+      "target": "pipeline_stats_bayesian_pairwise"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "generate_stats",
+      "target": "pipeline_stats_demsar_analysis"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "generate_stats_main",
+      "target": "pipeline_stats_bayesian_pairwise"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "generate_stats_main",
+      "target": "pipeline_stats_demsar_analysis"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_ag_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_autogluonwrapper"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_build_autogluon_default"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_build_autogluon_extreme"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_build_catboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_build_lgbm"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_build_tabicl_safe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_build_xgb"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_catboost_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_compute_metrics_safe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_lgbm_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_run_statistical_analysis"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_tabicl_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_tabiclsafe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_tune_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue",
+      "target": "kaggle_kaggle_continue_xgb_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_rationale_1",
+      "target": "kaggle_kaggle_continue"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_rationale_61",
+      "target": "kaggle_kaggle_continue_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_compute_metrics_safe",
+      "target": "kaggle_kaggle_continue_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_compute_metrics_safe",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_predict"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_compute_metrics_safe",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_predict_proba"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_evaluate",
+      "target": "kaggle_kaggle_continue_compute_metrics_safe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_rationale_98",
+      "target": "kaggle_kaggle_continue_compute_metrics_safe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_evaluate",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_fit"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_build_tabicl_safe",
+      "target": "kaggle_kaggle_continue_tabiclsafe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_rationale_158",
+      "target": "kaggle_kaggle_continue_tabiclsafe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_apply_selection"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_fit"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_fit_with_fallback"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_init"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_is_oom"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_make"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_predict"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_predict_proba"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe",
+      "target": "kaggle_kaggle_continue_tabiclsafe_select_fit"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_rationale_171",
+      "target": "kaggle_kaggle_continue_tabiclsafe_select_fit"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_fit",
+      "target": "kaggle_kaggle_continue_tabiclsafe_select_fit"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_select_fit",
+      "target": "kaggle_kaggle_continue_tabiclsafe_apply_selection"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_fit",
+      "target": "kaggle_kaggle_continue_tabiclsafe_apply_selection"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_predict",
+      "target": "kaggle_kaggle_continue_tabiclsafe_apply_selection"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_predict_proba",
+      "target": "kaggle_kaggle_continue_tabiclsafe_apply_selection"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_fit",
+      "target": "kaggle_kaggle_continue_tabiclsafe_is_oom"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_fit_with_fallback",
+      "target": "kaggle_kaggle_continue_tabiclsafe_is_oom"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_fit_with_fallback",
+      "target": "kaggle_kaggle_continue_tabiclsafe_make"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_make",
+      "target": "tabiclclassifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_fit",
+      "target": "kaggle_kaggle_continue_tabiclsafe_fit_with_fallback"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_fit_with_fallback",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_fit"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_predict",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_predict"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_tabiclsafe_predict_proba",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_predict_proba"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_autogluonwrapper",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_cleanup"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_autogluonwrapper",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_fit"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_autogluonwrapper",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_init"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_autogluonwrapper",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_predict"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_autogluonwrapper",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_predict_proba"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_build_autogluon_default",
+      "target": "kaggle_kaggle_continue_autogluonwrapper"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_build_autogluon_extreme",
+      "target": "kaggle_kaggle_continue_autogluonwrapper"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_autogluonwrapper_fit",
+      "target": "tabularpredictor"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_continue_rationale_301",
+      "target": "kaggle_kaggle_continue_autogluonwrapper_cleanup"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_build_catboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_build_lgbm"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_build_tabicl"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_build_xgb"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_catboost_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_install_packages"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_lgbm_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_main"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_run_statistical_analysis"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_score_set"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_tabicl_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_tabulardataset"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_tune_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline",
+      "target": "kaggle_kaggle_pipeline_xgb_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_rationale_1",
+      "target": "kaggle_kaggle_pipeline"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_rationale_33",
+      "target": "kaggle_kaggle_pipeline_install_packages"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_load_task",
+      "target": "kaggle_kaggle_pipeline_tabulardataset"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_tabulardataset",
+      "target": "kaggle_kaggle_pipeline_tabulardataset_n_classes"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_tabulardataset",
+      "target": "kaggle_kaggle_pipeline_tabulardataset_n_features"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_tabulardataset",
+      "target": "kaggle_kaggle_pipeline_tabulardataset_n_samples"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_main",
+      "target": "kaggle_kaggle_pipeline_load_task"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_main",
+      "target": "kaggle_kaggle_pipeline_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_preprocess",
+      "target": "kaggle_kaggle_pipeline_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_main",
+      "target": "kaggle_kaggle_pipeline_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_run_statistical_analysis",
+      "target": "kaggle_kaggle_pipeline_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_tune_model",
+      "target": "kaggle_kaggle_pipeline_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_g_mean_score",
+      "target": "kaggle_kaggle_pipeline_py_ndarray"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_score_set",
+      "target": "kaggle_kaggle_pipeline_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_tune_model",
+      "target": "kaggle_kaggle_pipeline_py_ndarray"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_evaluate",
+      "target": "kaggle_kaggle_pipeline_score_set"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_main",
+      "target": "kaggle_kaggle_pipeline_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_tabicl_search_space",
+      "target": "kaggle_kaggle_pipeline_py_trial"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_catboost_search_space",
+      "target": "kaggle_kaggle_pipeline_py_trial"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_lgbm_search_space",
+      "target": "kaggle_kaggle_pipeline_py_trial"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_xgb_search_space",
+      "target": "kaggle_kaggle_pipeline_py_trial"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_build_tabicl",
+      "target": "tabiclclassifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_main",
+      "target": "kaggle_kaggle_pipeline_tune_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "kaggle_kaggle_pipeline_main",
+      "target": "kaggle_kaggle_pipeline_run_statistical_analysis"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_init_rationale_1",
+      "target": "models_init"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_automl",
+      "target": "models_automl_build_autogluon"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_automl_rationale_1",
+      "target": "models_automl"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_automl_build_autogluon",
+      "target": "tabularpredictor"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_automl_rationale_18",
+      "target": "models_automl_build_autogluon"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines",
+      "target": "models_baselines_build_catboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines",
+      "target": "models_baselines_build_lightgbm"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines",
+      "target": "models_baselines_build_xgboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines_rationale_1",
+      "target": "models_baselines"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines_build_lightgbm",
+      "target": "lgbm_td_classifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines_rationale_20",
+      "target": "models_baselines_build_lightgbm"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines_build_xgboost",
+      "target": "xgb_td_classifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines_rationale_25",
+      "target": "models_baselines_build_xgboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines_build_catboost",
+      "target": "catboost_td_classifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_baselines_rationale_30",
+      "target": "models_baselines_build_catboost"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_group_model",
+      "target": "models_group_model_build_group_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_group_model_rationale_1",
+      "target": "models_group_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_group_model_build_group_model",
+      "target": "tabiclclassifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "models_group_model_build_group_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning",
+      "target": "models_tabicl_tuning_build_tabicl_factory"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning",
+      "target": "models_tabicl_tuning_tabicl_factory"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning",
+      "target": "models_tabicl_tuning_tabicl_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_rationale_1",
+      "target": "models_tabicl_tuning"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_rationale_33",
+      "target": "models_tabicl_tuning_tabicl_search_space"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_tabicl_search_space",
+      "target": "src_models_tabicl_tuning_py_any"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_tabicl_search_space",
+      "target": "src_models_tabicl_tuning_py_trial"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_tabicl_factory",
+      "target": "src_models_tabicl_tuning_py_any"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_rationale_62",
+      "target": "models_tabicl_tuning_tabicl_factory"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_tabicl_factory",
+      "target": "tabiclclassifier"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "models_tabicl_tuning_rationale_67",
+      "target": "models_tabicl_tuning_build_tabicl_factory"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_init_rationale_1",
+      "target": "pipeline_init"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate",
+      "target": "pipeline_evaluate_compute_metrics"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate",
+      "target": "pipeline_evaluate_evaluationresult"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate",
+      "target": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate",
+      "target": "pipeline_evaluate_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_rationale_1",
+      "target": "pipeline_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_evaluationresult",
+      "target": "pipeline_evaluate_evaluationresult_to_dict"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_fit_predict_evaluate",
+      "target": "pipeline_evaluate_evaluationresult"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_compute_metrics",
+      "target": "pipeline_evaluate_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_g_mean_score",
+      "target": "src_pipeline_evaluate_py_ndarray"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_rationale_48",
+      "target": "pipeline_evaluate_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "pipeline_evaluate_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_test_g_mean_against_known",
+      "target": "pipeline_evaluate_g_mean_score"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_compute_metrics",
+      "target": "src_pipeline_evaluate_py_ndarray"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_fit_predict_evaluate",
+      "target": "src_pipeline_evaluate_py_ndarray"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_fit_predict_evaluate",
+      "target": "pipeline_evaluate_compute_metrics"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_rationale_67",
+      "target": "pipeline_evaluate_compute_metrics"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_fit_predict_evaluate",
+      "target": "src_pipeline_evaluate_py_any"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_fit_predict_evaluate",
+      "target": "src_pipeline_evaluate_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_evaluate_rationale_87",
+      "target": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_main",
+      "target": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_test_baseline_runs",
+      "target": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_test_evaluation_metrics_present",
+      "target": "pipeline_evaluate_fit_predict_evaluate"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime",
+      "target": "pipeline_regime_aggregate_by_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime",
+      "target": "pipeline_regime_assign_regimes"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime_rationale_1",
+      "target": "pipeline_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime_assign_regimes",
+      "target": "src_pipeline_regime_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime_rationale_18",
+      "target": "pipeline_regime_assign_regimes"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime_aggregate_by_regime",
+      "target": "src_pipeline_regime_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_regime_rationale_46",
+      "target": "pipeline_regime_aggregate_by_regime"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "pipeline_run_all_main"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "pipeline_run_all_parse_args"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "pipeline_run_all_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_rationale_1",
+      "target": "pipeline_run_all"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_main",
+      "target": "pipeline_run_all_parse_args"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_parse_args",
+      "target": "namespace"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_main",
+      "target": "pipeline_run_all_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_preprocess",
+      "target": "src_pipeline_run_all_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_rationale_50",
+      "target": "pipeline_run_all_preprocess"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_main",
+      "target": "src_pipeline_run_all_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_run_all_main",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_split",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_split_rationale_1",
+      "target": "pipeline_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_split_rationale_19",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_split_stratified_split",
+      "target": "src_pipeline_split_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_split_stratified_split",
+      "target": "src_pipeline_split_py_ndarray"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_test_baseline_runs",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_test_evaluation_metrics_present",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_test_split_is_stratified",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_test_split_seed_reproducibility",
+      "target": "pipeline_split_stratified_split"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats",
+      "target": "pipeline_stats_bayesian_pairwise"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats",
+      "target": "pipeline_stats_demsar_analysis"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats_rationale_1",
+      "target": "pipeline_stats"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats_demsar_analysis",
+      "target": "src_pipeline_stats_py_any"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats_demsar_analysis",
+      "target": "src_pipeline_stats_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats_demsar_analysis",
+      "target": "src_pipeline_stats_py_path"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats_rationale_25",
+      "target": "pipeline_stats_demsar_analysis"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats_bayesian_pairwise",
+      "target": "src_pipeline_stats_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_stats_rationale_54",
+      "target": "pipeline_stats_bayesian_pairwise"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_tune",
+      "target": "pipeline_tune_tune"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_tune_rationale_1",
+      "target": "pipeline_tune"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_tune_rationale_32",
+      "target": "pipeline_tune_tune"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_tune_tune",
+      "target": "src_pipeline_tune_py_any"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_tune_tune",
+      "target": "src_pipeline_tune_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_tune_tune",
+      "target": "src_pipeline_tune_py_ndarray"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "pipeline_tune_tune",
+      "target": "src_pipeline_tune_py_trial"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table",
+      "target": "reports_results_table_export_markdown"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table",
+      "target": "reports_results_table_pivot_for_stats"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table",
+      "target": "reports_results_table_summary_by_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_rationale_1",
+      "target": "reports_results_table"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_rationale_16",
+      "target": "reports_results_table_summary_by_model"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_summary_by_model",
+      "target": "src_reports_results_table_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_export_markdown",
+      "target": "src_reports_results_table_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_pivot_for_stats",
+      "target": "src_reports_results_table_py_dataframe"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_rationale_26",
+      "target": "reports_results_table_pivot_for_stats"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_export_markdown",
+      "target": "src_reports_results_table_py_path"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "reports_results_table_rationale_31",
+      "target": "reports_results_table_export_markdown"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "tests_test_pipeline_small_dataset"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "tests_test_pipeline_test_baseline_runs"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "tests_test_pipeline_test_evaluation_metrics_present"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "tests_test_pipeline_test_g_mean_against_known"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "tests_test_pipeline_test_split_is_stratified"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline",
+      "target": "tests_test_pipeline_test_split_seed_reproducibility"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_rationale_1",
+      "target": "tests_test_pipeline"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_rationale_22",
+      "target": "tests_test_pipeline_small_dataset"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "tests_test_pipeline_rationale_76",
+      "target": "tests_test_pipeline_test_g_mean_against_known"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "template_main_valida_openml",
+      "target": "tests_test_pipeline_pipeline"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "template_main_readme",
+      "target": "docs_estado_do_projeto"
+    },
+    {
+      "relation": "inferred",
+      "confidence_score": 1.0,
+      "source": "template_main_readme",
+      "target": "entregaveis_relatorio_final"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_readme_doc",
+      "target": "entregaveis_relatorio_template_doc"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_readme_doc",
+      "target": "entregaveis_rubrica_doc"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_readme_doc",
+      "target": "entregaveis_slides_template_doc"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_relatorio_template_doc",
+      "target": "entregaveis_readme_autogluon"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_relatorio_template_doc",
+      "target": "entregaveis_readme_etapa_1"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_relatorio_template_doc",
+      "target": "entregaveis_readme_etapa_2"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_relatorio_template_doc",
+      "target": "entregaveis_readme_tabarena"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_slides_template_doc",
+      "target": "entregaveis_readme_autogluon"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_slides_template_doc",
+      "target": "entregaveis_readme_etapa_1"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_slides_template_doc",
+      "target": "entregaveis_readme_etapa_2"
+    },
+    {
+      "relation": "references",
+      "confidence_score": 1,
+      "source": "entregaveis_slides_template_doc",
+      "target": "entregaveis_readme_tabarena"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "2c414667d036e2a0aee0a82b46a0e72cdb272661"
+}

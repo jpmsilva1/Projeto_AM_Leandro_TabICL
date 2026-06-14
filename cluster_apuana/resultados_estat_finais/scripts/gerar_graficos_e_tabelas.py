@@ -11,7 +11,7 @@ os.makedirs('cluster_apuana/resultados_estat_finais/tables', exist_ok=True)
 
 df = pd.read_csv('cluster_apuana/resultados_estat_finais/data/final_run_results_v2.csv')
 
-# --- REMOVER AUTOGLUON EXTREME ---
+# --- REMOVER AUTOGLUON EXTREME ANTIGO ---
 df = df[df['model'] != 'AutoGluon_Extreme'].copy()
 
 # 1. IMPUTATION OF MISSING VALUES
@@ -45,13 +45,27 @@ metrics = ['AUC_OVO', 'ACC', 'G_Mean', 'CE', 'total_time_s']
 
 def gerar_tabela_latex(df_group, titulo, label, f):
     agg = df_group.groupby('model')[metrics].agg(['mean', 'std'])
-    tex_table = "\\begin{table}[htbp]\n\\centering\n\\caption{" + titulo + " (AutoGluon Extreme pendente)}\n\\label{" + label + "}\n"
+    tex_table = "\\begin{table}[htbp]\n\\centering\n\\caption{" + titulo + "}\n\\label{" + label + "}\n"
     tex_table += "\\resizebox{\\textwidth}{!}{\n\\begin{tabular}{l" + "c"*len(metrics) + "}\n\\toprule\n"
     tex_table += "\\textbf{Modelo} & \\textbf{AUC-OVO} & \\textbf{Acurácia} & \\textbf{G-Mean} & \\textbf{CE} & \\textbf{Tempo (s)} \\\\\n\\midrule\n"
     
-    agg = agg.sort_values(by=('AUC_OVO', 'mean'), ascending=False)
-    for model, row in agg.iterrows():
-        model_clean = model.replace('_', '\\_')
+    ordem_modelos = [
+        'TabICL',
+        'LightGBM_TD', 'XGBoost_TD', 'CatBoost_TD', 'AutoGluon_Default',
+        'LightGBM_Tuned', 'XGBoost_Tuned', 'CatBoost_Tuned',
+        'AutoGluon_Extreme_4h'
+    ]
+    
+    # Adicionar coluna de ordenação
+    agg = agg.reset_index()
+    agg['sort_order'] = agg['model'].map(lambda x: ordem_modelos.index(x) if x in ordem_modelos else 999)
+    agg = agg.sort_values(by='sort_order').drop(columns=['sort_order'])
+    
+    for _, row in agg.iterrows():
+        model = row['model'].values[0] if isinstance(row['model'], pd.Series) else row['model']
+        if isinstance(model, pd.Series):
+            model = model.iloc[0]
+        model_clean = str(model).replace('_', '\\_')
         row_str = f"{model_clean}"
         for m in metrics:
             mean_val = row[(m, 'mean')]
@@ -60,7 +74,6 @@ def gerar_tabela_latex(df_group, titulo, label, f):
         row_str += " \\\\\n"
         tex_table += row_str
         
-    tex_table += "AutoGluon\\_Extreme & - & - & - & - & - \\\\\n"
     tex_table += "\\bottomrule\n\\end{tabular}\n}\n\\end{table}\n\n"
     f.write(tex_table)
 
@@ -118,7 +131,7 @@ sns.scatterplot(data=global_agg, x='total_time_s', y='AUC_OVO', hue='model', s=2
 plt.xscale('log')
 plt.xlabel('Tempo Médio de Treinamento/Inferência (s) - Log Scale')
 plt.ylabel('Média AUC-OVO')
-plt.title('Custo vs. Desempenho Geral (Sem AutoGluon Extreme)')
+plt.title('Custo vs. Desempenho Geral (Com AutoGluon Extreme 4h)')
 for i in range(global_agg.shape[0]):
     plt.text(global_agg['total_time_s'][i] * 1.1, global_agg['AUC_OVO'][i], global_agg['model'][i], size='small', color='black')
 plt.legend([],[], frameon=False)

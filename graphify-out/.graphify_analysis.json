@@ -1,0 +1,511 @@
+{
+  "communities": {
+    "0": [
+      "data_load_tabarena",
+      "data_load_tabarena_classify_regime",
+      "data_load_tabarena_iter_datasets",
+      "data_load_tabarena_load_task",
+      "data_load_tabarena_py_dataframe",
+      "data_load_tabarena_rationale_1",
+      "data_load_tabarena_rationale_108",
+      "data_load_tabarena_rationale_115",
+      "data_load_tabarena_rationale_82",
+      "data_load_tabarena_rationale_91",
+      "data_load_tabarena_summarize",
+      "data_load_tabarena_tabulardataset",
+      "data_load_tabarena_tabulardataset_has_missing",
+      "data_load_tabarena_tabulardataset_n_categorical",
+      "data_load_tabarena_tabulardataset_n_classes",
+      "data_load_tabarena_tabulardataset_n_features",
+      "data_load_tabarena_tabulardataset_n_samples",
+      "data_load_tabarena_tabulardataset_regime",
+      "namespace",
+      "pipeline_regime",
+      "pipeline_regime_aggregate_by_regime",
+      "pipeline_regime_assign_regimes",
+      "pipeline_regime_rationale_1",
+      "pipeline_regime_rationale_18",
+      "pipeline_regime_rationale_46",
+      "pipeline_run_all",
+      "pipeline_run_all_main",
+      "pipeline_run_all_parse_args",
+      "pipeline_run_all_preprocess",
+      "pipeline_run_all_rationale_1",
+      "pipeline_run_all_rationale_50",
+      "src_pipeline_regime_py_dataframe",
+      "src_pipeline_run_all_py_dataframe"
+    ],
+    "1": [
+      "pipeline_evaluate",
+      "pipeline_evaluate_compute_metrics",
+      "pipeline_evaluate_evaluationresult",
+      "pipeline_evaluate_evaluationresult_to_dict",
+      "pipeline_evaluate_fit_predict_evaluate",
+      "pipeline_evaluate_g_mean_score",
+      "pipeline_evaluate_rationale_1",
+      "pipeline_evaluate_rationale_48",
+      "pipeline_evaluate_rationale_67",
+      "pipeline_evaluate_rationale_87",
+      "pipeline_split",
+      "pipeline_split_rationale_1",
+      "pipeline_split_rationale_19",
+      "pipeline_split_stratified_split",
+      "src_pipeline_evaluate_py_any",
+      "src_pipeline_evaluate_py_dataframe",
+      "src_pipeline_evaluate_py_ndarray",
+      "src_pipeline_split_py_dataframe",
+      "src_pipeline_split_py_ndarray",
+      "tests_test_pipeline",
+      "tests_test_pipeline_rationale_1",
+      "tests_test_pipeline_rationale_22",
+      "tests_test_pipeline_rationale_76",
+      "tests_test_pipeline_small_dataset",
+      "tests_test_pipeline_test_baseline_runs",
+      "tests_test_pipeline_test_evaluation_metrics_present",
+      "tests_test_pipeline_test_g_mean_against_known",
+      "tests_test_pipeline_test_split_is_stratified",
+      "tests_test_pipeline_test_split_seed_reproducibility"
+    ],
+    "2": [
+      "kaggle_kaggle_continue",
+      "kaggle_kaggle_continue_ag_search_space",
+      "kaggle_kaggle_continue_autogluonwrapper",
+      "kaggle_kaggle_continue_autogluonwrapper_cleanup",
+      "kaggle_kaggle_continue_autogluonwrapper_fit",
+      "kaggle_kaggle_continue_autogluonwrapper_init",
+      "kaggle_kaggle_continue_build_autogluon_default",
+      "kaggle_kaggle_continue_build_autogluon_extreme",
+      "kaggle_kaggle_continue_build_catboost",
+      "kaggle_kaggle_continue_build_lgbm",
+      "kaggle_kaggle_continue_build_xgb",
+      "kaggle_kaggle_continue_catboost_search_space",
+      "kaggle_kaggle_continue_compute_metrics_safe",
+      "kaggle_kaggle_continue_evaluate",
+      "kaggle_kaggle_continue_g_mean_score",
+      "kaggle_kaggle_continue_lgbm_search_space",
+      "kaggle_kaggle_continue_load_task",
+      "kaggle_kaggle_continue_preprocess",
+      "kaggle_kaggle_continue_rationale_1",
+      "kaggle_kaggle_continue_rationale_301",
+      "kaggle_kaggle_continue_rationale_61",
+      "kaggle_kaggle_continue_rationale_98",
+      "kaggle_kaggle_continue_run_statistical_analysis",
+      "kaggle_kaggle_continue_tabicl_search_space",
+      "kaggle_kaggle_continue_tune_model",
+      "kaggle_kaggle_continue_xgb_search_space"
+    ],
+    "3": [
+      "kaggle_kaggle_pipeline",
+      "kaggle_kaggle_pipeline_build_catboost",
+      "kaggle_kaggle_pipeline_build_lgbm",
+      "kaggle_kaggle_pipeline_build_xgb",
+      "kaggle_kaggle_pipeline_catboost_search_space",
+      "kaggle_kaggle_pipeline_evaluate",
+      "kaggle_kaggle_pipeline_g_mean_score",
+      "kaggle_kaggle_pipeline_install_packages",
+      "kaggle_kaggle_pipeline_lgbm_search_space",
+      "kaggle_kaggle_pipeline_load_task",
+      "kaggle_kaggle_pipeline_main",
+      "kaggle_kaggle_pipeline_preprocess",
+      "kaggle_kaggle_pipeline_py_dataframe",
+      "kaggle_kaggle_pipeline_py_ndarray",
+      "kaggle_kaggle_pipeline_py_trial",
+      "kaggle_kaggle_pipeline_rationale_1",
+      "kaggle_kaggle_pipeline_rationale_33",
+      "kaggle_kaggle_pipeline_run_statistical_analysis",
+      "kaggle_kaggle_pipeline_score_set",
+      "kaggle_kaggle_pipeline_tabicl_search_space",
+      "kaggle_kaggle_pipeline_tabulardataset",
+      "kaggle_kaggle_pipeline_tabulardataset_n_classes",
+      "kaggle_kaggle_pipeline_tabulardataset_n_features",
+      "kaggle_kaggle_pipeline_tabulardataset_n_samples",
+      "kaggle_kaggle_pipeline_tune_model",
+      "kaggle_kaggle_pipeline_xgb_search_space"
+    ],
+    "4": [
+      "cluster_apuana_run_cluster_build_tabicl",
+      "cluster_apuana_run_cluster_final_build_tabicl",
+      "kaggle_kaggle_continue_autogluonwrapper_predict",
+      "kaggle_kaggle_continue_autogluonwrapper_predict_proba",
+      "kaggle_kaggle_continue_build_tabicl_safe",
+      "kaggle_kaggle_continue_rationale_158",
+      "kaggle_kaggle_continue_rationale_171",
+      "kaggle_kaggle_continue_tabiclsafe",
+      "kaggle_kaggle_continue_tabiclsafe_apply_selection",
+      "kaggle_kaggle_continue_tabiclsafe_fit",
+      "kaggle_kaggle_continue_tabiclsafe_fit_with_fallback",
+      "kaggle_kaggle_continue_tabiclsafe_init",
+      "kaggle_kaggle_continue_tabiclsafe_is_oom",
+      "kaggle_kaggle_continue_tabiclsafe_make",
+      "kaggle_kaggle_continue_tabiclsafe_predict",
+      "kaggle_kaggle_continue_tabiclsafe_predict_proba",
+      "kaggle_kaggle_continue_tabiclsafe_select_fit",
+      "kaggle_kaggle_pipeline_build_tabicl",
+      "models_group_model",
+      "models_group_model_build_group_model",
+      "models_group_model_rationale_1",
+      "tabiclclassifier"
+    ],
+    "5": [
+      "cluster_apuana_run_cluster_final",
+      "cluster_apuana_run_cluster_final_build_catboost",
+      "cluster_apuana_run_cluster_final_build_lightgbm",
+      "cluster_apuana_run_cluster_final_build_xgboost",
+      "cluster_apuana_run_cluster_final_compute_auc",
+      "cluster_apuana_run_cluster_final_compute_cross_entropy",
+      "cluster_apuana_run_cluster_final_cross_val_objective",
+      "cluster_apuana_run_cluster_final_g_mean_score",
+      "cluster_apuana_run_cluster_final_main",
+      "cluster_apuana_run_cluster_final_objective_cat",
+      "cluster_apuana_run_cluster_final_objective_lgb",
+      "cluster_apuana_run_cluster_final_objective_xgb",
+      "cluster_apuana_run_cluster_final_preprocess",
+      "cluster_apuana_run_cluster_final_run_autogluon",
+      "cluster_apuana_run_cluster_final_run_baseline",
+      "cluster_apuana_run_cluster_final_run_tuning",
+      "cluster_apuana_run_cluster_final_timeout_handler",
+      "cluster_apuana_run_cluster_final_timeouterror",
+      "exception"
+    ],
+    "6": [
+      "cluster_apuana_run_optuna",
+      "cluster_apuana_run_optuna_compute_auc",
+      "cluster_apuana_run_optuna_compute_cross_entropy",
+      "cluster_apuana_run_optuna_cross_val_objective",
+      "cluster_apuana_run_optuna_g_mean_score",
+      "cluster_apuana_run_optuna_main",
+      "cluster_apuana_run_optuna_objective_cat",
+      "cluster_apuana_run_optuna_objective_lgb",
+      "cluster_apuana_run_optuna_objective_xgb",
+      "cluster_apuana_run_optuna_preprocess",
+      "cluster_apuana_run_optuna_run_autogluon_default",
+      "cluster_apuana_run_optuna_run_tuning",
+      "models_automl",
+      "models_automl_build_autogluon",
+      "models_automl_rationale_1",
+      "models_automl_rationale_18",
+      "tabularpredictor"
+    ],
+    "7": [
+      "catboost_td_classifier",
+      "lgbm_td_classifier",
+      "models_baselines",
+      "models_baselines_build_catboost",
+      "models_baselines_build_lightgbm",
+      "models_baselines_build_xgboost",
+      "models_baselines_rationale_1",
+      "models_baselines_rationale_20",
+      "models_baselines_rationale_25",
+      "models_baselines_rationale_30",
+      "xgb_td_classifier"
+    ],
+    "8": [
+      "generate_stats",
+      "generate_stats_main",
+      "pipeline_stats",
+      "pipeline_stats_bayesian_pairwise",
+      "pipeline_stats_demsar_analysis",
+      "pipeline_stats_rationale_1",
+      "pipeline_stats_rationale_25",
+      "pipeline_stats_rationale_54",
+      "src_pipeline_stats_py_any",
+      "src_pipeline_stats_py_dataframe",
+      "src_pipeline_stats_py_path"
+    ],
+    "9": [
+      "cluster_apuana_run_cluster",
+      "cluster_apuana_run_cluster_build_catboost",
+      "cluster_apuana_run_cluster_build_lightgbm",
+      "cluster_apuana_run_cluster_build_xgboost",
+      "cluster_apuana_run_cluster_load_done_pairs",
+      "cluster_apuana_run_cluster_preprocess",
+      "cluster_apuana_run_cluster_safe_run",
+      "cluster_apuana_run_cluster_save_result",
+      "cluster_apuana_run_cluster_timeout_handler",
+      "cluster_apuana_run_cluster_timeouterror"
+    ],
+    "10": [
+      "models_tabicl_tuning",
+      "models_tabicl_tuning_build_tabicl_factory",
+      "models_tabicl_tuning_rationale_1",
+      "models_tabicl_tuning_rationale_33",
+      "models_tabicl_tuning_rationale_62",
+      "models_tabicl_tuning_rationale_67",
+      "models_tabicl_tuning_tabicl_factory",
+      "models_tabicl_tuning_tabicl_search_space",
+      "src_models_tabicl_tuning_py_any",
+      "src_models_tabicl_tuning_py_trial"
+    ],
+    "11": [
+      "reports_results_table",
+      "reports_results_table_export_markdown",
+      "reports_results_table_pivot_for_stats",
+      "reports_results_table_rationale_1",
+      "reports_results_table_rationale_16",
+      "reports_results_table_rationale_26",
+      "reports_results_table_rationale_31",
+      "reports_results_table_summary_by_model",
+      "src_reports_results_table_py_dataframe",
+      "src_reports_results_table_py_path"
+    ],
+    "12": [
+      "entregaveis_readme_autogluon",
+      "entregaveis_readme_doc",
+      "entregaveis_readme_etapa_1",
+      "entregaveis_readme_etapa_2",
+      "entregaveis_readme_tabarena",
+      "entregaveis_relatorio_template_doc",
+      "entregaveis_rubrica_doc",
+      "entregaveis_slides_template_doc"
+    ],
+    "13": [
+      "pipeline_tune",
+      "pipeline_tune_rationale_1",
+      "pipeline_tune_rationale_32",
+      "pipeline_tune_tune",
+      "src_pipeline_tune_py_any",
+      "src_pipeline_tune_py_dataframe",
+      "src_pipeline_tune_py_ndarray",
+      "src_pipeline_tune_py_trial"
+    ],
+    "14": [
+      "docs_estado_do_projeto",
+      "entregaveis_relatorio_final",
+      "template_main_readme"
+    ],
+    "15": [
+      "models_init",
+      "models_init_rationale_1"
+    ],
+    "16": [
+      "pipeline_init",
+      "pipeline_init_rationale_1"
+    ],
+    "17": [
+      "template_main_valida_openml",
+      "tests_test_pipeline_pipeline"
+    ],
+    "18": [
+      "cluster_apuana_apuana_cluster_plan"
+    ],
+    "19": [
+      "cluster_apuana_run_cluster_main"
+    ],
+    "20": [
+      "cluster_apuana_test_hiva"
+    ],
+    "21": [
+      "data_init"
+    ],
+    "22": [
+      "docs_anneal_preprocessing_notes"
+    ],
+    "23": [
+      "docs_infraestrutura"
+    ],
+    "24": [
+      "docs_rodar_no_kaggle"
+    ],
+    "25": [
+      "model_cards_tabicl_v2"
+    ],
+    "26": [
+      "reports_init"
+    ],
+    "27": [
+      "resultados_preliminares_relatorio_preliminar"
+    ],
+    "28": [
+      "src_init"
+    ],
+    "29": [
+      "template_main_historico_de_abordagens"
+    ],
+    "30": [
+      "tests_init"
+    ],
+    "31": [
+      "valida_openml"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08333333333333333,
+    "1": 0.10098522167487685,
+    "2": 0.09230769230769231,
+    "3": 0.12307692307692308,
+    "4": 0.12987012987012986,
+    "5": 0.1871345029239766,
+    "6": 0.20588235294117646,
+    "7": 0.18181818181818182,
+    "8": 0.2545454545454545,
+    "9": 0.2222222222222222,
+    "10": 0.2222222222222222,
+    "11": 0.24444444444444444,
+    "12": 0.39285714285714285,
+    "13": 0.25,
+    "14": 0.6666666666666666,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0
+  },
+  "gods": [
+    {
+      "id": "kaggle_kaggle_continue_tabiclsafe",
+      "label": "TabICLSafe",
+      "degree": 12
+    },
+    {
+      "id": "pipeline_evaluate_fit_predict_evaluate",
+      "label": "fit_predict_evaluate()",
+      "degree": 12
+    },
+    {
+      "id": "pipeline_split_stratified_split",
+      "label": "stratified_split()",
+      "degree": 11
+    },
+    {
+      "id": "data_load_tabarena_tabulardataset",
+      "label": "TabularDataset",
+      "degree": 9
+    },
+    {
+      "id": "kaggle_kaggle_continue_autogluonwrapper",
+      "label": "AutoGluonWrapper",
+      "degree": 8
+    },
+    {
+      "id": "kaggle_kaggle_pipeline_main",
+      "label": "main()",
+      "degree": 7
+    },
+    {
+      "id": "pipeline_run_all_main",
+      "label": "main()",
+      "degree": 7
+    },
+    {
+      "id": "pipeline_stats_demsar_analysis",
+      "label": "demsar_analysis()",
+      "degree": 7
+    },
+    {
+      "id": "cluster_apuana_run_optuna_run_autogluon_default",
+      "label": "run_autogluon_default()",
+      "degree": 6
+    },
+    {
+      "id": "data_load_tabarena_load_task",
+      "label": "load_task()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "build_tabicl()",
+      "target": "TabICLClassifier",
+      "source_files": [
+        "cluster_apuana/run_cluster.py",
+        "src/models/tabicl_tuning.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inferred",
+      "why": "connects across different repos/directories; peripheral node `build_tabicl()` unexpectedly reaches hub `TabICLClassifier`"
+    },
+    {
+      "source": "build_tabicl()",
+      "target": "TabICLClassifier",
+      "source_files": [
+        "cluster_apuana/run_cluster_final.py",
+        "src/models/tabicl_tuning.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inferred",
+      "why": "connects across different repos/directories; peripheral node `build_tabicl()` unexpectedly reaches hub `TabICLClassifier`"
+    },
+    {
+      "source": "run_autogluon()",
+      "target": "TabularPredictor",
+      "source_files": [
+        "cluster_apuana/run_cluster_final.py",
+        "src/models/automl.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inferred",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "build_tabicl()",
+      "target": "TabICLClassifier",
+      "source_files": [
+        "kaggle/kaggle_pipeline.py",
+        "src/models/tabicl_tuning.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inferred",
+      "why": "connects across different repos/directories; peripheral node `build_tabicl()` unexpectedly reaches hub `TabICLClassifier`"
+    },
+    {
+      "source": "test_split_is_stratified()",
+      "target": "stratified_split()",
+      "source_files": [
+        "tests/test_pipeline.py",
+        "src/pipeline/split.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inferred",
+      "why": "connects across different repos/directories; peripheral node `test_split_is_stratified()` unexpectedly reaches hub `stratified_split()`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `TabICLClassifier` connect `Community 4` to `Community 10`?",
+      "why": "High betweenness centrality (0.372) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `build_group_model()` connect `Community 4` to `Community 0`?",
+      "why": "High betweenness centrality (0.241) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `TabICLSafe` connect `Community 4` to `Community 2`?",
+      "why": "High betweenness centrality (0.131) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `DataFrame`, `Carregamento padronizado dos 30 datasets do TabArena-v0.1.  Os 30 datasets sao s`, `Retorna 'small', 'medium' ou 'large' conforme o numero de amostras.` to the rest of the system?",
+      "why": "78 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10098522167487685 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09230769230769231 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
