@@ -6,10 +6,10 @@ from autorank import autorank, create_report, plot_stats
 from baycomp import SignedRankTest
 import os
 
-os.makedirs('cluster_apuana/resultados_estat_finais/plots', exist_ok=True)
-os.makedirs('cluster_apuana/resultados_estat_finais/tables', exist_ok=True)
+os.makedirs('results/plots', exist_ok=True)
+os.makedirs('results/tables', exist_ok=True)
 
-df = pd.read_csv('cluster_apuana/resultados_estat_finais/data/final_run_results_v2.csv')
+df = pd.read_csv('results/data/final_run_results_v2.csv')
 
 # --- REMOVER AUTOGLUON EXTREME ANTIGO ---
 df = df[df['model'] != 'AutoGluon_Extreme'].copy()
@@ -38,7 +38,7 @@ for rec in missing_records:
 print("✅ Furos imputados com a média do regime correspondente.")
 
 # -- MERGE METADATA --
-meta = pd.read_csv('cluster_apuana/resultados_estat_finais/data/dataset_metadata.csv')
+meta = pd.read_csv('results/data/dataset_metadata.csv')
 df = df.merge(meta, on='dataset', how='left')
 
 metrics = ['AUC_OVO', 'ACC', 'G_Mean', 'CE', 'total_time_s']
@@ -77,7 +77,7 @@ def gerar_tabela_latex(df_group, titulo, label, f):
     tex_table += "\\bottomrule\n\\end{tabular}\n}\n\\end{table}\n\n"
     f.write(tex_table)
 
-with open('cluster_apuana/resultados_estat_finais/tables/tabelas_resultados.tex', 'w') as f:
+with open('results/tables/tabelas_resultados.tex', 'w') as f:
     # 2.1 TABELAS POR REGIME
     for reg in ['small', 'medium', 'large']:
         df_sub = df[df['regime'] == reg]
@@ -117,7 +117,7 @@ for metric in ['AUC_OVO', 'ACC', 'G_Mean', 'CE']:
         fig, ax = plt.subplots(figsize=(10, 4))
         plot_stats(res, ax=ax, allow_insignificant=True)
         filename = f"cd_diagram_{metric.lower()}.png"
-        plt.savefig(f'cluster_apuana/resultados_estat_finais/plots/{filename}', bbox_inches='tight', dpi=300)
+        plt.savefig(f'results/plots/{filename}', bbox_inches='tight', dpi=300)
         plt.close()
         print(f"✅ CD Diagram para {metric} gerado em {filename}.")
     except Exception as e:
@@ -136,7 +136,7 @@ plt.title('Custo vs. Desempenho Geral')
 for i in range(global_agg.shape[0]):
     plt.text(global_agg['total_time_s'][i] * 1.1, global_agg['AUC_OVO'][i], global_agg['model'][i], size='small', color='black')
 plt.legend([],[], frameon=False)
-plt.savefig('cluster_apuana/resultados_estat_finais/plots/scatter_cost_perf.png', bbox_inches='tight', dpi=300)
+plt.savefig('results/plots/scatter_cost_perf.png', bbox_inches='tight', dpi=300)
 plt.close()
 print("✅ Gráfico de Dispersão gerado.")
 
@@ -155,7 +155,7 @@ for baseline_name in baselines:
         fig = test.plot(names=('TabICL', baseline_name.replace('_4h', '')))
         fig.suptitle(f'Bayesian Signed-Rank\nTabICL vs {baseline_name} (ROPE=0.01)')
         filename = f'bayesian_plot_auc_{baseline_name.lower()}.png'
-        fig.savefig(f'cluster_apuana/resultados_estat_finais/plots/{filename}', bbox_inches='tight', dpi=300)
+        fig.savefig(f'results/plots/{filename}', bbox_inches='tight', dpi=300)
         plt.close(fig)
         print(f"✅ Gráfico Bayesiano gerado em {filename}")
         print(f"Probabilidades vs {baseline_name}: TabICL ganha: {probs[0]:.3f}, Equivalentes: {probs[1]:.3f}, Baseline ganha: {probs[2]:.3f}")

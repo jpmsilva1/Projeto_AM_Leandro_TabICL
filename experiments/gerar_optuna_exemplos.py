@@ -55,7 +55,7 @@ for regime_name, tid in regimes.items():
             text_obj.set_text(f"Histórico de Otimização - {regime_name}")
             
     plt.tight_layout()
-    plt.savefig(f'cluster_apuana/resultados_estat_finais/plots/optuna_history_{regime_name.lower()}.png', dpi=300)
+    plt.savefig(f'results/plots/optuna_history_{regime_name.lower()}.png', dpi=300)
     plt.close()
 
     ax_imp = plot_param_importances(study)
@@ -67,7 +67,7 @@ for regime_name, tid in regimes.items():
             text_obj.set_text(f"Importância de Hiperparâmetros - {regime_name}")
 
     plt.tight_layout()
-    plt.savefig(f'cluster_apuana/resultados_estat_finais/plots/optuna_importances_{regime_name.lower()}.png', dpi=300)
+    plt.savefig(f'results/plots/optuna_importances_{regime_name.lower()}.png', dpi=300)
     plt.close()
 
 print("\n✅ Todos os gráficos de todos os regimes gerados!")
