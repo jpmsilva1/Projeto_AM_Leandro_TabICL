@@ -157,7 +157,7 @@ def run_baseline(model_name, build_fn, X_train, y_train, X_test, y_test, n_class
     auc = compute_auc(y_test, probs, n_classes) if probs is not None else np.nan
     ce = compute_cross_entropy(y_test, probs, n_classes) if probs is not None else np.nan
     
-    logging.info(f"  ✅ {model_name} | ACC={acc:.4f} | AUC={auc:.4f} | Tempo={fit_predict_time:.1f}s")
+    logging.info(f"  {model_name} | ACC={acc:.4f} | AUC={auc:.4f} | Tempo={fit_predict_time:.1f}s")
     return {
         "model": model_name, "ACC": round(acc, 6), "AUC_OVO": round(auc, 6), 
         "G_Mean": round(gmean, 6), "CE": round(ce, 6), "total_time_s": round(fit_predict_time, 2)
@@ -221,7 +221,7 @@ def run_autogluon(preset, X_train, y_train, X_test, y_test, n_classes):
         auc = compute_auc(y_test, y_proba, n_classes)
         ce = compute_cross_entropy(y_test, y_proba, n_classes)
         
-        logging.info(f"  ✅ {name} | ACC={acc:.4f} | AUC={auc:.4f} | Tempo={total_time:.1f}s")
+        logging.info(f" {name} | ACC={acc:.4f} | AUC={auc:.4f} | Tempo={total_time:.1f}s")
         shutil.rmtree(ag_path, ignore_errors=True)
         
         return {
@@ -280,7 +280,7 @@ def objective_cat(trial, X, y):
     return scores.mean()
 
 def run_tuning(model_name, objective_func, model_class, X_train, y_train, X_test, y_test, n_classes):
-    logging.info(f"  ⚙️ Tuning {model_name} (Trials={N_TRIALS})...")
+    logging.info(f"  Tuning {model_name} (Trials={N_TRIALS})...")
     t0 = time.perf_counter()
         
     study = optuna.create_study(direction="maximize", sampler=TPESampler(seed=SEED))
@@ -301,7 +301,7 @@ def run_tuning(model_name, objective_func, model_class, X_train, y_train, X_test
     y_pred = best_model.predict(X_test)
     y_proba = best_model.predict_proba(X_test) if hasattr(best_model, "predict_proba") else None
     
-    # Check if CatBoost returns nested arrays for predict
+   
     if len(y_pred.shape) > 1 and y_pred.shape[1] == 1:
         y_pred = y_pred.ravel()
         
@@ -311,7 +311,7 @@ def run_tuning(model_name, objective_func, model_class, X_train, y_train, X_test
     ce = compute_cross_entropy(y_test, y_proba, n_classes) if y_proba is not None else np.nan
     
     total_time = time.perf_counter() - t0
-    logging.info(f"  ✅ {model_name} | ACC={acc:.4f} | AUC={auc:.4f} | Tempo={total_time:.1f}s")
+    logging.info(f"  {model_name} | ACC={acc:.4f} | AUC={auc:.4f} | Tempo={total_time:.1f}s")
     return {
         "model": model_name, "ACC": round(acc, 6), "AUC_OVO": round(auc, 6), 
         "G_Mean": round(gmean, 6), "CE": round(ce, 6), "total_time_s": round(total_time, 2)
@@ -339,7 +339,7 @@ def main():
         ]
         
         if all((ds['name'], m) in done_pairs for m in models_to_run):
-            logging.info("  ✅ All models complete for this dataset, skipping...")
+            logging.info("   All models complete for this dataset, skipping...")
             continue
             
         try:
@@ -364,7 +364,7 @@ def main():
             y_encoded = le.fit_transform(y_clean)
             n_classes = len(le.classes_)
             
-            # 1. SPLIT ANTES DO PRE-PROCESSAMENTO (CORREÇÃO DO LEAKAGE)
+            # 1. SPLIT ANTES DO PRE-PROCESSAMENTO 
             try: 
                 X_train_raw, X_test_raw, y_train, y_test = train_test_split(
                     X, y_encoded, test_size=0.3, random_state=SEED, stratify=y_encoded
@@ -380,12 +380,11 @@ def main():
             X_test = preprocessor.transform(X_test_raw)
             
             # Remover colunas totalmente constantes baseadas no treino
-            # Usar var() > 0 para lidar com matrizes esparsas ou densas
             if hasattr(X_train, "toarray"):
                 X_train = X_train.toarray()
                 X_test = X_test.toarray()
             
-            # Extra safeguard for converting boolean/objects to float if they somehow passed through
+            
             X_train = X_train.astype(float)
             X_test = X_test.astype(float)
             
@@ -399,7 +398,7 @@ def main():
                         all_results.append(res)
                         pd.DataFrame(all_results).to_csv(RESULTS_FILE, index=False)
                     except Exception as e:
-                        logging.error(f"  ❌ {m_name} FAILED: {e}", exc_info=True)
+                        logging.error(f"  {m_name} FAILED: {e}", exc_info=True)
 
             # Defaults
             execute_model("TabICL", run_baseline, "TabICL", build_tabicl, X_train, y_train, X_test, y_test, n_classes)
@@ -417,7 +416,7 @@ def main():
             execute_model("CatBoost_Tuned", run_tuning, "CatBoost_Tuned", objective_cat, CatBoostClassifier, X_train, y_train, X_test, y_test, n_classes)
                     
         except Exception as e: 
-            logging.error(f"❌ DATASET {ds['name']} FAILED: {e}", exc_info=True)
+            logging.error(f" DATASET {ds['name']} FAILED: {e}", exc_info=True)
 
 if __name__ == "__main__":
     main()
