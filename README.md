@@ -1,141 +1,136 @@
-# Projeto Final de Aprendizagem de Maquina, Repositorio-Template
+# TabICL v2 — Avaliação em Benchmark TabArena-v0.1
 
-Estrutura de codigo de referencia para a Etapa 2 do Projeto Final da disciplina de Aprendizagem de Maquina (pos-graduacao). Este template padroniza:
+**Projeto Final — Disciplina de Aprendizagem de Máquina (2026-1)**  
+**Prof. Leandro Almeida — CIn/UFPE**
 
-1. Carregamento dos 30 datasets do TabArena-v0.1.
-2. Implementacao dos baselines (LightGBM, CatBoost, XGBoost) via `pytabkit`.
-3. Integracao com AutoGluon 1.4 nos presets `default` e `extreme` (4 horas).
-4. Pipeline de split (70/30 com seed fixa), tuning com Optuna, avaliacao das metricas exigidas e analise por regime.
-5. Analise estatistica classica (Friedman, Nemenyi, diagrama de diferenca critica) via `autorank` e Bayesiana com ROPE via `baycomp`.
-6. Smoke test que valida cada um dos 10 modelos atribuidos com um dataset pequeno.
+| Integrante | Papel |
+|---|---|
+| João Pedro Miranda da Silva | Experimentos (cluster Apuana, AutoGluon Extreme) |
+| Maria Clara Falcão Guerra Barretto | Análise estatística, relatório, model card |
+| Vinicius Limeira Valença | Experimentos (AutoGluon Extreme, pipeline) |
 
-## Status do template
+---
 
-A tabela abaixo indica, para cada componente, o que ja esta implementado e validado e o que cabe a cada grupo preencher. As convencoes sao:
+## Sobre o projeto
 
-- **Pronto** componente implementado e validado por smoke test; nada a fazer.
-- **Esqueleto** ha um arquivo funcional, porem generico, que cada grupo deve adaptar ao seu modelo.
-- **Placeholder** ha apenas um stub; o grupo precisa implementar.
-- **Acao do aluno** entrega que nao esta no template e o grupo deve produzir do zero.
+Avaliação empírica do modelo fundacional **TabICL v2** (v2.1.1, Soda/Inria) em classificação supervisionada tabular. O modelo aplica *In-Context Learning* com arquitetura Transformer: os dados de treino são fornecidos como contexto de atenção na inferência, sem atualização de pesos.
 
-| Componente | Status | O que falta |
-|---|---|---|
-| `data/load_tabarena.py`, carregamento via OpenML | Pronto | Substituir `RECOMMENDED_TASK_IDS` pela lista oficial de 30 datasets escolhidos (10 pequenos + 10 medios + 10 grandes), conforme `https://tabarena.ai`. |
-| `src/models/baselines.py` (LightGBM, XGBoost, CatBoost via pytabkit) | Pronto | Nada. |
-| `src/models/automl.py` (AutoGluon 1.4 default e extreme) | Pronto | Instalar `autogluon.tabular` no ambiente (incluido no `pyproject.toml`). |
-| `src/models/group_model.py` (modelo principal do grupo) | Placeholder | Implementar `build_group_model(seed)` retornando o estimador atribuido (ver exemplos comentados no proprio arquivo). |
-| `src/pipeline/split.py` (70/30 estratificado) | Pronto | Nada. |
-| `src/pipeline/tune.py` (Optuna, generico) | Esqueleto | Cada grupo define o `search_space` apropriado para o seu modelo. Para baselines `pytabkit` com defaults TD, o tuning pode ser opcional. |
-| `src/pipeline/evaluate.py` (AUC OvO, ACC, G-Mean, CE, tempo) | Pronto | Nada. |
-| `src/pipeline/stats.py` (autorank + baycomp com ROPE) | Pronto | Nada. |
-| `src/pipeline/regime.py` (quebra por regime) | Pronto | Nada. |
-| `src/pipeline/run_all.py` (orquestrador CLI) | Pronto | Cada grupo passa `--include-group-model` apos implementar `group_model.py`. |
-| `src/reports/results_table.py` (resumos e exportacao Markdown) | Pronto | Nada. |
-| `notebooks/01_eda.ipynb` ate `04_demo_stats_regime.ipynb` | Esqueleto | Executar e adaptar; usar para gerar figuras e tabelas do relatorio. |
-| `model_cards/TEMPLATE.md` | Placeholder | Copiar para `model_cards/<seu-modelo>.md` e preencher as 11 secoes (detalhes do modelo, uso pretendido, fatores, metricas com IC 95%, dados de avaliacao, dados de treino e pre-treino, analise quantitativa, consideracoes eticas, avisos e recomendacoes, reprodutibilidade, referencias). |
-| `tests/test_pipeline.py` (smoke test) | Pronto e validado (7/7 passando) | Nada. |
-| Tabela de selecao dos 30 datasets (no relatorio) | Acao do aluno | Construir tabela com nome, task ID OpenML, n, n_features, n_classes e regime. |
-| Relatorio final em PDF | Esqueleto | Estrutura sugerida em `entregaveis/relatorio-template.pdf`. Substituir placeholders e preencher conforme as exigencias da disciplina. |
-| Slides da apresentacao (20 minutos: 10 + 10) | Esqueleto | Estrutura sugerida em `entregaveis/slides-template.pdf` (cerca de 21 frames, dois blocos de 10 minutos). |
-| Rubrica de avaliacao | Pronto | Disponivel em `entregaveis/rubrica.pdf`. Vincula a nota a entregas concretas, decompondo o esquema 40 + 50 + 10 do PDF da disciplina em criterios com pesos especificos. |
+O estudo cobre **30 datasets** do benchmark TabArena-v0.1 (NeurIPS 2025) e compara o TabICL v2 com 8 sistemas:
 
-## Modelos atribuiveis aos grupos
+- **Baselines padrão:** LightGBM TD, XGBoost TD, CatBoost TD
+- **Baselines otimizados:** LightGBM Tuned, XGBoost Tuned, CatBoost Tuned (Optuna, 20 trials)
+- **AutoML:** AutoGluon Default e AutoGluon Extreme 4h
 
-| # | Modelo | Toolkit |
-|---|---|---|
-| 1 | TabPFN-2.5 | `tabpfn` |
-| 2 | TabICL v2 | `tabicl` |
-| 3 | TabM | `pytabkit` |
-| 4 | ModernNCA | `LAMDA-Tabular/TALENT` |
-| 5 | RealMLP | `pytabkit` |
-| 6 | xRFM | `xrfm` |
-| 7 | Mambular | `deeptab` |
-| 8 | FT-Transformer | `pytabkit` ou `deeptab` |
-| 9 | EBM | `interpret` |
-| 10 | Trompt | `pytorch-frame` |
+A validação estatística usa teste de Friedman–Nemenyi (frequentista) e Bayesian Signed-Rank com ROPE = 0,01 (biblioteca *baycomp*).
+
+---
+
+## Resultados principais
+
+| Modelo | AUC-OVO | Rank médio (9 sistemas) | Tempo médio (s) |
+|---|:---:|:---:|:---:|
+| **TabICL v2** | **0,906** | **2,57** | **48,5** |
+| AutoGluon Extreme 4h | 0,911 | 2,35 | ~1.831 |
+| LightGBM Tuned | 0,899 | 3,98 | ~240 |
+| CatBoost Tuned | 0,898 | 4,12 | ~190 |
+| AutoGluon Default | 0,889 | 4,10 | ~120 |
+
+**Teste bayesiano TabICL vs AutoGluon Extreme 4h:** P(equivalente) = 99,6% — indistinguíveis dentro de 1% de AUC, com o TabICL sendo **~38× mais rápido**.
+
+---
 
 ## Quickstart
 
-Pre-requisitos: Python 3.11 ou superior e [`uv`](https://docs.astral.sh/uv/) (recomendado) ou `pip`.
-
 ```bash
-# clonar o repositorio
-git clone <url-do-template>
-cd projeto-final-AM-template
-
-# opcao A: uv (recomendado)
+# 1. Instalar dependências (Python 3.11 obrigatório)
 uv sync
 
-# opcao B: pip
-pip install -e .
+# 2. Smoke test — deve passar 7/7
+uv run pytest tests/ -v
 
-# rodar o smoke test (verifica que cada modelo retorna predicao valida)
-pytest tests/test_pipeline.py -v
+# 3. Rodar experimento completo (GPU recomendada para datasets Large)
+uv run python experiments/run_experiment.py
+
+# 4. Gerar figuras e tabelas LaTeX
+uv run python experiments/gerar_graficos_e_tabelas.py
 ```
 
-Para rodar o experimento completo com o seu modelo atribuido:
+Via Docker (reprodução completa em qualquer máquina):
 
 ```bash
-# editar src/models/group_model.py para apontar para o modelo do grupo
-# rodar o pipeline em todos os 30 datasets:
-python -m src.pipeline.run_all --model group_model --seed 42
+docker build -t tabicl-eval .
+docker run --gpus all tabicl-eval
 ```
 
-## Estrutura
+---
+
+## Estrutura do repositório
 
 ```
-projeto-final-AM-template/
-|- README.md
-|- pyproject.toml
-|- Dockerfile
-|- .python-version
-|- data/
-|   |- load_tabarena.py
-|- src/
-|   |- models/
-|   |   |- baselines.py
-|   |   |- automl.py
-|   |   |- group_model.py
-|   |- pipeline/
-|       |- split.py
-|       |- tune.py
-|       |- evaluate.py
-|       |- stats.py
-|       |- regime.py
-|       |- run_all.py
-|   |- reports/
-|       |- results_table.py
-|- notebooks/
-|   |- 01_eda.ipynb
-|   |- 02_demo_baselines.ipynb
-|   |- 03_demo_modelo_grupo.ipynb
-|   |- 04_demo_stats_regime.ipynb
-|- model_cards/
-|   |- TEMPLATE.md
-|- tests/
-    |- test_pipeline.py
+.
+├── reports/                        # Entregáveis
+│   ├── relatorio_final.tex         # Relatório completo em LaTeX
+│   ├── model_card.md               # Model card do TabICL v2 (11 seções)
+│   └── templates/                  # Templates fornecidos pelo professor
+│       ├── rubrica.pdf
+│       ├── relatorio-template.pdf
+│       └── slides-template.pdf
+│
+├── results/                        # Outputs dos experimentos
+│   ├── plots/                      # Figuras (CD diagrams, Bayesian simplex, scatter)
+│   ├── tables/                     # Tabelas LaTeX (tabelas_resultados.tex)
+│   ├── data/                       # CSVs — resultados por dataset × modelo
+│   │   ├── final_run_results_v2.csv
+│   │   └── dataset_metadata.csv
+│   └── statistical_analysis/       # Testes de Friedman e ROPE bayesiana (CSV por métrica)
+│
+├── src/                            # Código do pipeline
+│   ├── models/                     # TabICL v2, LightGBM, XGBoost, CatBoost, AutoGluon
+│   ├── pipeline/                   # Split, tuning Optuna, avaliação, análise estatística
+│   └── reports/                    # Geração de tabelas-resumo
+│
+├── data/                           # Carregador TabArena-v0.1 via OpenML (30 datasets)
+├── notebooks/                      # EDA e demonstrações (01_eda … 04_demo_stats)
+├── tests/                          # Smoke test end-to-end (7/7 passing)
+│
+├── experiments/                    # Scripts para rodar e analisar os experimentos
+│   ├── run_experiment.py           # Pipeline completo: split → tune → eval → stats
+│   ├── gerar_graficos_e_tabelas.py # Gera todos os plots e tabelas LaTeX
+│   ├── gerar_optuna_exemplos.py    # Curvas de convergência do Optuna
+│   └── cluster/
+│       └── job_apuana.slurm        # Job SLURM para cluster HPC (CIn-Apuana)
+│
+├── docs/                           # Documentação
+│   ├── INFRAESTRUTURA.md           # Setup detalhado e dependências
+│   ├── CLUSTER.md                  # Guia de comandos SLURM
+│   ├── datasets_selecionados.csv   # Metadados dos 30 datasets escolhidos
+│   ├── tabarena_datasets.csv       # Lista oficial TabArena-v0.1
+│   └── enunciado.pdf               # Enunciado da disciplina
+│
+├── Dockerfile                      # Reprodução em container
+├── pyproject.toml                  # Dependências (Python 3.11, uv)
+└── uv.lock                         # Lockfile para reprodução exata
 ```
 
-## Fluxo de trabalho recomendado
-
-1. **EDA inicial:** rodar `notebooks/01_eda.ipynb` para inspecionar os 30 datasets.
-2. **Baselines:** rodar `notebooks/02_demo_baselines.ipynb` para confirmar que LightGBM, CatBoost e XGBoost executam end-to-end.
-3. **Modelo do grupo:** implementar o wrapper em `src/models/group_model.py` e validar em `notebooks/03_demo_modelo_grupo.ipynb`.
-4. **Experimento completo:** rodar `python -m src.pipeline.run_all --seed 42`.
-5. **Analise estatistica e por regime:** abrir `notebooks/04_demo_stats_regime.ipynb` e gerar diagrama de diferenca critica e analise Bayesiana.
-6. **Model card:** copiar `model_cards/TEMPLATE.md` para `model_cards/<nome-do-modelo>.md` e preencher.
+---
 
 ## Reprodutibilidade
 
-1. Seed fixa em todas as etapas (`split`, `tune`, `evaluate`).
-2. Versoes fixadas no `pyproject.toml`.
-3. Dockerfile opcional disponivel para containerizacao.
-4. Saidas intermediarias (resultados por dataset por modelo) sao gravadas em CSV em `results/`.
+| Aspecto | Detalhe |
+|---|---|
+| Seed | `random_state=42` em split, Optuna (TPESampler) e PyTorch (`deterministic=True`) |
+| Ambiente | Python 3.11, dependências travadas em `pyproject.toml` + `uv.lock` |
+| Container | `Dockerfile` na raiz (Python 3.11-slim, CUDA opcional) |
+| Cluster | Cluster HPC Apuana (CIn-UFPE), SLURM, GPU NVIDIA RTX 3090 |
+| Commit dos experimentos | `56b6c935ef274cec5415811ee5d252ba2b62a021` |
 
-## Licencas
+---
 
-Todas as bibliotecas utilizadas tem licencas permissivas (MIT, Apache 2.0). A unica excecao e o modelo TabPFN-2.5, cujos pesos sao distribuidos sob licenca nao-comercial; o uso academico em sala esta explicitamente autorizado.
+## Referências
 
-## Suporte
-
-Em caso de duvida tecnica, abrir issue no repositorio do template ou contatar o professor da disciplina.
+- Schlegel, V., Zhu, Y., Leite, R., Varoquaux, G. (2026). *TabICLv2: A better, faster, scalable, and open tabular foundation model*. arXiv:2602.11139.
+- Demšar, J. (2006). *Statistical comparisons of classifiers over multiple datasets*. JMLR 7, 1–30.
+- Benavoli, A., Corani, G., Demšar, J., Zaffalon, M. (2017). *Time for a Change: a Tutorial for Comparing Multiple Classifiers Through Bayesian Analysis*. JMLR 18, 1–36.
+- Hölzmuller, D. et al. (2024). *Better default hyperparameters for tabular models (pytabkit)*. NeurIPS 2024.
+- TabArena-v0.1 (NeurIPS 2025): https://tabarena.ai
+- TabICL GitHub: https://github.com/soda-inria/tabicl

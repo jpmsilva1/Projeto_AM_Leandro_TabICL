@@ -10,6 +10,7 @@
 \usepackage{geometry}
 \geometry{a4paper, margin=1in}
 \usepackage{setspace}
+\graphicspath{{../results/plots/}}
 
 \title{Relatório Final: Avaliação do Modelo TabICL v2}
 \author{João Pedro Miranda da Silva \and Maria Clara Falcão Guerra Barretto \and Vinicius Limeira Valença}
@@ -107,7 +108,7 @@ Para viabilizar os testes estatísticos de Friedman, que requerem blocos complet
 
 As tabelas a seguir apresentam os resultados médios (média $\pm$ desvio padrão) de todos os modelos, segmentados pelas quatro dimensões de estratificação previstas no enunciado: (i) regime de tamanho, (ii) tipo de classificação, (iii) proporção de features categóricas e (iv) presença de valores ausentes.
 
-\input{tabelas_resultados.tex}
+\input{../results/tables/tabelas_resultados.tex}
 
 \paragraph{(i) Regime de tamanho:} No regime \textit{Small} (3 datasets), o TabICL apresentou AUC-OVO de $0{,}8056 \pm 0{,}0328$, abaixo dos GBDTs com tuning ($\approx 0{,}86$), em parte devido à falha no dataset \textit{anneal} (imputada com a média do regime). No regime \textit{Medium} (17 datasets), o TabICL alcançou o melhor AUC médio ($0{,}9425 \pm 0{,}0740$), incluindo o AutoGluon Extreme. No regime \textit{Large} (10 datasets), o desempenho do TabICL permaneceu competitivo ($0{,}8629 \pm 0{,}1616$), próximo ao AutoGluon Extreme ($0{,}8639$), com desvio padrão elevado decorrente da variabilidade dos datasets de grande escala.
 
