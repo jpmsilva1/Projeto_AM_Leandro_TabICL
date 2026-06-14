@@ -59,7 +59,8 @@ os.environ["MKL_NUM_THREADS"] = str(NUM_CPUS)
 os.environ["OPENBLAS_NUM_THREADS"] = str(NUM_CPUS)
 os.environ["NUMEXPR_NUM_THREADS"] = str(NUM_CPUS)
 
-RESULTS_FILE = "final_run_results_v2.csv"
+RESULTS_FILE = "results/data/final_run_results_v2.csv"
+os.makedirs("results/data", exist_ok=True)
 
 # Timeout handler
 def timeout_handler(signum, frame):

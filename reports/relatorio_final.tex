@@ -177,16 +177,43 @@ Observa-se também que os hiperparâmetros padrão das bibliotecas modernas (via
 \section{Reprodutibilidade}
 Para garantir a reprodutibilidade dos experimentos, adotou-se semente aleatória fixa (\texttt{random\_state=42}) em todas as etapas: particionamento dos dados, otimização bayesiana do Optuna (via \texttt{TPESampler}) e backend determinístico do PyTorch (\texttt{deterministic=True}) utilizado pelo TabICL.
 
-Todos os códigos estão organizados com o gerenciador de pacotes \texttt{uv}, com dependências fixadas em \texttt{pyproject.toml} e \texttt{uv.lock}, permitindo reprodução do ambiente em qualquer máquina com suporte a PyTorch. Os comandos para reprodução completa são:
+Todos os artefatos estritamente necessários para a replicação encontram-se na raiz do repositório e nas pastas descritas a seguir:
+
+\begin{itemize}
+    \item \texttt{Dockerfile}: Receita de provisionamento do contêiner, contemplando a instalação das ferramentas de sistema, do gerenciador \texttt{uv} e a inicialização do ambiente isolado com todas as dependências fixadas.
+
+    \item \texttt{pyproject.toml} e \texttt{uv.lock}: Manifestos determinísticos de gerenciamento de pacotes. O \texttt{pyproject.toml} declara as faixas de compatibilidade (Python 3.11, \texttt{tabicl>=2.0}, \texttt{optuna>=3.6}, \texttt{pytabkit>=1.7}, entre outras); o \texttt{uv.lock} fixa as versões exatas para garantir ambientes idênticos.
+
+    \item \texttt{experiments/run\_experiment.py}: Script orquestrador principal do pipeline completo — carrega os 30 datasets, executa o particionamento estratificado, roda o TabICL e os 8 baselines, e salva os resultados em \texttt{results/data/}.
+
+    \item \texttt{experiments/gerar\_graficos\_e\_tabelas.py}: Gera todas as figuras (diagramas de diferença crítica, simplexes bayesianos, scatter plots de custo vs.\ desempenho) e as tabelas LaTeX segmentadas por regime, a partir dos arquivos \texttt{results/data/final\_run\_results\_v2.csv} e \texttt{results/data/dataset\_metadata.csv}.
+
+    \item \texttt{experiments/gerar\_optuna\_exemplos.py}: Gera os gráficos de convergência do Optuna (histórico de otimização e importância de hiperparâmetros) para um dataset representativo de cada regime.
+
+    \item \texttt{experiments/cluster/job\_apuana.slurm}: Job SLURM utilizado para submissão no cluster HPC CIn-Apuana (GPU NVIDIA RTX 3090), reproduzindo exatamente o ambiente computacional dos experimentos originais.
+
+    \item \texttt{src/}: Módulos do pipeline — \texttt{models/} (wrappers dos modelos), \texttt{pipeline/} (split, tuning Optuna, avaliação, análise estatística) e \texttt{reports/} (geração de tabelas-resumo).
+
+    \item \texttt{data/load\_tabarena.py}: Carregador automático dos 30 datasets via OpenML, com seleção por Task ID e regime.
+
+    \item \texttt{tests/test\_pipeline.py}: Smoke test end-to-end que verifica a integridade do pipeline em um dataset sintético antes de rodar os experimentos completos.
+\end{itemize}
+
+Os comandos para reprodução completa, a partir da raiz do repositório, são:
 
 \begin{verbatim}
-uv sync
-uv run pytest tests/test_pipeline.py -v               # smoke test
+uv sync                                                # instala dependencias
+uv run pytest tests/test_pipeline.py -v               # smoke test (7/7)
 uv run python experiments/run_experiment.py            # experimento completo
-uv run python experiments/gerar_graficos_e_tabelas.py # graficos e tabelas
+uv run python experiments/gerar_graficos_e_tabelas.py # figuras e tabelas
 \end{verbatim}
 
-Um \texttt{Dockerfile} está disponível na raiz do repositório para reprodução em ambiente containerizado.
+Para reprodução em ambiente containerizado (qualquer máquina com Docker):
+
+\begin{verbatim}
+docker build -t tabicl-eval .
+docker run --gpus all tabicl-eval
+\end{verbatim}
 
 \section{Conclusões}
 Este trabalho avaliou o modelo TabICL v2 — baseado em In-Context Learning — em comparação com métodos consolidados de classificação supervisionada em dados tabulares, sobre 30 datasets do benchmark TabArena-v0.1. Os resultados estatísticos indicam que o TabICL alcança desempenho competitivo e superior em ranking médio de AUC-OVO, Acurácia e Cross-Entropy nos regimes Small e Medium, sem necessidade de etapa de tuning. A principal limitação observada é a complexidade quadrática do mecanismo de atenção ($\mathcal{O}(n^2)$), que restringe a aplicabilidade em datasets de grande porte sem hardware adequado (GPU com alta VRAM). O trabalho reforça que a abordagem de foundation models para dados tabulares constitui alternativa viável e eficiente aos pipelines clássicos de AutoML em cenários de escala pequena e média.
